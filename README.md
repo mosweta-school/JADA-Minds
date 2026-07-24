@@ -549,6 +549,9 @@ This project is being developed collaboratively by the JADA Minds development te
 - Backend API Developer & DevOps
 
 ---
+# Collaboration
+Trello board
+https://trello.com/b/jpPFko3z/jada-minds-module-5-group-project
 
 # 📄 License
 
