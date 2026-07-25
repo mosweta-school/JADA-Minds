@@ -1,7 +1,7 @@
 from flask import Flask
 
 from .config import Config
-from .extensions import db, migrate, jwt
+from .extensions import db, migrate, jwt, cors
 
 
 def create_app():
@@ -12,6 +12,8 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)
+    cors.init_app(app)
+    from app import models
 
     @app.route("/")
     def home():
