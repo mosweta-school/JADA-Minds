@@ -26,3 +26,6 @@ repomix-output.xml
 __pycache__
 venv
 .env
+# SQLite database
+*.db
+instance/
