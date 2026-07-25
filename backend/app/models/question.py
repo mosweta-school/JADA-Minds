@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from app.extensions import db
 
@@ -32,6 +32,12 @@ class Question(db.Model):
         nullable=False
     )
 
+    is_active = db.Column(
+        db.Boolean,
+        default=True,
+        nullable=False
+    )
+
     created_by = db.Column(
         db.Integer,
         db.ForeignKey("users.id"),
@@ -40,13 +46,13 @@ class Question(db.Model):
 
     created_at = db.Column(
         db.DateTime,
-        default=datetime.utcnow
+        default=lambda: datetime.now(timezone.utc)
     )
 
     updated_at = db.Column(
         db.DateTime,
-        default=datetime.utcnow,
-        onupdate=datetime.utcnow
+        default=lambda: datetime.now(timezone.utc)  ,
+        onupdate=lambda: datetime.now(timezone.utc)
     )
 
     # Relationships
@@ -59,5 +65,4 @@ class Question(db.Model):
     assessment_responses = db.relationship(
         "AssessmentResponse",
         back_populates="question",
-        cascade="all, delete-orphan"
     )
