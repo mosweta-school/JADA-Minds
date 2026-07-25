@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 repomix-output.xml
+__pycache__
+venv
+.env
