@@ -30,6 +30,12 @@ class Resource(db.Model):
         db.String(255)
     )
 
+    is_active = db.Column(
+        db.Boolean,
+        default=True,
+        nullable=False
+    )
+    
     created_by = db.Column(
         db.Integer,
         db.ForeignKey("users.id"),
