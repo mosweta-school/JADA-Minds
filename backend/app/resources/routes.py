@@ -4,6 +4,7 @@ from marshmallow import ValidationError
 
 from app.extensions import db
 from app.models import Resource, User
+from app.rbac import current_user_is_admin
 
 from . import resources_bp
 from .schemas import (
@@ -12,19 +13,6 @@ from .schemas import (
     resource_input_schema,
     resource_update_schema,
 )
-
-
-def _current_user_is_admin() -> bool:
-    """
-    Checks a 'role' JWT claim first, falls back to a DB lookup by identity. Confirm which path is
-    actually needed once Deogracious's /login exists.
-    """
-    role = get_jwt().get("role")
-    if role is not None:
-        return role == "admin"
-
-    user = db.session.get(User, int(get_jwt_identity()))
-    return user is not None and user.role == "admin"
 
 
 @resources_bp.route("", methods=["GET"])
@@ -43,7 +31,7 @@ def list_resources():
 @resources_bp.route("", methods=["POST"])
 @jwt_required()
 def create_resource():
-    if not _current_user_is_admin():
+    if not current_user_is_admin():
         return jsonify({"error": "Forbidden"}), 403
 
     try:
@@ -61,7 +49,7 @@ def create_resource():
 @resources_bp.route("/<int:resource_id>", methods=["PUT"])
 @jwt_required()
 def update_resource(resource_id):
-    if not _current_user_is_admin():
+    if not current_user_is_admin():
         return jsonify({"error": "Forbidden"}), 403
 
     resource = db.get_or_404(Resource, resource_id)
@@ -83,7 +71,7 @@ def update_resource(resource_id):
 @jwt_required()
 def delete_resource(resource_id):
    
-    if not _current_user_is_admin():
+    if not current_user_is_admin():
         return jsonify({"error": "Forbidden"}), 403
 
     resource = db.get_or_404(Resource, resource_id)

@@ -36,6 +36,13 @@ class Workshop(db.Model):
         nullable=False
     )
 
+
+    is_active = db.Column(
+        db.Boolean,
+        default=True,
+        nullable=False
+    )
+
     created_by = db.Column(
         db.Integer,
         db.ForeignKey("users.id"),
@@ -63,5 +70,4 @@ class Workshop(db.Model):
     registrations = db.relationship(
         "WorkshopRegistration",
         back_populates="workshop",
-        cascade="all, delete-orphan"
     )

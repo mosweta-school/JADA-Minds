@@ -4,6 +4,8 @@ from marshmallow import ValidationError
 
 from app.models import Question, User
 from app.extensions import db
+from app.rbac import current_user_is_admin
+
 
 from . import questions_bp
 from .schemas import (
@@ -12,17 +14,6 @@ from .schemas import (
     question_input_schema,
     question_update_schema,
 )
-
-
-def _current_user_is_admin() -> bool:
-    """Returns True if the current user is an admin, False otherwise."""
-    role = get_jwt().get("role")
-    if role is not None:
-        return role == "admin"
-
-    user = db.session.get(User, int(get_jwt_identity()))
-    return user is not None and user.role == "admin"
-
 
 @questions_bp.route("", methods=["GET"])
 @jwt_required()
@@ -41,7 +32,7 @@ def list_questions():
 @questions_bp.route("", methods=["POST"])
 @jwt_required()
 def create_question():
-    if not _current_user_is_admin():
+    if not current_user_is_admin():
         return jsonify({"error": "Forbidden"}), 403
 
     try:
@@ -59,7 +50,7 @@ def create_question():
 @questions_bp.route("/<int:question_id>", methods=["PUT"])
 @jwt_required()
 def update_question(question_id):
-    if not _current_user_is_admin():
+    if not current_user_is_admin():
         return jsonify({"error": "Forbidden"}), 403
 
     question = db.get_or_404(Question, question_id)
@@ -82,7 +73,7 @@ def update_question(question_id):
 def delete_question(question_id):
     """Soft delete only — a hard delete would risk cascading into
     historical assessment_responses. See Question.is_active."""
-    if not _current_user_is_admin():
+    if not current_user_is_admin():
         return jsonify({"error": "Forbidden"}), 403
 
     question = db.get_or_404(Question, question_id)
@@ -90,3 +81,4 @@ def delete_question(question_id):
     db.session.commit()
 
     return jsonify({"message": "Question retired"}), 200
+
