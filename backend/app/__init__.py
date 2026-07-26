@@ -16,10 +16,12 @@ def create_app():
     from .questions import questions_bp
     from .assessments import assessments_bp
     from .resources import resources_bp
- 
+    from .specialists import specialists_bp
+    
     app.register_blueprint(questions_bp)
     app.register_blueprint(assessments_bp) 
     app.register_blueprint(resources_bp)
+    app.register_blueprint(specialists_bp)
 
     @app.route("/")
     def home():
