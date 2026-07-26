@@ -1,5 +1,5 @@
 # Dev-only seed data for local testing.
-# Question content here is a placeholder, not the real questionnaire.
+# Question content here is a placeholder, not the real questionnaire.g
 
 from app import create_app
 from app.extensions import db
