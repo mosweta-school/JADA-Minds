@@ -12,10 +12,8 @@ export const logout = async () => {
   return Promise.resolve();
 };
 
-const authService = {
+export default {
   login,
   register,
   logout,
 };
-
-export default authService;
