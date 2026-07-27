@@ -1,19 +1,13 @@
 import api from "./api";
 
-export const login = async (credentials) => {
+export async function login(credentials) {
   return api.post("/login", credentials);
-};
+}
 
-export const register = async (userData) => {
+export async function register(userData) {
   return api.post("/register", userData);
-};
+}
 
-export const logout = async () => {
+export async function logout() {
   return Promise.resolve();
-};
-
-export default {
-  login,
-  register,
-  logout,
-};
+}
