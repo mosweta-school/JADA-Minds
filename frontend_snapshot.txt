@@ -1,0 +1,2670 @@
+================================================================
+FILE: frontend/src/App.css
+================================================================
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.page-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2d1b69;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.page-subtitle {
+  color: #6b5b95;
+  margin-top: 0.5rem;
+  line-height: 1.7;
+  font-size: 1.02rem;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #e8d4ff 0%, #f0e6ff 100%);
+  color: #6b3cb8;
+  padding: 0.5rem 0.95rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.hero-card,
+.panel,
+.card,
+.question-card,
+.summary-card,
+.list-card,
+.form-card {
+  background: #fff;
+  border: 1px solid #e8d4ff;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 24px rgba(107, 60, 184, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.hero-card,
+.panel,
+.card,
+.question-card,
+.summary-card,
+.list-card,
+.form-card:hover {
+  box-shadow: 0 12px 32px rgba(107, 60, 184, 0.12);
+}
+
+.hero-card {
+  padding: 2rem;
+  background: linear-gradient(135deg, #f3e6ff 0%, #e8d4ff 50%, #faf0ff 100%);
+  border: 1px solid #e8d4ff;
+}
+
+.hero-card h2 {
+  margin-bottom: 0.75rem;
+  color: #2d1b69;
+}
+
+.hero-card p {
+  color: #6b5b95;
+  line-height: 1.8;
+}
+
+.stat-grid,
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.2rem;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 1.5rem;
+}
+
+.resource-grid,
+.specialist-grid,
+.workshop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.panel {
+  padding: 1.5rem;
+}
+
+.card,
+.summary-card,
+.list-card,
+.form-card {
+  padding: 1.5rem;
+}
+
+.card h3,
+.panel h3,
+.summary-card h3,
+.list-card h3,
+.form-card h3 {
+  margin: 0 0 0.75rem;
+  color: #2d1b69;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.card p,
+.panel p,
+.summary-card p,
+.list-card p,
+.form-card p {
+  color: #6b5b95;
+  line-height: 1.7;
+}
+
+.badge,
+.chip,
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: #f0e6ff;
+  color: #6b3cb8;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.badge-primary {
+  background: linear-gradient(135deg, #e8d4ff 0%, #f0e6ff 100%);
+  color: #6b3cb8;
+}
+
+.badge-success {
+  background: linear-gradient(135deg, #d4ffe8 0%, #e6fff0 100%);
+  color: #1a7d5c;
+}
+
+.badge-warning {
+  background: linear-gradient(135deg, #ffe8d4 0%, #fff0e6 100%);
+  color: #b8633c;
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.2rem;
+}
+
+.button,
+.link-button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.8rem 1.3rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.button:hover,
+.link-button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary,
+.link-button-primary {
+  background: linear-gradient(135deg, #6b3cb8 0%, #8e5fd4 100%);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(107, 60, 184, 0.25);
+}
+
+.button-primary:hover,
+.link-button-primary:hover {
+  box-shadow: 0 12px 28px rgba(107, 60, 184, 0.35);
+}
+
+.button-secondary,
+.link-button-secondary {
+  background: #f0e6ff;
+  color: #6b3cb8;
+  border: 1.5px solid #e8d4ff;
+}
+
+.button-secondary:hover,
+.link-button-secondary:hover {
+  background: #e8d4ff;
+  border-color: #d4b8e8;
+}
+
+.progress-track {
+  width: 100%;
+  height: 0.7rem;
+  background: #e8d4ff;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #6b3cb8 0%, #8e5fd4 50%, #20c997 100%);
+  border-radius: inherit;
+}
+
+.option-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 1.3rem;
+}
+
+.option-item {
+  border: 2px solid #e8d4ff;
+  border-radius: 1rem;
+  padding: 1rem 1.2rem;
+  background: #faf5ff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.option-item:hover {
+  border-color: #d4b8e8;
+  background: #f0e6ff;
+}
+
+.option-item.active {
+  border-color: #6b3cb8;
+  background: linear-gradient(135deg, #f0e6ff 0%, #e8d4ff 100%);
+  box-shadow: 0 8px 16px rgba(107, 60, 184, 0.1);
+}
+
+.list-card ul {
+  margin: 1rem 0 0;
+  padding-left: 1.3rem;
+  color: #6b5b95;
+  line-height: 1.9;
+}
+
+.list-card ul li {
+  margin-bottom: 0.6rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 2.5rem;
+  color: #6b5b95;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.input-group label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #2d1b69;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  border: 2px solid #e8d4ff;
+  border-radius: 0.85rem;
+  padding: 0.85rem 1rem;
+  font: inherit;
+  color: #2d1b69;
+  background: #faf5ff;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+  outline: none;
+  border-color: #6b3cb8;
+  background: #fff;
+}
+
+.hero-banner {
+  display: grid;
+  grid-template-columns: 1.4fr 0.8fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.home-hero {
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, #2d1b69 0%, #6b3cb8 100%);
+  color: #fff;
+}
+
+.home-hero h1 {
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+
+.home-hero p {
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.8;
+}
+
+.home-card {
+  padding: 1.5rem;
+  border-radius: 1.25rem;
+  background: #fff;
+  border: 1.5px solid #e8d4ff;
+  box-shadow: 0 8px 24px rgba(107, 60, 184, 0.08);
+}
+
+.home-card ul {
+  margin: 1rem 0 0;
+  padding-left: 1.3rem;
+  color: #6b5b95;
+}
+
+.specialist-card-img {
+  width: 100%;
+  height: 160px;
+  background: linear-gradient(135deg, #e8d4ff 0%, #f0e6ff 100%);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.specialist-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.7rem 0;
+}
+
+.workshop-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.7rem;
+  background: #f0e6ff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 600;
+  color: #6b5b95;
+}
+
+.calendar-day.today {
+  background: linear-gradient(135deg, #6b3cb8 0%, #8e5fd4 100%);
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid,
+  .hero-banner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-title {
+    font-size: 1.7rem;
+  }
+
+  .hero-card,
+  .panel,
+  .card,
+  .summary-card,
+  .list-card,
+  .form-card,
+  .home-hero,
+  .home-card {
+    padding: 1.2rem;
+  }
+
+  .resource-grid,
+  .specialist-grid,
+  .workshop-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Member 3 design-system refinements: compact, calm, and information-led. */
+.design-page {
+  gap: 1rem;
+}
+
+.design-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.design-heading h2,
+.design-heading h3,
+.design-heading p {
+  margin: 0;
+}
+
+.design-kicker {
+  color: #6f46e8;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.compact-card {
+  background: #fff;
+  border: 1px solid #ebe8f5;
+  border-radius: 0.9rem;
+  box-shadow: 0 4px 14px rgba(53, 35, 111, 0.05);
+  padding: 1rem;
+}
+
+.assessment-stage {
+  width: min(100%, 620px);
+  margin: 0 auto;
+}
+
+.assessment-intro,
+.assessment-complete {
+  min-height: 440px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: linear-gradient(150deg, #fff 10%, #faf8ff 100%);
+}
+
+.assessment-intro > div,
+.assessment-complete > div { max-width: 390px; }
+.assessment-intro .intro-icon, .assessment-complete .intro-icon { font-size: 4.5rem; }
+
+.assessment-question-card {
+  padding: 1.35rem;
+}
+
+.assessment-topline {
+  display: flex;
+  justify-content: space-between;
+  color: #837aa3;
+  font-size: 0.83rem;
+  font-weight: 700;
+}
+
+.assessment-question-card .progress-track { margin: 0.6rem 0 1.5rem; height: 0.42rem; }
+
+.answer-option {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  text-align: left;
+  color: #3c3459;
+}
+
+.answer-control {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 18px;
+  border: 1.5px solid #cec7e4;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.answer-control.checkbox { border-radius: 0.3rem; }
+.option-item.active .answer-control { background: #7146e8; border-color: #7146e8; color: #fff; }
+
+.completion-ring {
+  width: 150px;
+  height: 150px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 1.4rem;
+  border-radius: 50%;
+  background: conic-gradient(#7045e8 0 75%, #ece7fb 75% 100%);
+}
+
+.completion-ring > span {
+  width: 118px;
+  height: 118px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: #7045e8;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.results-layout { display: grid; grid-template-columns: 1fr 1.25fr 1.15fr; gap: 1rem; }
+.score-panel { text-align: center; }
+.score-number { font-size: 3.2rem; line-height: 1; color: #22b98a; font-weight: 800; margin: 0.6rem 0; }
+.dimension-row { display: grid; grid-template-columns: 58px 1fr 34px; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: #756d91; margin-top: 0.6rem; }
+.dimension-row .progress-track { margin: 0; height: 0.35rem; }
+
+.recommendation-list { display: grid; gap: 0.7rem; margin-top: 0.85rem; }
+.recommendation-item { display: flex; gap: 0.65rem; padding: 0.75rem; border-radius: 0.65rem; background: #f7f5fd; font-size: 0.82rem; color: #51486d; }
+.recommendation-item span { font-size: 1rem; }
+
+.chart-wrap { height: 195px; margin-top: 0.7rem; }
+.chart-wrap svg { width: 100%; height: 100%; overflow: visible; }
+.chart-grid { stroke: #eeeaf7; stroke-width: 1; }
+.chart-line { fill: none; stroke: #27b995; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.chart-area { fill: url(#chartFill); opacity: 0.18; }
+
+.specialist-workspace { display: grid; grid-template-columns: 1fr 1.05fr 1fr; gap: 1rem; align-items: start; }
+.compact-search { width: 100%; margin: 0; }
+.specialist-list { display: grid; gap: 0.55rem; margin-top: 0.8rem; }
+.specialist-list-item { width: 100%; display: flex; align-items: center; gap: 0.65rem; border: 1px solid #eeeaf7; background: #fff; padding: 0.65rem; border-radius: 0.7rem; text-align: left; cursor: pointer; color: inherit; }
+.specialist-list-item.active { border-color: #7b52ec; background: #faf8ff; box-shadow: 0 0 0 2px #eee8ff; }
+.avatar { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: #eee8ff; font-size: 1.25rem; flex: 0 0 38px; }
+.specialist-list-item strong { display: block; font-size: 0.82rem; }.specialist-list-item small { color: #82799d; font-size: 0.7rem; }
+.filter-stack { display: grid; gap: 0.6rem; margin-top: 0.9rem; }.filter-stack label { color: #746b8e; font-size: 0.72rem; font-weight: 700; }.filter-stack select { width: 100%; margin-top: 0.25rem; padding: 0.55rem; border: 1px solid #e4def2; border-radius: 0.5rem; color: #4e4568; background: #fff; }
+.profile-highlight { text-align: center; padding: 1.4rem 0 1rem; }.profile-highlight .avatar { margin: 0 auto 0.7rem; width: 62px; height: 62px; font-size: 2rem; }.profile-highlight p { margin: 0.25rem 0; color: #766e90; font-size: 0.8rem; }
+.tag-row { display: flex; gap: 0.35rem; flex-wrap: wrap; }.mini-tag { padding: 0.22rem 0.45rem; background: #f0ecff; border-radius: 0.35rem; color: #7045e8; font-size: 0.68rem; font-weight: 700; }
+
+.workshop-workspace { display: grid; grid-template-columns: 0.95fr 1.15fr 0.95fr; gap: 1rem; align-items: start; }
+.workshop-list { display: grid; gap: 0.55rem; margin-top: 0.8rem; }.workshop-list-item { width: 100%; text-align: left; border: 1px solid #eeeaf7; border-radius: 0.7rem; padding: 0.7rem; background: #fff; cursor: pointer; }.workshop-list-item.active { border-color: #7b52ec; background: #faf8ff; }.workshop-list-item strong { display: block; color: #3d3459; font-size: 0.82rem; }.workshop-list-item small { color: #82799d; font-size: 0.7rem; }
+.workshop-cover { height: 118px; border-radius: 0.65rem; display: grid; place-items: center; font-size: 3rem; background: linear-gradient(135deg, #bfe6dd, #dce5ff 55%, #e9dbff); }
+.detail-lines { display: grid; gap: 0.65rem; margin: 1rem 0; }.detail-line { display: flex; justify-content: space-between; gap: 0.75rem; color: #706785; font-size: 0.78rem; }.detail-line strong { color: #453b61; }
+.calendar-header { display: flex; justify-content: space-between; color: #4b4169; font-size: 0.82rem; font-weight: 800; }.calendar-labels, .calendar-days { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; }.calendar-labels { color: #9a92ad; font-size: 0.66rem; margin: 0.75rem 0 0.4rem; }.calendar-days span { width: 28px; height: 28px; display: grid; place-items: center; margin: 0.1rem auto; color: #625979; font-size: 0.72rem; }.calendar-days .event-day { color: #fff; background: #7146e8; border-radius: 50%; }
+
+.resources-workspace { display: grid; grid-template-columns: 1fr 1.25fr 0.9fr; gap: 1rem; align-items: start; }.resource-list { display: grid; gap: 0.55rem; margin-top: 0.8rem; }.resource-list-item { width: 100%; display: flex; gap: 0.65rem; align-items: center; border: 1px solid #eeeaf7; border-radius: 0.7rem; background: #fff; padding: 0.6rem; text-align: left; cursor: pointer; }.resource-list-item.active { border-color: #7b52ec; background: #faf8ff; }.resource-list-item strong { display: block; font-size: 0.78rem; color: #443a60; }.resource-list-item small { font-size: 0.68rem; color: #817897; }.resource-thumb { width: 42px; height: 42px; display: grid; place-items: center; background: #f1edff; border-radius: 0.45rem; font-size: 1.3rem; flex: 0 0 42px; }.resource-detail-cover { height: 145px; display: grid; place-items: center; border-radius: 0.65rem; font-size: 4rem; background: linear-gradient(135deg, #d3f1ea, #ecedff, #efe3ff); }.resource-detail-copy { color: #6f6688; font-size: 0.82rem; line-height: 1.7; }.category-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.55rem; margin-top: 0.85rem; }.category-tile { padding: 0.8rem 0.45rem; text-align: center; background: #faf8ff; border: 1px solid #eeeaf7; border-radius: 0.65rem; color: #625979; font-size: 0.72rem; font-weight: 700; }.category-tile span { display: block; font-size: 1.25rem; margin-bottom: 0.25rem; }
+
+@media (max-width: 1050px) {
+  .results-layout, .specialist-workspace, .workshop-workspace, .resources-workspace { grid-template-columns: 1fr; }
+}
+
+================================================================
+FILE: frontend/src/App.jsx
+================================================================
+import AppRoutes from "./routes/AppRoutes";
+import "./App.css";
+
+function App() {
+  return <AppRoutes />;
+}
+
+export default App;
+
+================================================================
+FILE: frontend/src/components/forms/LoginForm.jsx
+================================================================
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import PasswordField from "./PasswordField";
+
+function LoginForm() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+    remember: false,
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value, checked, type } = e.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setError("");
+
+    if (!form.email || !form.password) {
+      setError("Please enter your email and password.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      // Temporary login until backend authentication is connected
+    await login({
+        email: form.email,
+        role: "client",
+    });
+
+    navigate("/");
+     } catch (err) {
+        setError(
+             err.response?.data?.message ||
+            "Unable to sign in. Please try again."
+        );
+    }
+
+  return (
+    <div className="login-form">
+      <form onSubmit={handleSubmit}>
+        {error && <div className="error">{error}</div>}
+
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="password">Password</label>
+          <PasswordField
+            id="password"
+            name="password"
+            value={form.password}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <label>
+            <input
+              type="checkbox"
+              name="remember"
+              checked={form.remember}
+              onChange={handleChange}
+            />
+            Remember me
+          </label>
+        </div>
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Signing in..." : "Sign In"}
+        </button>
+
+        <div>
+          <Link to="/forgot-password">Forgot password?</Link>
+        </div>
+      </form>
+    </div>
+  );
+}
+}
+
+export default LoginForm;
+================================================================
+FILE: frontend/src/components/forms/PasswordField.jsx
+================================================================
+import { useState } from "react";
+
+function PasswordField({
+  label,
+  name,
+  value,
+  onChange,
+  placeholder = "Enter password",
+}) {
+  const [showPassword, setShowPassword] = useState(false);
+
+  return (
+    <div className="space-y-2">
+      <label htmlFor={name} className="block text-sm font-medium">
+        {label}
+      </label>
+
+      <div className="relative">
+        <input
+          id={name}
+          name={name}
+          type={showPassword ? "text" : "password"}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          className="w-full rounded-lg border p-3"
+        />
+
+        <button
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          className="absolute right-3 top-3 text-sm"
+        >
+          {showPassword ? "Hide" : "Show"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default PasswordField;
+================================================================
+FILE: frontend/src/components/navigation/Footer.jsx
+================================================================
+function Footer() {
+  return (
+    <footer style={{ background: "#f5f1ff", textAlign: "center", padding: "1rem", fontSize: "0.875rem", color: "#6b5b95", borderTop: "1px solid #e8d4ff" }}>
+      © 2026 JADA Minds
+    </footer>
+  );
+}
+
+export default Footer;
+================================================================
+FILE: frontend/src/components/navigation/MobileSidebar.jsx
+================================================================
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
+
+const links = [
+  { to: "/", label: "Dashboard", icon: "🏠" },
+  { to: "/assessment", label: "Assessment", icon: "📋" },
+  { to: "/results", label: "Results", icon: "📊" },
+  { to: "/resources", label: "Resources", icon: "📚" },
+  { to: "/specialists", label: "Specialists", icon: "👥" },
+  { to: "/workshops", label: "Workshops", icon: "🎓" },
+  { to: "/progress", label: "Progress", icon: "📈" },
+  { to: "/profile", label: "Profile", icon: "⚙️" },
+];
+
+function MobileSidebar({ open, onClose }) {
+  if (!open) return null;
+
+  return (
+    <>
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          background: "rgba(45, 27, 105, 0.5)",
+          zIndex: 999,
+        }}
+        onClick={onClose}
+      />
+      <aside
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          bottom: 0,
+          width: "280px",
+          background: "linear-gradient(135deg, #6b3cb8 0%, #8e5fd4 100%)",
+          color: "#fff",
+          padding: "1.5rem",
+          zIndex: 1000,
+          boxShadow: "4px 0 16px rgba(107, 60, 184, 0.3)",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
+          <h2 style={{ fontSize: "1.1rem", fontWeight: "700", margin: 0, color: "#fff" }}>JADA Minds</h2>
+          <button type="button" onClick={onClose} style={{ background: "none", border: "none", color: "#fff", fontSize: "1.5rem", cursor: "pointer", padding: "0.25rem 0.5rem" }} aria-label="Close menu">×</button>
+        </div>
+
+        <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+          {links.map((link) => (
+            <li key={link.to}>
+              <NavLink
+                to={link.to}
+                onClick={onClose}
+                style={({ isActive }) => ({
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.75rem",
+                  borderRadius: "0.75rem",
+                  padding: "0.75rem 1rem",
+                  textDecoration: "none",
+                  transition: "all 0.3s ease",
+                  color: "#fff",
+                  background: isActive ? "rgba(255, 255, 255, 0.2)" : "transparent",
+                  fontWeight: isActive ? "700" : "500",
+                })}
+              >
+                <span>{link.icon}</span>
+                <span>{link.label}</span>
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </aside>
+    </>
+  );
+}
+
+export default MobileSidebar;
+================================================================
+FILE: frontend/src/components/navigation/Navbar.jsx
+================================================================
+function Navbar() {
+  return (
+    <nav style={{ background: "#fff", borderBottom: "1px solid #e8d4ff", boxShadow: "0 2px 8px rgba(107, 60, 184, 0.08)", padding: "1rem 1.5rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div>
+        <h1 style={{ fontSize: "1.25rem", fontWeight: "700", color: "#6b3cb8", margin: "0" }}>JADA Minds</h1>
+        <p style={{ fontSize: "0.85rem", color: "#6b5b95", margin: "0.2rem 0 0" }}>Wellness support for everyday growth</p>
+      </div>
+      <span style={{ borderRadius: "999px", background: "#f0e6ff", padding: "0.5rem 1rem", fontSize: "0.85rem", fontWeight: "700", color: "#6b3cb8" }}>
+        Client experience
+      </span>
+    </nav>
+  );
+}
+
+export default Navbar;
+================================================================
+FILE: frontend/src/components/navigation/Sidebar.jsx
+================================================================
+import { NavLink } from "react-router-dom";
+
+const links = [
+  { to: "/", label: "Dashboard" },
+  { to: "/assessment", label: "Assessment" },
+  { to: "/results", label: "Results" },
+  { to: "/resources", label: "Resources" },
+  { to: "/specialists", label: "Specialists" },
+  { to: "/workshops", label: "Workshops" },
+  { to: "/profile", label: "Profile" },
+];
+
+function Sidebar() {
+  return (
+    <aside style={{ width: "240px", background: "linear-gradient(135deg, #6b3cb8 0%, #8e5fd4 100%)", color: "#fff", padding: "1.5rem", flexShrink: 0, height: "calc(100vh - 100px)", overflowY: "auto", boxShadow: "0 4px 12px rgba(107, 60, 184, 0.15)" }}>
+      <h2 style={{ fontSize: "1rem", fontWeight: "700", marginBottom: "1.5rem", marginTop: "0", color: "#fff" }}>🚀 Member 3</h2>
+
+      <ul style={{ listStyle: "none", padding: "0", margin: "0", display: "flex", flexDirection: "column", gap: "0.3rem" }}>
+        {links.map((link) => (
+          <li key={link.to}>
+            <NavLink
+              to={link.to}
+              style={({ isActive }) => ({
+                display: "block",
+                borderRadius: "0.75rem",
+                padding: "0.75rem 1rem",
+                textDecoration: "none",
+                transition: "all 0.3s ease",
+                color: "#fff",
+                background: isActive ? "rgba(255, 255, 255, 0.2)" : "transparent",
+                fontWeight: isActive ? "700" : "500",
+              })}
+            >
+              {link.label}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  );
+}
+
+export default Sidebar;
+================================================================
+FILE: frontend/src/components/ui/Alert.jsx
+================================================================
+function Alert({ children, variant = "info", className = "", style: customStyle = {}, ...props }) {
+  const variants = {
+    info: { background: "#e6f0ff", border: "1px solid #b8d4f0", color: "#2980b9", icon: "ℹ️" },
+    success: { background: "#e6fff0", border: "1px solid #b8e8d4", color: "#1a7d5c", icon: "✅" },
+    warning: { background: "#fff8f0", border: "1px solid #f0d8b8", color: "#b8633c", icon: "⚠️" },
+    error: { background: "#fff0f0", border: "1px solid #f0b8b8", color: "#c0392b", icon: "❌" },
+  };
+
+  const v = variants[variant];
+  const alertStyle = {
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "0.75rem",
+    padding: "1rem 1.25rem",
+    borderRadius: "0.85rem",
+    background: v.background,
+    border: v.border,
+    color: v.color,
+    lineHeight: "1.6",
+    ...customStyle,
+  };
+
+  return (
+    <div style={alertStyle} className={className} {...props}>
+      <span style={{ fontSize: "1.2rem", flexShrink: 0 }}>{v.icon}</span>
+      <div>{children}</div>
+    </div>
+  );
+}
+
+export default Alert;
+
+================================================================
+FILE: frontend/src/components/ui/Badge.jsx
+================================================================
+function Badge({ children, variant = "primary", className = "", style = {}, ...props }) {
+  const variants = {
+    primary: { background: "linear-gradient(135deg, #e8d4ff 0%, #f0e6ff 100%)", color: "#6b3cb8" },
+    success: { background: "linear-gradient(135deg, #d4ffe8 0%, #e6fff0 100%)", color: "#1a7d5c" },
+    warning: { background: "linear-gradient(135deg, #ffe8d4 0%, #fff0e6 100%)", color: "#b8633c" },
+    danger: { background: "linear-gradient(135deg, #ffe8e8 0%, #fff0f0 100%)", color: "#c0392b" },
+    info: { background: "linear-gradient(135deg, #d4e8ff 0%, #e6f0ff 100%)", color: "#2980b9" },
+  };
+
+  const baseStyle = {
+    display: "inline-flex",
+    alignItems: "center",
+    padding: "0.45rem 0.85rem",
+    borderRadius: "999px",
+    fontSize: "0.8rem",
+    fontWeight: "700",
+    ...variants[variant],
+    ...style,
+  };
+
+  return (
+    <span style={baseStyle} className={className} {...props}>
+      {children}
+    </span>
+  );
+}
+
+export default Badge;
+================================================================
+FILE: frontend/src/components/ui/Button.jsx
+================================================================
+function Button({ children, variant = "primary", size = "md", disabled = false, loading = false, onClick, type = "button", className = "", ...props }) {
+  const baseStyles = {
+    border: "none",
+    borderRadius: "999px",
+    fontWeight: "700",
+    cursor: disabled || loading ? "not-allowed" : "pointer",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "0.5rem",
+    transition: "all 0.3s ease",
+    opacity: disabled || loading ? 0.6 : 1,
+    font: "inherit",
+  };
+
+  const sizes = {
+    sm: { padding: "0.5rem 1rem", fontSize: "0.85rem" },
+    md: { padding: "0.8rem 1.3rem", fontSize: "0.95rem" },
+    lg: { padding: "1rem 1.6rem", fontSize: "1.05rem" },
+  };
+
+  const variants = {
+    primary: {
+      background: "linear-gradient(135deg, #6b3cb8 0%, #8e5fd4 100%)",
+      color: "#fff",
+      boxShadow: "0 8px 20px rgba(107, 60, 184, 0.25)",
+    },
+    secondary: {
+      background: "#f0e6ff",
+      color: "#6b3cb8",
+      border: "1.5px solid #e8d4ff",
+    },
+    outline: {
+      background: "transparent",
+      color: "#6b3cb8",
+      border: "2px solid #6b3cb8",
+    },
+    ghost: {
+      background: "transparent",
+      color: "#6b5b95",
+    },
+    danger: {
+      background: "linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)",
+      color: "#fff",
+      boxShadow: "0 8px 20px rgba(231, 76, 60, 0.25)",
+    },
+    success: {
+      background: "linear-gradient(135deg, #20c997 0%, #1a7d5c 100%)",
+      color: "#fff",
+      boxShadow: "0 8px 20px rgba(32, 201, 151, 0.25)",
+    },
+  };
+
+  const style = {
+    ...baseStyles,
+    ...sizes[size],
+    ...variants[variant],
+  };
+
+  return (
+    <button type={type} style={style} disabled={disabled || loading} onClick={onClick} className={className} {...props}>
+      {loading && <span style={{ display: "inline-block", width: "1em", height: "1em", border: "2px solid currentColor", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 0.6s linear infinite" }} />}
+      {children}
+    </button>
+  );
+}
+
+export default Button;
+================================================================
+FILE: frontend/src/components/ui/Card.jsx
+================================================================
+function Card({ children, className = "", style = {}, ...props }) {
+  const baseStyle = {
+    background: "#fff",
+    border: "1px solid #e8d4ff",
+    borderRadius: "1.25rem",
+    boxShadow: "0 8px 24px rgba(107, 60, 184, 0.08)",
+    transition: "box-shadow 0.3s ease, transform 0.3s ease",
+    padding: "1.5rem",
+  };
+
+  return (
+    <div style={{ ...baseStyle, ...style }} className={className} {...props}>
+      {children}
+    </div>
+  );
+}
+
+export default Card;
+================================================================
+FILE: frontend/src/components/ui/Chip.jsx
+================================================================
+function Chip({ children, active = false, onClick, className = "", style = {}, ...props }) {
+  const baseStyle = {
+    display: "inline-flex",
+    alignItems: "center",
+    padding: "0.45rem 0.85rem",
+    borderRadius: "999px",
+    fontSize: "0.8rem",
+    fontWeight: "700",
+    border: "1.5px solid #e8d4ff",
+    background: active ? "linear-gradient(135deg, #6b3cb8 0%, #8e5fd4 100%)" : "#fff",
+    color: active ? "#fff" : "#6b3cb8",
+    cursor: onClick ? "pointer" : "default",
+    transition: "all 0.3s ease",
+    ...style,
+  };
+
+  return (
+    <button type="button" style={baseStyle} className={className} onClick={onClick} {...props}>
+      {children}
+    </button>
+  );
+}
+
+export default Chip;
+================================================================
+FILE: frontend/src/components/ui/EmptyState.jsx
+================================================================
+function EmptyState({ emoji = "📭", title = "Nothing here yet", description = "", actionLabel = "", onAction, className = "", style = {}, ...props }) {
+  return (
+    <div className={`empty-state ${className}`.trim()} style={{ ...style }} {...props}>
+      <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>{emoji}</div>
+      <h3 style={{ color: "#2d1b69", marginBottom: "0.5rem" }}>{title}</h3>
+      {description && <p style={{ color: "#6b5b95", marginBottom: "1.2rem" }}>{description}</p>}
+      {actionLabel && onAction && (
+        <button type="button" className="button button-primary" onClick={onAction}>
+          {actionLabel}
+        </button>
+      )}
+    </div>
+  );
+}
+
+export default EmptyState;
+
+================================================================
+FILE: frontend/src/components/ui/Input.jsx
+================================================================
+import { forwardRef } from "react";
+
+const Input = forwardRef(function Input({ label, error, helperText, className = "", style = {}, ...props }, ref) {
+  return (
+    <div className={`input-group ${className}`.trim()} style={{ ...style }}>
+      {label && <label>{label}</label>}
+      <input ref={ref} style={{ borderColor: error ? "#e74c3c" : "#e8d4ff" }} {...props} />
+      {error && <span style={{ color: "#e74c3c", fontSize: "0.8rem", fontWeight: "600" }}>{error}</span>}
+      {helperText && !error && <span style={{ color: "#6b5b95", fontSize: "0.8rem" }}>{helperText}</span>}
+    </div>
+  );
+});
+
+export default Input;
+
+================================================================
+FILE: frontend/src/components/ui/Modal.jsx
+================================================================
+import { forwardRef } from "react";
+
+const Modal = forwardRef(function Modal({ children, open, onClose, title, className = "", style: customStyle = {}, ...props }, ref) {
+  if (!open) return null;
+
+  const overlayStyle = {
+    position: "fixed",
+    inset: 0,
+    background: "rgba(45, 27, 105, 0.5)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 1000,
+    padding: "1rem",
+  };
+
+  const dialogStyle = {
+    background: "#fff",
+    borderRadius: "1.25rem",
+    boxShadow: "0 24px 48px rgba(107, 60, 184, 0.2)",
+    maxWidth: "560px",
+    width: "100%",
+    maxHeight: "85vh",
+    overflowY: "auto",
+    padding: "1.5rem",
+    ...customStyle,
+  };
+
+  return (
+    <div style={overlayStyle} onClick={onClose} ref={ref} {...props}>
+      <div style={dialogStyle} className={className} onClick={(e) => e.stopPropagation()}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
+          <h3 style={{ margin: 0, color: "#2d1b69", fontSize: "1.2rem" }}>{title}</h3>
+          <button type="button" onClick={onClose} style={{ background: "none", border: "none", fontSize: "1.2rem", cursor: "pointer", color: "#6b5b95", padding: "0.25rem 0.5rem" }} aria-label="Close modal">×</button>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
+});
+
+export default Modal;
+
+================================================================
+FILE: frontend/src/components/ui/Progress.jsx
+================================================================
+function Progress({ value = 0, max = 100, label = "", variant = "default", className = "", style = {}, ...props }) {
+  const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
+
+  const variantColors = {
+    default: { bar: "linear-gradient(90deg, #6b3cb8 0%, #8e5fd4 50%, #20c997 100%)", track: "#e8d4ff" },
+    success: { bar: "linear-gradient(90deg, #20c997 0%, #1a7d5c 100%)", track: "#d4ffe8" },
+    warning: { bar: "linear-gradient(90deg, #ffa733 0%, #f0c040 100%)", track: "#ffe8d4" },
+    danger: { bar: "linear-gradient(90deg, #e74c3c 0%, #c0392b 100%)", track: "#ffe8e8" },
+  };
+
+  const c = variantColors[variant];
+
+  return (
+    <div className={`progress-track ${className}`.trim()} style={{ ...style }} {...props}>
+      <div className="progress-bar" style={{ width: `${percentage}%`, background: c.bar }} />
+      {label && (
+        <span style={{ display: "block", textAlign: "right", fontSize: "0.8rem", color: "#6b5b95", marginTop: "0.3rem", fontWeight: "600" }}>
+          {label}
+        </span>
+      )}
+    </div>
+  );
+}
+
+export default Progress;
+
+================================================================
+FILE: frontend/src/components/ui/Select.jsx
+================================================================
+import { forwardRef } from "react";
+
+const Select = forwardRef(function Select({ label, error, helperText, className = "", style = {}, children, ...props }, ref) {
+  return (
+    <div className={`input-group ${className}`.trim()} style={{ ...style }}>
+      {label && <label>{label}</label>}
+      <select ref={ref} style={{ borderColor: error ? "#e74c3c" : "#e8d4ff" }} {...props}>
+        {children}
+      </select>
+      {error && <span style={{ color: "#e74c3c", fontSize: "0.8rem", fontWeight: "600" }}>{error}</span>}
+      {helperText && !error && <span style={{ color: "#6b5b95", fontSize: "0.8rem" }}>{helperText}</span>}
+    </div>
+  );
+});
+
+export default Select;
+
+================================================================
+FILE: frontend/src/components/ui/Table.jsx
+================================================================
+function Table({ columns, data, className = "", style = {}, ...props }) {
+  return (
+    <div style={{ overflowX: "auto", ...style }} className={className} {...props}>
+      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "0.9rem" }}>
+        <thead>
+          <tr style={{ borderBottom: "2px solid #e8d4ff" }}>
+            {columns.map((col) => (
+              <th key={col.key} style={{ padding: "0.75rem 1rem", textAlign: "left", color: "#2d1b69", fontWeight: "700", fontSize: "0.85rem" }}>
+                {col.label}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {data.length === 0 ? (
+            <tr>
+              <td colSpan={columns.length} style={{ padding: "2rem", textAlign: "center", color: "#6b5b95" }}>
+                No data available
+              </td>
+            </tr>
+          ) : (
+            data.map((row, rowIdx) => (
+              <tr key={rowIdx} style={{ borderBottom: "1px solid #f0e6ff", background: rowIdx % 2 === 0 ? "#faf5ff" : "#fff" }}>
+                {columns.map((col) => (
+                  <td key={col.key} style={{ padding: "0.75rem 1rem", color: "#2d1b69" }}>
+                    {col.render ? col.render(row[col.key], row) : row[col.key]}
+                  </td>
+                ))}
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+export default Table;
+================================================================
+FILE: frontend/src/components/ui/Textarea.jsx
+================================================================
+import { forwardRef } from "react";
+
+const Textarea = forwardRef(function Textarea({ label, error, helperText, className = "", style = {}, ...props }, ref) {
+  return (
+    <div className={`input-group ${className}`.trim()} style={{ ...style }}>
+      {label && <label>{label}</label>}
+      <textarea ref={ref} style={{ borderColor: error ? "#e74c3c" : "#e8d4ff", minHeight: "80px", resize: "vertical" }} {...props} />
+      {error && <span style={{ color: "#e74c3c", fontSize: "0.8rem", fontWeight: "600" }}>{error}</span>}
+      {helperText && !error && <span style={{ color: "#6b5b95", fontSize: "0.8rem" }}>{helperText}</span>}
+    </div>
+  );
+});
+
+export default Textarea;
+
+================================================================
+FILE: frontend/src/components/ui/index.js
+================================================================
+export { default as Button } from "./Button.jsx";
+export { default as Card } from "./Card.jsx";
+export { default as Input } from "./Input.jsx";
+export { default as Textarea } from "./Textarea.jsx";
+export { default as Select } from "./Select.jsx";
+export { default as Badge } from "./Badge.jsx";
+export { default as Chip } from "./Chip.jsx";
+export { default as Alert } from "./Alert.jsx";
+export { default as Modal } from "./Modal.jsx";
+export { default as Progress } from "./Progress.jsx";
+export { default as EmptyState } from "./EmptyState.jsx";
+export { default as Table } from "./Table.jsx";
+================================================================
+FILE: frontend/src/contexts/AuthContext.jsx
+================================================================
+import { createContext, useState } from "react";
+
+export const AuthContext = createContext();
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+
+ const login = async (userData) => {
+  setUser(userData);
+};
+
+const logout = async () => {
+  setUser(null);
+};
+
+  return (
+    <AuthContext.Provider
+      value={{
+        user,
+        login,
+        logout,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+}
+================================================================
+FILE: frontend/src/data/educationalResources.js
+================================================================
+const educationalResources = [
+  {
+    id: "res1",
+    title: "Reset Your Energy",
+    emoji: "⚡",
+    description: "Quick exercises to restore focus and calm throughout your day.",
+    type: "Guide",
+    readTime: "8 min",
+    url: "#",
+  },
+  {
+    id: "res2",
+    title: "Building Supportive Habits",
+    emoji: "🎯",
+    description: "Science-backed habits for sustainable wellbeing and growth.",
+    type: "Course",
+    readTime: "3 weeks",
+    url: "#",
+  },
+  {
+    id: "res3",
+    title: "Daily Reflection Framework",
+    emoji: "📔",
+    description: "A simple journaling template for meaningful daily reflection.",
+    type: "Template",
+    readTime: "5 min/day",
+    url: "#",
+  },
+  {
+    id: "res4",
+    title: "Connection & Community",
+    emoji: "🤝",
+    description: "Explore ways to deepen relationships and build stronger support networks.",
+    type: "Article",
+    readTime: "12 min",
+    url: "#",
+  },
+  {
+    id: "res5",
+    title: "Mindful Breathing Techniques",
+    emoji: "🧘",
+    description: "Learn evidence-based breathing exercises for immediate stress relief.",
+    type: "Video",
+    readTime: "10 min",
+    url: "#",
+  },
+  {
+    id: "res6",
+    title: "Sleep Hygiene Guide",
+    emoji: "😴",
+    description: "Practical tips for establishing a healthy sleep routine that works for you.",
+    type: "Guide",
+    readTime: "15 min",
+    url: "#",
+  },
+];
+
+export { educationalResources };
+================================================================
+FILE: frontend/src/data/messages.js
+================================================================
+const emptyStateMessages = {
+  assessments: {
+    emoji: "📋",
+    title: "No assessments yet",
+    description: "Your wellness check-ins will appear here once you complete your first assessment.",
+    action: "Start your first assessment",
+  },
+  progress: {
+    emoji: "📈",
+    title: "No progress data yet",
+    description: "Complete assessments to track your wellness trends and progress over time.",
+    action: "Take an assessment",
+  },
+  specialists: {
+    emoji: "👥",
+    title: "No specialists found",
+    description: "Try adjusting your search or filters to find a specialist that matches your needs.",
+    action: "View all specialists",
+  },
+  workshops: {
+    emoji: "🎓",
+    title: "No registered workshops",
+    description: "Browse available workshops and register to join a community session.",
+    action: "Browse workshops",
+  },
+  resources: {
+    emoji: "📚",
+    title: "No resources saved yet",
+    description: "Save resources that resonate with you for easy access later.",
+    action: "Explore resources",
+  },
+  general: {
+    emoji: "📭",
+    title: "Nothing here yet",
+    description: "Content is being prepared. Check back soon.",
+  },
+};
+
+const successMessages = {
+  assessmentComplete: {
+    emoji: "✨",
+    title: "Assessment complete!",
+    description: "Your responses have been recorded. Check your results to see your wellness snapshot.",
+  },
+  profileSaved: {
+    emoji: "💾",
+    title: "Profile updated",
+    description: "Your profile changes have been saved successfully.",
+  },
+  registrationConfirmed: {
+    emoji: "🎉",
+    title: "Registration confirmed!",
+    description: "You are now registered for the workshop. Check your email for details.",
+  },
+  passwordChanged: {
+    emoji: "🔒",
+    title: "Password updated",
+    description: "Your password has been changed successfully. Use your new password to sign in.",
+  },
+  saved: {
+    emoji: "✅",
+    title: "Saved successfully",
+    description: "Your changes have been saved.",
+  },
+};
+
+const errorMessages = {
+  somethingWentWrong: {
+    emoji: "❌",
+    title: "Something went wrong",
+    description: "Please try again. If the problem persists, contact support.",
+  },
+  networkError: {
+    emoji: "🌐",
+    title: "Network error",
+    description: "Please check your internet connection and try again.",
+  },
+  unauthorized: {
+    emoji: "🔒",
+    title: "Access denied",
+    description: "You do not have permission to access this resource.",
+  },
+  notFound: {
+    emoji: "🔍",
+    title: "Not found",
+    description: "The resource you are looking for does not exist or has been removed.",
+  },
+  validationError: {
+    emoji: "⚠️",
+    title: "Validation error",
+    description: "Please review the form and correct any errors before submitting.",
+  },
+  sessionExpired: {
+    emoji: "⏰",
+    title: "Session expired",
+    description: "Your session has expired. Please sign in again to continue.",
+  },
+};
+
+export { emptyStateMessages, successMessages, errorMessages };
+================================================================
+FILE: frontend/src/data/questions.js
+================================================================
+const questions = [
+  {
+    id: "q1",
+    category: "energy",
+    emoji: "⚡",
+    prompt: "How would you describe your energy level today?",
+    type: "radio",
+    options: [
+      { value: "high", label: "High and steady", icon: "🔥" },
+      { value: "moderate", label: "Moderate and consistent", icon: "😊" },
+      { value: "low", label: "Low and sluggish", icon: "😐" },
+      { value: "depleted", label: "Completely drained", icon: "😴" },
+    ],
+  },
+  {
+    id: "q2",
+    category: "mood",
+    emoji: "🌤️",
+    prompt: "How is your mood right now?",
+    type: "radio",
+    options: [
+      { value: "great", label: "Feeling great", icon: "😄" },
+      { value: "good", label: "Generally positive", icon: "🙂" },
+      { value: "neutral", label: "Neutral, neither good nor bad", icon: "😐" },
+      { value: "down", label: "Feeling low", icon: "😔" },
+      { value: "anxious", label: "Anxious or worried", icon: "😰" },
+    ],
+  },
+  {
+    id: "q3",
+    category: "support",
+    emoji: "🤝",
+    prompt: "How supported do you feel by the people around you?",
+    type: "radio",
+    options: [
+      { value: "strong", label: "Very supported", icon: "💪" },
+      { value: "moderate", label: "Somewhat supported", icon: "🤗" },
+      { value: "isolated", label: "A bit isolated", icon: "🧍" },
+      { value: "alone", label: "Feeling alone", icon: "😔" },
+    ],
+  },
+  {
+    id: "q4",
+    category: "sleep",
+    emoji: "😴",
+    prompt: "How was your sleep last night?",
+    type: "radio",
+    options: [
+      { value: "rested", label: "Well rested", icon: "🌙" },
+      { value: "okay", label: "Okay, some interruptions", icon: "😴" },
+      { value: "poor", label: "Poor quality", icon: "💤" },
+      { value: "none", label: "Did not sleep well", icon: "😩" },
+    ],
+  },
+  {
+    id: "q5",
+    category: "stress",
+    emoji: "📋",
+    prompt: "How stressed are you feeling right now?",
+    type: "radio",
+    options: [
+      { value: "none", label: "No stress at all", icon: "😌" },
+      { value: "low", label: "A little stressed", icon: "🧘" },
+      { value: "moderate", label: "Moderately stressed", icon: "😟" },
+      { value: "high", label: "Very stressed", icon: "😤" },
+    ],
+  },
+  {
+    id: "q6",
+    category: "activity",
+    emoji: "🏃",
+    prompt: "Did you engage in any physical activity today?",
+    type: "checkbox",
+    options: [
+      { value: "exercise", label: "Exercise or workout", icon: "🏋️" },
+      { value: "walk", label: "Walk or movement", icon: "🚶" },
+      { value: "stretching", label: "Stretching or yoga", icon: "🧘‍♀️" },
+      { value: "outdoor", label: "Outdoor time in nature", icon: "🌿" },
+      { value: "none", label: "None of the above", icon: "🛋️" },
+    ],
+  },
+  {
+    id: "q7",
+    category: "mindfulness",
+    emoji: "🧘",
+    prompt: "Did you take any time for mindfulness or self-care today?",
+    type: "checkbox",
+    options: [
+      { value: "meditation", label: "Meditation or breathing", icon: "🧘" },
+      { value: "journal", label: "Journaling or reflection", icon: "📔" },
+      { value: "creative", label: "Creative activity", icon: "🎨" },
+      { value: "social", label: "Time with friends or family", icon: "👥" },
+      { value: "none", label: "None of the above", icon: "📵" },
+    ],
+  },
+  {
+    id: "q8",
+    category: "nutrition",
+    emoji: "🥗",
+    prompt: "How would you rate your nutrition today?",
+    type: "radio",
+    options: [
+      { value: "excellent", label: "Ate well and stayed hydrated", icon: "🥗" },
+      { value: "good", label: "Mostly healthy choices", icon: "🍎" },
+      { value: "average", label: "Some indulgences", icon: "🍕" },
+      { value: "poor", label: "Skipped meals or unhealthy", icon: "🍔" },
+    ],
+  },
+];
+
+const getQuestionsByCategory = (category) => {
+  if (!category) return questions;
+  return questions.filter((q) => q.category === category);
+};
+
+const getQuestionById = (id) => {
+  return questions.find((q) => q.id === id) || null;
+};
+
+const getProgress = (answeredCount, totalCount) => {
+  if (totalCount === 0) return 0;
+  return Math.round((answeredCount / totalCount) * 100);
+};
+
+export { questions, getQuestionsByCategory, getQuestionById, getProgress };
+================================================================
+FILE: frontend/src/data/specialistProfiles.js
+================================================================
+const specialistProfiles = [
+  {
+    id: "sp1",
+    name: "Dr. Nina Patel",
+    title: "Mental Health Therapist",
+    focus: "Stress & Anxiety",
+    category: "Mental Health",
+    emoji: "👩‍⚕️",
+    availability: "Tomorrow at 3:00 PM",
+    rate: "$80/hr",
+    bio: "Licensed therapist with 10+ years of experience in cognitive behavioral therapy and stress management.",
+    rating: 4.9,
+    reviews: 47,
+  },
+  {
+    id: "sp2",
+    name: "Mina Alvarez",
+    title: "Wellness Coach",
+    focus: "Habit Building",
+    category: "Coaching",
+    emoji: "🧘",
+    availability: "Thursday at 10:30 AM",
+    rate: "$60/hr",
+    bio: "Certified wellness coach specializing in habit formation and personalized growth strategies.",
+    rating: 4.8,
+    reviews: 32,
+  },
+  {
+    id: "sp3",
+    name: "Aiden Brooks",
+    title: "Life Mentor",
+    focus: "Confidence & Balance",
+    category: "Coaching",
+    emoji: "🎯",
+    availability: "Friday at 6:00 PM",
+    rate: "$70/hr",
+    bio: "Life mentor with a passion for helping individuals build confidence and achieve work-life balance.",
+    rating: 4.7,
+    reviews: 28,
+  },
+  {
+    id: "sp4",
+    name: "Sophia Chen",
+    title: "Nutritionist",
+    focus: "Wellness & Energy",
+    category: "Nutrition",
+    emoji: "🥗",
+    availability: "Saturday at 9:00 AM",
+    rate: "$55/hr",
+    bio: "Registered nutritionist focused on holistic wellness and evidence-based dietary guidance.",
+    rating: 4.9,
+    reviews: 41,
+  },
+  {
+    id: "sp5",
+    name: "Marcus Johnson",
+    title: "Mindfulness Coach",
+    focus: "Meditation & Presence",
+    category: "Mental Health",
+    emoji: "🧘‍♂️",
+    availability: "Monday at 2:00 PM",
+    rate: "$65/hr",
+    bio: "Mindfulness coach with training in MBSR and meditation techniques for daily stress reduction.",
+    rating: 4.6,
+    reviews: 19,
+  },
+  {
+    id: "sp6",
+    name: "Elena Rodriguez",
+    title: "Creative Therapist",
+    focus: "Art & Expression",
+    category: "Therapy",
+    emoji: "🎨",
+    availability: "Wednesday at 4:00 PM",
+    rate: "$75/hr",
+    bio: "Creative arts therapist helping clients express emotions and process experiences through art.",
+    rating: 4.8,
+    reviews: 35,
+  },
+];
+
+export { specialistProfiles };
+================================================================
+FILE: frontend/src/data/wellnessTips.js
+================================================================
+const wellnessTips = [
+  {
+    id: "tip1",
+    category: "energy",
+    title: "Boost Your Energy",
+    description: "Start your day with a 5-minute stretch and a glass of water to wake up your body and mind.",
+    icon: "⚡",
+  },
+  {
+    id: "tip2",
+    category: "mood",
+    title: "Lift Your Mood",
+    description: "Take a 10-minute walk outside. Natural light and fresh air can significantly improve your emotional state.",
+    icon: "🌤️",
+  },
+  {
+    id: "tip3",
+    category: "stress",
+    title: "Manage Stress",
+    description: "Try the 4-7-8 breathing technique: inhale for 4 seconds, hold for 7, exhale for 8. Repeat 3 times.",
+    icon: "🧘",
+  },
+  {
+    id: "tip4",
+    category: "sleep",
+    title: "Improve Sleep",
+    description: "Avoid screens 30 minutes before bed. Try reading or gentle stretching instead to wind down.",
+    icon: "🌙",
+  },
+  {
+    id: "tip5",
+    category: "nutrition",
+    title: "Eat Mindfully",
+    description: "Slow down during meals. Chew thoroughly and pay attention to how food makes you feel.",
+    icon: "🍽️",
+  },
+  {
+    id: "tip6",
+    category: "social",
+    title: "Stay Connected",
+    description: "Reach out to one person you care about today. A simple message can strengthen your sense of belonging.",
+    icon: "💬",
+  },
+  {
+    id: "tip7",
+    category: "mindfulness",
+    title: "Practice Gratitude",
+    description: "Write down three things you are grateful for today. This simple habit can shift your perspective.",
+    icon: "📝",
+  },
+  {
+    id: "tip8",
+    category: "activity",
+    title: "Move Your Body",
+    description: "Even 15 minutes of gentle movement can boost endorphins and reduce tension in your body.",
+    icon: "🏃",
+  },
+];
+
+const getTipsByCategory = (category) => {
+  if (!category) return wellnessTips;
+  return wellnessTips.filter((tip) => tip.category === category);
+};
+
+export { wellnessTips, getTipsByCategory };
+================================================================
+FILE: frontend/src/data/workshopData.js
+================================================================
+const workshopData = [
+  {
+    id: "ws1",
+    title: "Mindful Mornings",
+    emoji: "🧘",
+    date: "2026-08-05",
+    time: "6:30 PM",
+    duration: "60 min",
+    category: "Mindfulness",
+    summary: "Start your day with intention and focus through guided morning meditation.",
+    description: "Join our specialist-led morning session to set positive intentions and cultivate mindfulness practices that last throughout your day.",
+    maxAttendees: 30,
+    attendees: 24,
+    instructor: "Dr. Nina Patel",
+  },
+  {
+    id: "ws2",
+    title: "Stress Relief Circle",
+    emoji: "💬",
+    date: "2026-08-07",
+    time: "7:00 PM",
+    duration: "75 min",
+    category: "Mental Health",
+    summary: "Share, connect, and practice grounding techniques in a supportive group.",
+    description: "A supportive group session where you can share experiences, learn grounding techniques, and find comfort in community.",
+    maxAttendees: 20,
+    attendees: 18,
+    instructor: "Mina Alvarez",
+  },
+  {
+    id: "ws3",
+    title: "Confidence Bootcamp",
+    emoji: "💪",
+    date: "2026-08-09",
+    time: "11:00 AM",
+    duration: "90 min",
+    category: "Coaching",
+    summary: "Build self-trust and healthy boundaries through interactive exercises.",
+    description: "An interactive workshop designed to help you build self-confidence, set healthy boundaries, and develop a stronger sense of self-worth.",
+    maxAttendees: 25,
+    attendees: 22,
+    instructor: "Aiden Brooks",
+  },
+  {
+    id: "ws4",
+    title: "Sleep & Wellness",
+    emoji: "😴",
+    date: "2026-08-10",
+    time: "5:00 PM",
+    duration: "45 min",
+    category: "Nutrition",
+    summary: "Optimize rest for better wellbeing with practical sleep hygiene strategies.",
+    description: "Learn evidence-based strategies for improving sleep quality, from evening routines to environmental optimization.",
+    maxAttendees: 25,
+    attendees: 20,
+    instructor: "Sophia Chen",
+  },
+  {
+    id: "ws5",
+    title: "Creative Expression Workshop",
+    emoji: "🎨",
+    date: "2026-08-12",
+    time: "3:00 PM",
+    duration: "90 min",
+    category: "Therapy",
+    summary: "Explore emotions through art and creative expression in a safe space.",
+    description: "A hands-on creative workshop where you can express yourself through art and discover new ways to process emotions.",
+    maxAttendees: 20,
+    attendees: 12,
+    instructor: "Elena Rodriguez",
+  },
+  {
+    id: "ws6",
+    title: "Nutrition for Wellbeing",
+    emoji: "🥗",
+    date: "2026-08-14",
+    time: "12:00 PM",
+    duration: "60 min",
+    category: "Nutrition",
+    summary: "Learn how food impacts your mood and energy with practical meal planning tips.",
+    description: "Understand the connection between nutrition and mental health, and leave with practical meal planning strategies.",
+    maxAttendees: 30,
+    attendees: 15,
+    instructor: "Sophia Chen",
+  },
+];
+
+const getUpcomingWorkshops = () => {
+  const today = new Date().toISOString().split("T")[0];
+  return workshopData.filter((ws) => ws.date >= today);
+};
+
+const getWorkshopById = (id) => {
+  return workshopData.find((ws) => ws.id === id) || null;
+};
+
+export { workshopData, getUpcomingWorkshops, getWorkshopById };
+
+================================================================
+FILE: frontend/src/hooks/useAuth.js
+================================================================
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
+
+const useAuth = () => {
+  return useContext(AuthContext);
+};
+
+export default useAuth;
+
+================================================================
+FILE: frontend/src/index.css
+================================================================
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: #2d1b69;
+  background: #f5f1ff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f1ff 0%, #faf5ff 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+================================================================
+FILE: frontend/src/layouts/AdminLayout.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/layouts/ClientLayout.jsx
+================================================================
+import { Outlet } from "react-router-dom";
+
+import Navbar from "../components/navigation/Navbar";
+import Sidebar from "../components/navigation/Sidebar";
+import Footer from "../components/navigation/Footer";
+
+function ClientLayout() {
+  return (
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+      <Navbar />
+
+      <div style={{ display: "flex", flex: 1 }}>
+        <Sidebar />
+
+        <main style={{ flex: 1, padding: "1.5rem", background: "linear-gradient(135deg, #f5f1ff 0%, #faf5ff 100%)", overflowY: "auto" }}>
+          <Outlet />
+        </main>
+      </div>
+
+      <Footer />
+    </div>
+  );
+}
+
+export default ClientLayout;
+================================================================
+FILE: frontend/src/layouts/SpecialistLayout.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/main.jsx
+================================================================
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import App from "./App";
+import "./index.css";
+import { AuthProvider } from "./contexts/AuthContext";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <BrowserRouter>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </BrowserRouter>
+  </StrictMode>
+);
+================================================================
+FILE: frontend/src/pages/admin/Dashboard.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/pages/admin/Reports.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/pages/admin/Resources.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/pages/admin/Specialists.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/pages/admin/Users.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/pages/admin/Workshops.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/pages/auth/ForgotPassword.jsx
+================================================================
+function Login() {
+  return <h1>Login Page</h1>;
+}
+
+export default Login;
+================================================================
+FILE: frontend/src/pages/auth/Login.jsx
+================================================================
+function Login() {
+  return (
+    <div className="page-shell" style={{ padding: "2rem", maxWidth: "560px", margin: "0 auto" }}>
+      <section className="form-card">
+        <span className="eyebrow">Welcome back</span>
+        <h2 className="page-title">Log in to JADA Minds</h2>
+        <p className="page-subtitle">Access your assessment history, recommendations, and wellbeing support.</p>
+
+        <div className="input-group">
+          <label>Email</label>
+          <input placeholder="you@example.com" />
+        </div>
+        <div className="input-group">
+          <label>Password</label>
+          <input type="password" placeholder="••••••••" />
+        </div>
+
+        <div className="btn-row">
+          <button type="button" className="button button-primary">Sign in</button>
+          <a className="link-button link-button-secondary" href="/">Back home</a>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default Login;
+================================================================
+FILE: frontend/src/pages/auth/Register.jsx
+================================================================
+function Login() {
+  return <h1>Login Page</h1>;
+}
+
+export default Login;
+================================================================
+FILE: frontend/src/pages/client/Assessment.jsx
+================================================================
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Alert, Button, Progress } from "../../components/ui";
+import { questions } from "../../data/questions";
+
+export default function Assessment() {
+  const [started, setStarted] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [answers, setAnswers] = useState({});
+  const [completed, setCompleted] = useState(false);
+  const [showValidation, setShowValidation] = useState(false);
+  const navigate = useNavigate();
+  const current = questions[currentIndex];
+  const isAnswered = answers[current.id] !== undefined && answers[current.id]?.length !== 0;
+
+  const selectAnswer = (value) => {
+    if (current.type === "radio") setAnswers((previous) => ({ ...previous, [current.id]: value }));
+    else {
+      const existing = answers[current.id] || [];
+      const next = existing.includes(value) ? existing.filter((item) => item !== value) : [...existing, value];
+      setAnswers((previous) => ({ ...previous, [current.id]: next }));
+    }
+    setShowValidation(false);
+  };
+
+  const next = () => {
+    if (!isAnswered) return setShowValidation(true);
+    if (currentIndex === questions.length - 1) return setCompleted(true);
+    setCurrentIndex((index) => index + 1);
+  };
+
+  if (!started) return (
+    <div className="page-shell design-page assessment-stage">
+      <section className="compact-card assessment-intro">
+        <div>
+          <div className="intro-icon">🌿</div>
+          <span className="design-kicker">Wellness check-in</span>
+          <h2 className="page-title" style={{ fontSize: "1.8rem", marginTop: "0.5rem" }}>Take a step towards a better you.</h2>
+          <p className="page-subtitle">Answer a few thoughtful questions to understand your wellbeing and receive personal recommendations.</p>
+          <div className="btn-row" style={{ justifyContent: "center" }}><Button onClick={() => setStarted(true)}>Start assessment</Button></div>
+          <p style={{ color: "#8b83a1", fontSize: "0.76rem" }}>About 2 minutes · Your answers stay private</p>
+        </div>
+      </section>
+    </div>
+  );
+
+  if (completed) return (
+    <div className="page-shell design-page assessment-stage">
+      <section className="compact-card assessment-complete">
+        <div>
+          <div className="completion-ring"><span>✓</span></div>
+          <span className="design-kicker">Check-in complete</span>
+          <h2 className="page-title" style={{ fontSize: "1.8rem", marginTop: "0.5rem" }}>You’re doing great!</h2>
+          <p className="page-subtitle">Your responses are ready. Explore your wellbeing summary and practical next steps.</p>
+          <div className="btn-row" style={{ justifyContent: "center" }}><Button onClick={() => navigate("/results")}>View results</Button></div>
+        </div>
+      </section>
+    </div>
+  );
+
+  return (
+    <div className="page-shell design-page assessment-stage">
+      <section className="compact-card assessment-question-card">
+        <div className="assessment-topline"><span>Wellness check-in</span><span>{currentIndex + 1} / {questions.length}</span></div>
+        <Progress value={currentIndex + 1} max={questions.length} />
+        <div style={{ margin: "1.35rem 0 0.9rem" }}><span style={{ fontSize: "1.6rem" }}>{current.emoji}</span><h2 style={{ color: "#352b55", fontSize: "1.25rem", margin: "0.55rem 0" }}>{current.prompt}</h2><p style={{ color: "#817899", fontSize: "0.82rem", margin: 0 }}>Choose the response that feels most true today.</p></div>
+        <div className="option-list">
+          {current.options.map((option) => {
+            const active = current.type === "radio" ? answers[current.id] === option.value : (answers[current.id] || []).includes(option.value);
+            return <button key={option.value} type="button" className={`option-item answer-option ${active ? "active" : ""}`} aria-pressed={active} onClick={() => selectAnswer(option.value)}><span className={`answer-control ${current.type === "checkbox" ? "checkbox" : ""}`}>{active ? "✓" : ""}</span><span>{option.icon} {option.label}</span></button>;
+          })}
+        </div>
+        {showValidation && <Alert variant="warning" style={{ marginTop: "1rem" }}>Please choose an answer before continuing.</Alert>}
+        <div className="btn-row" style={{ justifyContent: "space-between" }}><Button variant="secondary" disabled={currentIndex === 0} onClick={() => { setCurrentIndex((index) => index - 1); setShowValidation(false); }}>Previous</Button><Button onClick={next}>{currentIndex === questions.length - 1 ? "Finish" : "Next"}</Button></div>
+      </section>
+    </div>
+  );
+}
+
+================================================================
+FILE: frontend/src/pages/client/Dashboard.jsx
+================================================================
+const stats = [
+  { label: "Current streak", value: "5 days", emoji: "🔥" },
+  { label: "Wellness score", value: "72/100", emoji: "✨" },
+  { label: "Workshops joined", value: "2", emoji: "🎯" },
+  { label: "Resources saved", value: "6", emoji: "📚" },
+];
+
+const quickActions = [
+  { title: "Begin check-in", text: "Weekly reflection", icon: "📋", href: "/assessment" },
+  { title: "Browse specialists", text: "Get support", icon: "👤", href: "/specialists" },
+  { title: "Join a workshop", text: "Live sessions", icon: "🎓", href: "/workshops" },
+];
+
+export default function Dashboard() {
+  return (
+    <div className="app-shell">
+      <section className="hero-card">
+        <span className="eyebrow">✨ Welcome back</span>
+        <h2 className="page-title">Your wellness journey continues.</h2>
+        <p className="page-subtitle">
+          Keep your momentum going with guided reflections, meaningful connections, and personalized support.
+        </p>
+      </section>
+
+      <section className="stat-grid">
+        {stats.map((item) => (
+          <div className="panel" key={item.label}>
+            <h3 style={{ fontSize: "2rem" }}>{item.emoji}</h3>
+            <h3 style={{ fontSize: "1.5rem", marginTop: "0.3rem" }}>{item.value}</h3>
+            <p style={{ fontSize: "0.9rem" }}>{item.label}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="dashboard-grid">
+        <div>
+          <h3>Quick actions</h3>
+          <div className="resource-grid">
+            {quickActions.map((action) => (
+              <a href={action.href} className="card" key={action.title} style={{ textDecoration: "none", display: "block" }}>
+                <div style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>{action.icon}</div>
+                <h3>{action.title}</h3>
+                <p>{action.text}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div className="panel">
+          <h3>📈 Progress</h3>
+          <div className="list-card" style={{ border: "none" }}>
+            <p className="badge badge-success" style={{ marginBottom: "0.8rem" }}>Trending well</p>
+            <ul style={{ fontSize: "0.95rem" }}>
+              <li>Energy stable this week</li>
+              <li>2 new workshops saved</li>
+              <li>Keep going strong!</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+================================================================
+FILE: frontend/src/pages/client/Profile.jsx
+================================================================
+export default function Profile() {
+  return (
+    <div className="page-shell">
+      <section className="hero-card">
+        <span className="eyebrow">⚙️ Your profile</span>
+        <h2 className="page-title">Manage your account & preferences</h2>
+        <p className="page-subtitle">
+          Keep your profile current to ensure your experience stays personal and relevant.
+        </p>
+      </section>
+
+      <section className="dashboard-grid">
+        <div className="form-card">
+          <h3>📝 Profile details</h3>
+          <div className="input-group">
+            <label>Full name</label>
+            <input defaultValue="Amara Chen" />
+          </div>
+          <div className="input-group">
+            <label>Email address</label>
+            <input type="email" defaultValue="amara@example.com" />
+          </div>
+          <div className="input-group">
+            <label>Wellness interests</label>
+            <select defaultValue="coaching">
+              <option value="coaching">Wellness Coaching</option>
+              <option value="therapy">Mental Health Support</option>
+              <option value="fitness">Fitness & Nutrition</option>
+              <option value="mindfulness">Mindfulness & Meditation</option>
+            </select>
+          </div>
+          <div className="input-group">
+            <label>Preferred contact method</label>
+            <select defaultValue="email">
+              <option value="email">Email</option>
+              <option value="phone">Phone</option>
+              <option value="sms">SMS</option>
+            </select>
+          </div>
+          <div className="btn-row">
+            <button type="button" className="button button-primary">Save changes</button>
+          </div>
+        </div>
+
+        <div className="panel">
+          <h3>📊 Your journey</h3>
+          <div className="list-card" style={{ border: "none" }}>
+            <p className="badge badge-success" style={{ marginBottom: "0.8rem" }}>Member since Jan 2026</p>
+            <ul style={{ fontSize: "0.95rem" }}>
+              <li>✓ 3 assessments completed</li>
+              <li>✓ 5 workshops attended</li>
+              <li>✓ 2 specialists connected</li>
+              <li>✓ 8 resources saved</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+================================================================
+FILE: frontend/src/pages/client/Progress.jsx
+================================================================
+import { useState } from "react";
+import { Card, Progress as ProgressBar, Badge, EmptyState, Chip } from "../../components/ui";
+import { emptyStateMessages } from "../../data/messages";
+
+const assessmentHistory = [
+  {
+    id: "a1",
+    date: "2026-07-20",
+    score: 72,
+    category: "Overall",
+    emoji: "😊",
+    trends: ["Energy improving", "Support growing", "Great momentum"],
+  },
+  {
+    id: "a2",
+    date: "2026-07-15",
+    score: 65,
+    category: "Overall",
+    emoji: "🙂",
+    trends: ["Stress decreasing", "Sleep improving"],
+  },
+  {
+    id: "a3",
+    date: "2026-07-10",
+    score: 58,
+    category: "Overall",
+    emoji: "😐",
+    trends: ["Starting journey", "Setting goals"],
+  },
+];
+
+const progressData = [
+  { label: "Energy", value: 75, color: "#ffa733" },
+  { label: "Mood", value: 80, color: "#6b3cb8" },
+  { label: "Sleep", value: 68, color: "#20c997" },
+  { label: "Stress", value: 55, color: "#e74c3c" },
+  { label: "Social", value: 70, color: "#2980b9" },
+  { label: "Nutrition", value: 82, color: "#f0c040" },
+];
+
+export default function Progress() {
+  const [selectedPeriod, setSelectedPeriod] = useState("week");
+
+  const latestScore = assessmentHistory[0]?.score || 0;
+  const previousScore = assessmentHistory[1]?.score || 0;
+  const trend = latestScore >= previousScore ? "up" : "down";
+  const trendEmoji = trend === "up" ? "📈" : trend === "down" ? "📉" : "➡️";
+
+  return (
+    <div className="page-shell">
+      <section className="hero-card">
+        <span className="eyebrow">📈 Progress tracking</span>
+        <h2 className="page-title">Your wellness journey at a glance.</h2>
+        <p className="page-subtitle">
+          Track your progress over time with assessment history, wellness trends, and personalized insights.
+        </p>
+      </section>
+
+      <section>
+        <div className="stat-grid">
+          <div className="panel" style={{ textAlign: "center" }}>
+            <span style={{ fontSize: "2.5rem" }}>🧠</span>
+            <h3 style={{ fontSize: "2rem", color: "#6b3cb8", marginTop: "0.3rem" }}>{latestScore}</h3>
+            <p style={{ fontSize: "0.85rem" }}>Latest Score</p>
+            <Badge variant="success" style={{ marginTop: "0.4rem" }}>{trendEmoji} {trend === "up" ? "Trending up" : trend === "down" ? "Needs attention" : "Stable"}</Badge>
+          </div>
+          <div className="panel" style={{ textAlign: "center" }}>
+            <span style={{ fontSize: "2.5rem" }}>📋</span>
+            <h3 style={{ fontSize: "2rem", color: "#6b3cb8", marginTop: "0.3rem" }}>{assessmentHistory.length}</h3>
+            <p style={{ fontSize: "0.85rem" }}>Assessments Completed</p>
+          </div>
+          <div className="panel" style={{ textAlign: "center" }}>
+            <span style={{ fontSize: "2.5rem" }}>🔥</span>
+            <h3 style={{ fontSize: "2rem", color: "#6b3cb8", marginTop: "0.3rem" }}>5</h3>
+            <p style={{ fontSize: "0.85rem" }}>Day Streak</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 style={{ marginBottom: "1rem", color: "#2d1b69" }}>Wellness Dimensions</h3>
+        <div className="dashboard-grid">
+          {progressData.map((dim) => (
+            <div className="card" key={dim.label}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
+                <span style={{ fontWeight: "700", color: "#2d1b69" }}>{dim.label}</span>
+                <span style={{ fontWeight: "700", color: dim.color }}>{dim.value}%</span>
+              </div>
+              <ProgressBar value={dim.value} max={100} variant={dim.value >= 70 ? "success" : dim.value >= 50 ? "warning" : "danger"} label={`${dim.value}%`} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
+          <h3 style={{ color: "#2d1b69", margin: 0 }}>Assessment History</h3>
+          <div style={{ display: "flex", gap: "0.5rem" }}>
+            {["week", "month", "all"].map((period) => (
+              <Chip key={period} active={selectedPeriod === period} onClick={() => setSelectedPeriod(period)}>
+                {period.charAt(0).toUpperCase() + period.slice(1)}
+              </Chip>
+            ))}
+          </div>
+        </div>
+
+        {assessmentHistory.length === 0 ? (
+          <EmptyState {...emptyStateMessages.assessments} />
+        ) : (
+          assessmentHistory.map((entry) => (
+            <Card key={entry.id} style={{ marginBottom: "1rem", borderTop: `4px solid ${entry.score >= 70 ? "#20c997" : entry.score >= 50 ? "#ffa733" : "#e74c3c"}` }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "1rem" }}>
+                <div>
+                  <span style={{ fontSize: "2rem" }}>{entry.emoji}</span>
+                  <h3 style={{ margin: "0.3rem 0" }}>Score: {entry.score}/100</h3>
+                  <p style={{ fontSize: "0.85rem", color: "#6b5b95" }}>{entry.date}</p>
+                </div>
+                <div>
+                  {entry.trends.map((trend, idx) => (
+                    <span key={idx} className="badge badge-primary" style={{ marginRight: "0.3rem", marginBottom: "0.3rem" }}>{trend}</span>
+                  ))}
+                </div>
+              </div>
+            </Card>
+          ))
+        )}
+      </section>
+    </div>
+  );
+}
+
+================================================================
+FILE: frontend/src/pages/client/Resources.jsx
+================================================================
+import { useMemo, useState } from "react";
+import { Badge, Button, Input } from "../../components/ui";
+import { educationalResources } from "../../data/educationalResources";
+
+const categories = [["🧠", "Mental health"], ["🌿", "Wellness"], ["🎯", "Personal growth"], ["💗", "Relationships"], ["💙", "Work & career"], ["☀️", "Mindfulness"]];
+
+export default function Resources() {
+  const [query, setQuery] = useState("");
+  const [type, setType] = useState("All categories");
+  const [selectedId, setSelectedId] = useState(educationalResources[0].id);
+  const [saved, setSaved] = useState([]);
+  const filtered = useMemo(() => educationalResources.filter((resource) => (type === "All categories" || resource.type === type) && `${resource.title} ${resource.description}`.toLowerCase().includes(query.toLowerCase())), [query, type]);
+  const selected = filtered.find((resource) => resource.id === selectedId) || filtered[0];
+  const toggleSave = (id) => setSaved((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
+
+  return <div className="page-shell design-page">
+    <div className="design-heading"><div><span className="design-kicker">Resources</span><h2 className="page-title" style={{ fontSize: "1.55rem", marginTop: "0.2rem" }}>Support for everyday growth.</h2></div><Badge variant="success">{saved.length} saved</Badge></div>
+    <section className="resources-workspace">
+      <div className="compact-card"><h3 style={{ margin: 0, color: "#3d3459", fontSize: "1rem" }}>Resource library</h3><Input className="compact-search" placeholder="Search resources..." value={query} onChange={(event) => setQuery(event.target.value)} style={{ marginTop: "0.8rem" }} /><select aria-label="Resource category" value={type} onChange={(event) => setType(event.target.value)} style={{ width: "100%", marginTop: "0.5rem", padding: "0.55rem", border: "1px solid #e4def2", borderRadius: "0.5rem", color: "#4e4568", background: "#fff" }}><option>All categories</option>{[...new Set(educationalResources.map((resource) => resource.type))].map((resourceType) => <option key={resourceType}>{resourceType}</option>)}</select>
+        <div className="resource-list">{filtered.map((resource) => <button type="button" className={`resource-list-item ${selected?.id === resource.id ? "active" : ""}`} key={resource.id} onClick={() => setSelectedId(resource.id)}><span className="resource-thumb">{resource.emoji}</span><span><strong>{resource.title}</strong><small>{resource.type} · {resource.readTime}</small></span></button>)}</div>
+      </div>
+      <div className="compact-card">{selected ? <><div className="resource-detail-cover">{selected.emoji}</div><div style={{ marginTop: "0.9rem" }}><Badge variant="primary">{selected.type}</Badge><h3 style={{ color: "#3d3459", margin: "0.55rem 0" }}>{selected.title}</h3><p className="resource-detail-copy">{selected.description}</p><p className="resource-detail-copy">This guided resource includes simple, practical steps you can return to whenever you need a reset.</p><ul className="resource-detail-copy"><li>Understand the key ideas</li><li>Try a small, actionable exercise</li><li>Save what supports you</li></ul><div className="btn-row"><Button style={{ flex: 1 }}>Open resource</Button><Button variant="secondary" onClick={() => toggleSave(selected.id)}>{saved.includes(selected.id) ? "Saved ✓" : "Save"}</Button></div></div></> : <p style={{ color: "#766d90" }}>No resources match your search.</p>}</div>
+      <div className="compact-card"><h3 style={{ margin: 0, color: "#3d3459", fontSize: "1rem" }}>Categories</h3><div className="category-grid">{categories.map(([icon, label]) => <button className="category-tile" type="button" key={label} onClick={() => setQuery(label)}><span>{icon}</span>{label}</button>)}</div><div style={{ borderTop: "1px solid #eeeaf7", marginTop: "1rem", paddingTop: "0.8rem" }}><span className="design-kicker">Bookmarks</span>{saved.length ? saved.map((id) => <p key={id} style={{ color: "#5f5579", fontSize: "0.75rem" }}>{educationalResources.find((resource) => resource.id === id)?.title}</p>) : <p style={{ color: "#817897", fontSize: "0.75rem" }}>Save resources to find them quickly later.</p>}</div></div>
+    </section>
+  </div>;
+}
+
+================================================================
+FILE: frontend/src/pages/client/Results.jsx
+================================================================
+import { useNavigate } from "react-router-dom";
+import { Badge, Button, Card, Progress } from "../../components/ui";
+
+const dimensions = [{ label: "Stress", value: 66 }, { label: "Sleep", value: 74 }, { label: "Mood", value: 76 }, { label: "Energy", value: 64 }];
+const recommendations = [
+  ["🫁", "Practice deep breathing", "Take a slow five-minute pause when stress builds."],
+  ["📖", "Improve sleep", "Create a screen-free wind-down ritual tonight."],
+  ["🚶", "Stay active", "Enjoy a 20-minute walk or gentle movement."],
+];
+
+function TrendChart() {
+  return <div className="chart-wrap" aria-label="Wellness trend chart"><svg viewBox="0 0 320 190" role="img"><defs><linearGradient id="chartFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="#29bd9a"/><stop offset="1" stopColor="#fff"/></linearGradient></defs>{[30, 70, 110, 150].map((y) => <line key={y} className="chart-grid" x1="0" x2="320" y1={y} y2={y} />)}<path className="chart-area" d="M8 145 L48 132 L86 138 L124 98 L162 111 L200 60 L238 79 L276 36 L312 47 L312 180 L8 180 Z"/><path className="chart-line" d="M8 145 L48 132 L86 138 L124 98 L162 111 L200 60 L238 79 L276 36 L312 47"/>{[[8,145],[48,132],[86,138],[124,98],[162,111],[200,60],[238,79],[276,36],[312,47]].map(([cx, cy]) => <circle key={cx} cx={cx} cy={cy} r="3.5" fill="#29bd9a" />)}</svg></div>;
+}
+
+export default function Results() {
+  const navigate = useNavigate();
+  return <div className="page-shell design-page">
+    <div className="design-heading"><div><span className="design-kicker">Results & progress</span><h2 className="page-title" style={{ fontSize: "1.55rem", marginTop: "0.2rem" }}>Your wellness summary</h2></div><Badge variant="success">Assessment complete</Badge></div>
+    <section className="results-layout">
+      <Card className="score-panel"><span className="design-kicker">Your wellness score</span><div className="score-number">72<span style={{ fontSize: "1.25rem" }}>%</span></div><Badge variant="success">Complete</Badge><p style={{ color: "#786f90", fontSize: "0.8rem" }}>You are making progress. Keep it up!</p>{dimensions.map((item) => <div className="dimension-row" key={item.label}><span>{item.label}</span><Progress value={item.value} max={100} variant="success"/><strong>{item.value}%</strong></div>)}<div className="btn-row"><Button size="sm" style={{ width: "100%" }} onClick={() => navigate("/")}>Back to dashboard</Button></div></Card>
+      <Card><span className="design-kicker">Recommendations</span><h3 style={{ margin: "0.35rem 0", color: "#3d3459" }}>Based on your results</h3><div className="recommendation-list">{recommendations.map(([icon, title, text]) => <div className="recommendation-item" key={title}><span>{icon}</span><div><strong>{title}</strong><br />{text}</div></div>)}</div><div className="btn-row"><Button variant="outline" size="sm" style={{ width: "100%" }} onClick={() => navigate("/resources")}>View all recommendations</Button></div></Card>
+      <Card><div className="design-heading"><div><span className="design-kicker">Progress chart</span><h3 style={{ margin: "0.35rem 0", color: "#3d3459" }}>Wellness trend</h3></div><Badge variant="primary">This month</Badge></div><TrendChart /><div style={{ display: "flex", justifyContent: "space-between", color: "#938ba8", fontSize: "0.67rem" }}><span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Today</span></div></Card>
+    </section>
+  </div>;
+}
+
+================================================================
+FILE: frontend/src/pages/client/Specialists.jsx
+================================================================
+import { useMemo, useState } from "react";
+import { Alert, Button, Input } from "../../components/ui";
+import { specialistProfiles } from "../../data/specialistProfiles";
+
+export default function Specialists() {
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState("All");
+  const [selectedId, setSelectedId] = useState(specialistProfiles[0].id);
+  const [booked, setBooked] = useState(false);
+  const specialists = useMemo(() => specialistProfiles.filter((specialist) => (category === "All" || specialist.category === category) && `${specialist.name} ${specialist.focus}`.toLowerCase().includes(query.toLowerCase())), [category, query]);
+  const selected = specialists.find((specialist) => specialist.id === selectedId) || specialists[0];
+
+  return <div className="page-shell design-page">
+    <div className="design-heading"><div><span className="design-kicker">Specialists</span><h2 className="page-title" style={{ fontSize: "1.55rem", marginTop: "0.2rem" }}>Find support that fits you.</h2></div><span style={{ color: "#817897", fontSize: "0.8rem" }}>{specialists.length} available specialists</span></div>
+    <section className="specialist-workspace">
+      <div className="compact-card"><h3 style={{ margin: 0, color: "#3d3459", fontSize: "1rem" }}>Specialist list</h3><Input className="compact-search" placeholder="Search specialists..." value={query} onChange={(event) => setQuery(event.target.value)} style={{ marginTop: "0.8rem" }} />
+        <div className="specialist-list">{specialists.map((specialist) => <button className={`specialist-list-item ${specialist.id === selected?.id ? "active" : ""}`} type="button" key={specialist.id} onClick={() => { setSelectedId(specialist.id); setBooked(false); }}><span className="avatar">{specialist.emoji}</span><span><strong>{specialist.name}</strong><small>{specialist.title}</small><small>⭐ {specialist.rating} · {specialist.availability}</small></span></button>)}{!specialists.length && <Alert variant="info">No specialists match your search.</Alert>}</div>
+      </div>
+      <div className="compact-card"><h3 style={{ margin: 0, color: "#3d3459", fontSize: "1rem" }}>Search & filters</h3><div className="filter-stack"><label>Category<select value={category} onChange={(event) => setCategory(event.target.value)}><option>All</option><option>Mental Health</option><option>Coaching</option><option>Nutrition</option><option>Therapy</option></select></label><label>Availability<select defaultValue="Any time"><option>Any time</option><option>Today</option><option>This week</option><option>Next week</option></select></label><label>Rating<select defaultValue="4.5 stars & above"><option>4.5 stars & above</option><option>4 stars & above</option><option>Any rating</option></select></label></div><div className="btn-row"><Button variant="secondary" size="sm" onClick={() => { setQuery(""); setCategory("All"); }}>Reset</Button><Button size="sm" style={{ flex: 1 }}>Apply filters</Button></div></div>
+      <div className="compact-card">{selected ? <><div className="profile-highlight"><span className="avatar">{selected.emoji}</span><h3 style={{ margin: 0, color: "#3d3459" }}>{selected.name}</h3><p>{selected.title}</p><p>⭐ {selected.rating} ({selected.reviews} reviews) · <span style={{ color: "#22a77d" }}>Online</span></p></div><p style={{ color: "#6f6688", fontSize: "0.82rem", lineHeight: 1.65 }}>{selected.bio}</p><strong style={{ fontSize: "0.78rem", color: "#554b70" }}>Specializations</strong><div className="tag-row" style={{ marginTop: "0.45rem" }}><span className="mini-tag">{selected.focus}</span><span className="mini-tag">Wellbeing</span><span className="mini-tag">Personal growth</span></div><p style={{ color: "#6f6688", fontSize: "0.78rem" }}><strong>Available:</strong> {selected.availability}</p><div className="btn-row"><Button style={{ width: "100%" }} onClick={() => setBooked(true)}>Book appointment</Button></div>{booked && <Alert variant="success" style={{ marginTop: "0.8rem" }}>Appointment request saved for {selected.availability}.</Alert>}</> : <Alert variant="info">Select a specialist to view their profile.</Alert>}</div>
+    </section>
+  </div>;
+}
+
+================================================================
+FILE: frontend/src/pages/client/Workshops.jsx
+================================================================
+import { useState } from "react";
+import { Alert, Badge, Button, Input } from "../../components/ui";
+import { getUpcomingWorkshops } from "../../data/workshopData";
+
+const days = ["S", "M", "T", "W", "T", "F", "S"];
+const calendarDays = Array.from({ length: 31 }, (_, index) => index + 1);
+
+export default function Workshops() {
+  const workshops = getUpcomingWorkshops();
+  const [selectedId, setSelectedId] = useState(workshops[0]?.id);
+  const [registered, setRegistered] = useState(false);
+  const selected = workshops.find((workshop) => workshop.id === selectedId) || workshops[0];
+
+  return <div className="page-shell design-page">
+    <div className="design-heading"><div><span className="design-kicker">Workshops</span><h2 className="page-title" style={{ fontSize: "1.55rem", marginTop: "0.2rem" }}>Learn and grow together.</h2></div><Badge variant="primary">Live sessions</Badge></div>
+    <section className="workshop-workspace">
+      <div className="compact-card"><h3 style={{ margin: 0, color: "#3d3459", fontSize: "1rem" }}>Workshop list</h3><Input className="compact-search" placeholder="Search workshops..." style={{ marginTop: "0.8rem" }} />
+        <div className="workshop-list">{workshops.map((workshop) => <button type="button" className={`workshop-list-item ${selected?.id === workshop.id ? "active" : ""}`} key={workshop.id} onClick={() => { setSelectedId(workshop.id); setRegistered(false); }}><strong>{workshop.emoji} {workshop.title}</strong><small>{workshop.date} · {workshop.time}</small><small>{workshop.attendees}/{workshop.maxAttendees} spaces reserved</small></button>)}</div>
+      </div>
+      <div className="compact-card">{selected && <><div className="workshop-cover">{selected.emoji}</div><div style={{ marginTop: "0.85rem" }}><Badge variant="info">{selected.category}</Badge><h3 style={{ margin: "0.55rem 0 0.25rem", color: "#3d3459" }}>{selected.title}</h3><p style={{ color: "#756d90", fontSize: "0.82rem", lineHeight: 1.65 }}>{selected.description}</p></div><div className="detail-lines"><div className="detail-line"><span>Date</span><strong>{selected.date}</strong></div><div className="detail-line"><span>Time</span><strong>{selected.time} · {selected.duration}</strong></div><div className="detail-line"><span>Instructor</span><strong>{selected.instructor}</strong></div><div className="detail-line"><span>Availability</span><strong>{selected.maxAttendees - selected.attendees} seats left</strong></div></div>{registered ? <Alert variant="success">You’re registered! Workshop details will appear in your dashboard.</Alert> : <Button style={{ width: "100%" }} onClick={() => setRegistered(true)}>Register now</Button>}</>}
+      </div>
+      <div className="compact-card"><div className="calendar-header"><span>‹</span><span>August 2026</span><span>›</span></div><div className="calendar-labels">{days.map((day, index) => <span key={`${day}-${index}`}>{day}</span>)}</div><div className="calendar-days">{calendarDays.map((day) => <span key={day} className={[5, 7, 9, 10, 12, 14].includes(day) ? "event-day" : ""}>{day}</span>)}</div><div style={{ borderTop: "1px solid #eeeaf7", marginTop: "1rem", paddingTop: "0.8rem" }}><span className="design-kicker">Upcoming</span>{workshops.slice(0, 2).map((workshop) => <p key={workshop.id} style={{ color: "#5f5579", fontSize: "0.75rem", margin: "0.45rem 0" }}><strong>{workshop.date.slice(-2)} Aug</strong> · {workshop.title}</p>)}</div></div>
+    </section>
+  </div>;
+}
+
+================================================================
+FILE: frontend/src/pages/shared/Home.jsx
+================================================================
+export default function Home() {
+  return (
+    <div className="page-shell" style={{ padding: "2rem" }}>
+      <section className="hero-banner">
+        <div className="home-hero">
+          <span className="eyebrow" style={{ background: "rgba(255,255,255,0.15)", color: "#fff" }}>JADA Minds</span>
+          <h1>Support that feels thoughtful, clear, and human.</h1>
+          <p>
+            Bring structure to your wellness journey with guided assessments, compassionate resources, and a welcoming space to grow.
+          </p>
+          <div className="btn-row">
+            <a className="link-button link-button-primary" href="/login">Get started</a>
+            <a className="link-button link-button-secondary" href="/" style={{ background: "rgba(255,255,255,0.1)", color: "#fff", border: "1px solid rgba(255,255,255,0.2)" }}>Explore dashboard</a>
+          </div>
+        </div>
+
+        <div className="home-card">
+          <h3>What you can expect</h3>
+          <ul>
+            <li>Welcoming questionnaire flows</li>
+            <li>Personalized results and recommendations</li>
+            <li>Easy access to specialists and workshops</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+================================================================
+FILE: frontend/src/pages/shared/NotFound.jsx
+================================================================
+export default function NotFound() {
+  return (
+    <div className="page-shell" style={{ padding: "2rem", textAlign: "center" }}>
+      <section className="empty-state">
+        <h2 className="page-title">The page you requested is still being designed.</h2>
+        <p className="page-subtitle">Please return to the dashboard to continue exploring the experience.</p>
+        <div className="btn-row" style={{ justifyContent: "center" }}>
+          <a className="link-button link-button-primary" href="/">Go to dashboard</a>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+================================================================
+FILE: frontend/src/pages/specialist/Assessments.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/pages/specialist/Dashboard.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/pages/specialist/Notes.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/pages/specialist/Profile.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/routes/AppRoutes.jsx
+================================================================
+import { Routes, Route } from "react-router-dom";
+
+import ClientLayout from "../layouts/ClientLayout";
+import Home from "../pages/shared/Home";
+import Login from "../pages/auth/Login";
+import NotFound from "../pages/shared/NotFound";
+import Dashboard from "../pages/client/Dashboard";
+import Assessment from "../pages/client/Assessment";
+import Results from "../pages/client/Results";
+import Resources from "../pages/client/Resources";
+import Specialists from "../pages/client/Specialists";
+import Workshops from "../pages/client/Workshops";
+import Profile from "../pages/client/Profile";
+
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<ClientLayout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="assessment" element={<Assessment />} />
+        <Route path="results" element={<Results />} />
+        <Route path="resources" element={<Resources />} />
+        <Route path="specialists" element={<Specialists />} />
+        <Route path="workshops" element={<Workshops />} />
+        <Route path="profile" element={<Profile />} />
+      </Route>
+      <Route path="/home" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+}
+
+export default AppRoutes;
+
+================================================================
+FILE: frontend/src/routes/ProtectedRoute.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/routes/adminRoutes.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/routes/clientRoutes.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/routes/specialistRoutes.jsx
+================================================================
+
+================================================================
+FILE: frontend/src/services/api.js
+================================================================
+import axios from "axios";
+
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+export default api;
+================================================================
+FILE: frontend/src/services/authService.js
+================================================================
+import api from "./api";
+import authService from "../../services/authService";
+
+export const login = async (credentials) => {
+  return api.post("/login", credentials);
+};
+
+export const register = async (userData) => {
+  return api.post("/register", userData);
+};
+
+export const logout = async () => {
+  return Promise.resolve();
+};
+
+export default {
+  login,
+  register,
+  logout,
+};
