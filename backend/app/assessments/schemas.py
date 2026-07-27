@@ -34,5 +34,14 @@ class AssessmentOutSchema(Schema):
     responses = fields.List(fields.Nested(AssessmentResponseOutSchema))
 
 
+class ProgressEntrySchema(Schema):
+ 
+    id = fields.Int(dump_only=True)
+    total_score = fields.Int(dump_only=True)
+    wellness_level = fields.Str(dump_only=True)
+    created_at = fields.DateTime(dump_only=True)
+
 assessment_input_schema = AssessmentInputSchema()
 assessment_out_schema = AssessmentOutSchema()
+progress_entry_schema = ProgressEntrySchema()
+progress_history_schema = ProgressEntrySchema(many=True)
