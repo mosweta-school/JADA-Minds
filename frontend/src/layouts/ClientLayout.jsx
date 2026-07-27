@@ -6,13 +6,13 @@ import Footer from "../components/navigation/Footer";
 
 function ClientLayout() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
       <Navbar />
 
-      <div className="flex flex-1">
+      <div style={{ display: "flex", flex: 1 }}>
         <Sidebar />
 
-        <main className="flex-1 p-6 bg-gray-50">
+        <main style={{ flex: 1, padding: "1.5rem", background: "linear-gradient(135deg, #f5f1ff 0%, #faf5ff 100%)", overflowY: "auto" }}>
           <Outlet />
         </main>
       </div>
