@@ -1,17 +1,28 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
- const login = async (userData) => {
-  setUser(userData);
-};
+  // Restore user after page refresh
+  useEffect(() => {
+    const storedUser = localStorage.getItem("jadaUser");
 
-const logout = async () => {
-  setUser(null);
-};
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const login = async (userData) => {
+    setUser(userData);
+    localStorage.setItem("jadaUser", JSON.stringify(userData));
+  };
+
+  const logout = async () => {
+    setUser(null);
+    localStorage.removeItem("jadaUser");
+  };
 
   return (
     <AuthContext.Provider
@@ -19,6 +30,7 @@ const logout = async () => {
         user,
         login,
         logout,
+        isAuthenticated: !!user,
       }}
     >
       {children}

@@ -39,16 +39,17 @@ function LoginForm() {
       setLoading(true);
 
       // Temporary login until backend authentication is connected
-    const response = await authService.login({
-            email: form.email,
-            password: form.password,
-            });
+      await login({
+        email: form.email,
+        role: "client",
+      });
 
-    await login(response.data.user);
-
-    navigate("/");
-    } catch {
-      setError("Unable to sign in.");
+      navigate("/");
+    } catch (err) {
+      setError(
+        err.response?.data?.message ||
+          "Unable to sign in. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -67,17 +68,18 @@ function LoginForm() {
             type="email"
             value={form.email}
             onChange={handleChange}
+            autoComplete="email"
             required
           />
         </div>
 
         <div>
-          <label htmlFor="password">Password</label>
           <PasswordField
-            id="password"
+            label="Password"
             name="password"
             value={form.password}
             onChange={handleChange}
+            placeholder="Enter your password"
           />
         </div>
 
@@ -97,7 +99,7 @@ function LoginForm() {
           {loading ? "Signing in..." : "Sign In"}
         </button>
 
-        <div>
+        <div style={{ marginTop: "1rem" }}>
           <Link to="/forgot-password">Forgot password?</Link>
         </div>
       </form>
