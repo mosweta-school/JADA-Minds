@@ -1,18 +1,40 @@
+import { NavLink } from "react-router-dom";
+
+const links = [
+  { to: "/", label: "Dashboard" },
+  { to: "/assessment", label: "Assessment" },
+  { to: "/results", label: "Results" },
+  { to: "/resources", label: "Resources" },
+  { to: "/specialists", label: "Specialists" },
+  { to: "/workshops", label: "Workshops" },
+  { to: "/profile", label: "Profile" },
+];
+
 function Sidebar() {
   return (
-    <aside className="w-64 bg-blue-700 text-white p-6">
-      <h2 className="text-lg font-semibold mb-6">
-        Menu
-      </h2>
+    <aside style={{ width: "240px", background: "linear-gradient(135deg, #6b3cb8 0%, #8e5fd4 100%)", color: "#fff", padding: "1.5rem", flexShrink: 0, height: "calc(100vh - 100px)", overflowY: "auto", boxShadow: "0 4px 12px rgba(107, 60, 184, 0.15)" }}>
+      <h2 style={{ fontSize: "1rem", fontWeight: "700", marginBottom: "1.5rem", marginTop: "0", color: "#fff" }}>🚀 Member 3</h2>
 
-      <ul className="space-y-4">
-        <li>Dashboard</li>
-        <li>Assessment</li>
-        <li>Results</li>
-        <li>Resources</li>
-        <li>Specialists</li>
-        <li>Workshops</li>
-        <li>Profile</li>
+      <ul style={{ listStyle: "none", padding: "0", margin: "0", display: "flex", flexDirection: "column", gap: "0.3rem" }}>
+        {links.map((link) => (
+          <li key={link.to}>
+            <NavLink
+              to={link.to}
+              style={({ isActive }) => ({
+                display: "block",
+                borderRadius: "0.75rem",
+                padding: "0.75rem 1rem",
+                textDecoration: "none",
+                transition: "all 0.3s ease",
+                color: "#fff",
+                background: isActive ? "rgba(255, 255, 255, 0.2)" : "transparent",
+                fontWeight: isActive ? "700" : "500",
+              })}
+            >
+              {link.label}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </aside>
   );
