@@ -444,7 +444,7 @@ npm run dev
 
 ---
 
-# 🌿 Git Workflow
+# Git Workflow
 
 ## Branches
 
