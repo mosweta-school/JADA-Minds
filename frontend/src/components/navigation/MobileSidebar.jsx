@@ -2,14 +2,14 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
 const links = [
-  { to: "/", label: "Dashboard", icon: "🏠" },
-  { to: "/assessment", label: "Assessment", icon: "📋" },
-  { to: "/results", label: "Results", icon: "📊" },
-  { to: "/resources", label: "Resources", icon: "📚" },
-  { to: "/specialists", label: "Specialists", icon: "👥" },
-  { to: "/workshops", label: "Workshops", icon: "🎓" },
-  { to: "/progress", label: "Progress", icon: "📈" },
-  { to: "/profile", label: "Profile", icon: "⚙️" },
+  { to: "/", label: "Dashboard" },
+  { to: "/assessment", label: "Assessment" },
+  { to: "/results", label: "Results" },
+  { to: "/resources", label: "Resources" },
+  { to: "/specialists", label: "Specialists" },
+  { to: "/workshops", label: "Workshops" },
+  { to: "/progress", label: "Progress" },
+  { to: "/profile", label: "Profile" },
 ];
 
 function MobileSidebar({ open, onClose }) {

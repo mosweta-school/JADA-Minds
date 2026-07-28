@@ -13,8 +13,6 @@ const links = [
 function Sidebar() {
   return (
     <aside style={{ width: "240px", background: "linear-gradient(135deg, #6b3cb8 0%, #8e5fd4 100%)", color: "#fff", padding: "1.5rem", flexShrink: 0, height: "calc(100vh - 100px)", overflowY: "auto", boxShadow: "0 4px 12px rgba(107, 60, 184, 0.15)" }}>
-      <h2 style={{ fontSize: "1rem", fontWeight: "700", marginBottom: "1.5rem", marginTop: "0", color: "#fff" }}>🚀 Member 3</h2>
-
       <ul style={{ listStyle: "none", padding: "0", margin: "0", display: "flex", flexDirection: "column", gap: "0.3rem" }}>
         {links.map((link) => (
           <li key={link.to}>

@@ -2,7 +2,6 @@ const workshopData = [
   {
     id: "ws1",
     title: "Mindful Mornings",
-    emoji: "🧘",
     date: "2026-08-05",
     time: "6:30 PM",
     duration: "60 min",
@@ -16,7 +15,6 @@ const workshopData = [
   {
     id: "ws2",
     title: "Stress Relief Circle",
-    emoji: "💬",
     date: "2026-08-07",
     time: "7:00 PM",
     duration: "75 min",
@@ -30,7 +28,6 @@ const workshopData = [
   {
     id: "ws3",
     title: "Confidence Bootcamp",
-    emoji: "💪",
     date: "2026-08-09",
     time: "11:00 AM",
     duration: "90 min",
@@ -44,7 +41,6 @@ const workshopData = [
   {
     id: "ws4",
     title: "Sleep & Wellness",
-    emoji: "😴",
     date: "2026-08-10",
     time: "5:00 PM",
     duration: "45 min",
@@ -58,7 +54,6 @@ const workshopData = [
   {
     id: "ws5",
     title: "Creative Expression Workshop",
-    emoji: "🎨",
     date: "2026-08-12",
     time: "3:00 PM",
     duration: "90 min",
@@ -72,7 +67,6 @@ const workshopData = [
   {
     id: "ws6",
     title: "Nutrition for Wellbeing",
-    emoji: "🥗",
     date: "2026-08-14",
     time: "12:00 PM",
     duration: "60 min",

@@ -33,7 +33,7 @@ export default function Assessment() {
     <div className="page-shell design-page assessment-stage">
       <section className="compact-card assessment-intro">
         <div>
-          <div className="intro-icon">🌿</div>
+          <div className="intro-icon"></div>
           <span className="design-kicker">Wellness check-in</span>
           <h2 className="page-title" style={{ fontSize: "1.8rem", marginTop: "0.5rem" }}>Take a step towards a better you.</h2>
           <p className="page-subtitle">Answer a few thoughtful questions to understand your wellbeing and receive personal recommendations.</p>
@@ -48,7 +48,7 @@ export default function Assessment() {
     <div className="page-shell design-page assessment-stage">
       <section className="compact-card assessment-complete">
         <div>
-          <div className="completion-ring"><span>✓</span></div>
+          <div className="completion-ring"><span></span></div>
           <span className="design-kicker">Check-in complete</span>
           <h2 className="page-title" style={{ fontSize: "1.8rem", marginTop: "0.5rem" }}>You’re doing great!</h2>
           <p className="page-subtitle">Your responses are ready. Explore your wellbeing summary and practical next steps.</p>
@@ -67,7 +67,7 @@ export default function Assessment() {
         <div className="option-list">
           {current.options.map((option) => {
             const active = current.type === "radio" ? answers[current.id] === option.value : (answers[current.id] || []).includes(option.value);
-            return <button key={option.value} type="button" className={`option-item answer-option ${active ? "active" : ""}`} aria-pressed={active} onClick={() => selectAnswer(option.value)}><span className={`answer-control ${current.type === "checkbox" ? "checkbox" : ""}`}>{active ? "✓" : ""}</span><span>{option.icon} {option.label}</span></button>;
+            return <button key={option.value} type="button" className={`option-item answer-option ${active ? "active" : ""}`} aria-pressed={active} onClick={() => selectAnswer(option.value)}><span className={`answer-control ${current.type === "checkbox" ? "checkbox" : ""}`}>{active ? "" : ""}</span><span>{option.label}</span></button>;
           })}
         </div>
         {showValidation && <Alert variant="warning" style={{ marginTop: "1rem" }}>Please choose an answer before continuing.</Alert>}
