@@ -1,0 +1,659 @@
+{
+  "info": {
+    "name": "JADA Minds API",
+    "description": "Covers every endpoint built for Member 4's modules: Questions, Assessments, Results & Progress, Resources, Specialists, and Workshops.\n\nSETUP:\n1. Set the `base_url` collection variable (defaults to http://127.0.0.1:5000 for local dev).\n2. There's no /login endpoint yet, so get a token by running `python seed.py` in the backend folder and copying the printed token into the `token` collection variable.\n3. All requests inherit a Bearer auth using {{token}} - no need to set the Authorization header per-request.\n\nSwap the `token` variable for a real one from Deogracious's /login once it exists - nothing else in this collection needs to change.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:5000",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Questions",
+      "item": [
+        {
+          "name": "List Questions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/questions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "questions"
+              ]
+            },
+            "description": "Active question bank, ordered by category and display_order. Requires any valid token."
+          },
+          "response": []
+        },
+        {
+          "name": "Create Question (admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/questions",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "questions"
+              ]
+            },
+            "description": "Admin only - 403 for non-admin tokens.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"question_text\": \"I feel overwhelmed\",\n    \"category\": \"stress\",\n    \"weight\": 1,\n    \"display_order\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Question (admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/questions/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "questions",
+                "1"
+              ]
+            },
+            "description": "Admin only. Partial update - send only the fields you're changing.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"question_text\": \"I feel very overwhelmed\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Retire Question (admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/questions/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "questions",
+                "1"
+              ]
+            },
+            "description": "Admin only. Soft delete - sets is_active=False, does not remove the row (protects historical assessment_responses)."
+          },
+          "response": []
+        }
+      ],
+      "description": ""
+    },
+    {
+      "name": "Assessments",
+      "item": [
+        {
+          "name": "Submit Assessment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/assessment",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "assessment"
+              ]
+            },
+            "description": "selected_option must be one of: Never, Rarely, Sometimes, Often, Always.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"responses\": [\n        {\n            \"question_id\": 1,\n            \"selected_option\": \"Often\"\n        },\n        {\n            \"question_id\": 2,\n            \"selected_option\": \"Rarely\"\n        }\n    ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Assessment by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/assessment/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "assessment",
+                "1"
+              ]
+            },
+            "description": "Only returns your own assessment - 403 if it belongs to someone else, 404 if it doesn't exist."
+          },
+          "response": []
+        }
+      ],
+      "description": ""
+    },
+    {
+      "name": "Results & Progress",
+      "item": [
+        {
+          "name": "Get Latest Result",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/results",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "results"
+              ]
+            },
+            "description": "Your most recent assessment. 404 if you haven't taken one yet."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Progress History & Trends",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/progress",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "progress"
+              ]
+            },
+            "description": "Full history, overall trend (vs. average of prior assessments), statistics, and per-category trends."
+          },
+          "response": []
+        }
+      ],
+      "description": ""
+    },
+    {
+      "name": "Resources",
+      "item": [
+        {
+          "name": "List Resources",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/resources",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "resources"
+              ]
+            },
+            "description": "Active educational resources, ordered by category."
+          },
+          "response": []
+        },
+        {
+          "name": "Create Resource (admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/resources",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "resources"
+              ]
+            },
+            "description": "Admin only.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Managing Exam Stress\",\n    \"category\": \"stress\",\n    \"description\": \"Short guide on coping strategies before exams.\",\n    \"url\": \"https://example.com/exam-stress\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Resource (admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/resources/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "resources",
+                "1"
+              ]
+            },
+            "description": "Admin only. Partial update.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Managing Exam Stress (Updated)\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Retire Resource (admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/resources/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "resources",
+                "1"
+              ]
+            },
+            "description": "Admin only. Soft delete."
+          },
+          "response": []
+        }
+      ],
+      "description": ""
+    },
+    {
+      "name": "Specialists",
+      "item": [
+        {
+          "name": "List Specialists",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/specialists?specialization=Counseling",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "specialists"
+              ],
+              "query": [
+                {
+                  "key": "specialization",
+                  "value": "Counseling"
+                }
+              ]
+            },
+            "description": "Approved specialists only. specialization query param is optional."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Specialist by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/specialists/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "specialists",
+                "1"
+              ]
+            },
+            "description": "404 if not approved (not 403) - an unapproved profile looks like it doesn't exist."
+          },
+          "response": []
+        },
+        {
+          "name": "Submit Specialist Application",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/specialists",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "specialists"
+              ]
+            },
+            "description": "Requires a token belonging to a role=specialist account. 403 otherwise. 400 if you already have an application.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"specialization\": \"Counseling\",\n    \"bio\": \"Licensed counselor with 5 years experience.\",\n    \"registration_number\": \"REG-001\",\n    \"national_id_url\": \"https://example.com/id.pdf\",\n    \"degree_certificate_url\": \"https://example.com/degree.pdf\",\n    \"professional_license_url\": \"https://example.com/license.pdf\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get My Specialist Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/specialists/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "specialists",
+                "me"
+              ]
+            },
+            "description": "Your own application, including verification_status. 404 if you haven't applied."
+          },
+          "response": []
+        },
+        {
+          "name": "Update My Specialist Profile",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/specialists/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "specialists",
+                "me"
+              ]
+            },
+            "description": "specialization/bio only - not documents or verification_status.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"bio\": \"Updated bio.\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": ""
+    },
+    {
+      "name": "Workshops",
+      "item": [
+        {
+          "name": "List Workshops",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workshops",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "workshops"
+              ]
+            },
+            "description": "Active workshops, ordered by event_date."
+          },
+          "response": []
+        },
+        {
+          "name": "Create Workshop (admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/workshops",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "workshops"
+              ]
+            },
+            "description": "Admin only.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Managing Stress\",\n    \"description\": \"A workshop on managing stress\",\n    \"event_date\": \"2026-09-01\",\n    \"location\": \"Nairobi\",\n    \"capacity\": 30\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Workshop (admin)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/workshops/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "workshops",
+                "1"
+              ]
+            },
+            "description": "Admin only. Partial update.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"location\": \"Mombasa\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Retire Workshop (admin)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workshops/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "workshops",
+                "1"
+              ]
+            },
+            "description": "Admin only. Soft delete."
+          },
+          "response": []
+        },
+        {
+          "name": "Register for Workshop",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/workshops/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "workshops",
+                "register"
+              ]
+            },
+            "description": "Cancelling then registering again reactivates the same registration instead of creating a duplicate.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"workshop_id\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel Registration",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workshops/register/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "workshops",
+                "register",
+                "1"
+              ]
+            },
+            "description": "Path id here is the registration's own id, not the workshop id. Only cancels your own - 403 otherwise."
+          },
+          "response": []
+        },
+        {
+          "name": "View My Registered Workshops",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/workshops/registered",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "workshops",
+                "registered"
+              ]
+            },
+            "description": "Not in the README's original endpoint list, but matches the original 'View Registered Workshops' assignment."
+          },
+          "response": []
+        }
+      ],
+      "description": ""
+    }
+  ]
+}

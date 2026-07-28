@@ -29,5 +29,5 @@ with app.app_context():
         db.session.add(question)
         db.session.commit()
 
-    token = create_access_token(identity=str(admin.id))
+    token = create_access_token(identity=str(admin.id), expires_delta=False)
     print("\nTOKEN:", token, "\n")
