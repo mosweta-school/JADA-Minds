@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import PasswordField from "./PasswordField";
+import mockUsers from "../../data/mockUsers";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -25,34 +26,53 @@ function LoginForm() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
     if (!form.email || !form.password) {
-      setError("Please enter your email and password.");
-      return;
+        setError("Please enter your email and password.");
+        return;
     }
 
     try {
-      setLoading(true);
+        setLoading(true);
 
-      await login({
-        email: form.email,
-        role: "client",
-      });
+        const user = mockUsers.find(
+        (user) =>
+            user.email === form.email &&
+            user.password === form.password
+        );
 
-      navigate("/");
+        if (!user) {
+        throw new Error("Invalid email or password.");
+        }
+
+        await login({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        });
+
+        switch (user.role) {
+        case "admin":
+            navigate("/admin");
+            break;
+
+        case "specialist":
+            navigate("/specialist");
+            break;
+
+        default:
+            navigate("/");
+        }
     } catch (err) {
-      setError(
-        err.response?.data?.message ||
-          "Unable to sign in. Please try again."
-      );
+        setError(err.message || "Unable to sign in.");
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
-
+    };
   return (
     <form onSubmit={handleSubmit}>
       {error && (
