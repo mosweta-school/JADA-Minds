@@ -1,4 +1,4 @@
-function EmptyState({ emoji = "📭", title = "Nothing here yet", description = "", actionLabel = "", onAction, className = "", style = {}, ...props }) {
+function EmptyState({ emoji = "", title = "Nothing here yet", description = "", actionLabel = "", onAction, className = "", style = {}, ...props }) {
   return (
     <div className={`empty-state ${className}`.trim()} style={{ ...style }} {...props}>
       <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>{emoji}</div>

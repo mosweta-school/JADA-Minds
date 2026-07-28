@@ -8,7 +8,6 @@ const assessmentHistory = [
     date: "2026-07-20",
     score: 72,
     category: "Overall",
-    emoji: "😊",
     trends: ["Energy improving", "Support growing", "Great momentum"],
   },
   {
@@ -16,7 +15,6 @@ const assessmentHistory = [
     date: "2026-07-15",
     score: 65,
     category: "Overall",
-    emoji: "🙂",
     trends: ["Stress decreasing", "Sleep improving"],
   },
   {
@@ -24,7 +22,6 @@ const assessmentHistory = [
     date: "2026-07-10",
     score: 58,
     category: "Overall",
-    emoji: "😐",
     trends: ["Starting journey", "Setting goals"],
   },
 ];
@@ -44,12 +41,12 @@ export default function Progress() {
   const latestScore = assessmentHistory[0]?.score || 0;
   const previousScore = assessmentHistory[1]?.score || 0;
   const trend = latestScore >= previousScore ? "up" : "down";
-  const trendEmoji = trend === "up" ? "📈" : trend === "down" ? "📉" : "➡️";
+  const trendEmoji = trend === "up" ? "Trending up" : trend === "down" ? "Needs attention" : "Stable";
 
   return (
     <div className="page-shell">
       <section className="hero-card">
-        <span className="eyebrow">📈 Progress tracking</span>
+        <span className="eyebrow">Progress tracking</span>
         <h2 className="page-title">Your wellness journey at a glance.</h2>
         <p className="page-subtitle">
           Track your progress over time with assessment history, wellness trends, and personalized insights.
@@ -59,18 +56,15 @@ export default function Progress() {
       <section>
         <div className="stat-grid">
           <div className="panel" style={{ textAlign: "center" }}>
-            <span style={{ fontSize: "2.5rem" }}>🧠</span>
             <h3 style={{ fontSize: "2rem", color: "#6b3cb8", marginTop: "0.3rem" }}>{latestScore}</h3>
             <p style={{ fontSize: "0.85rem" }}>Latest Score</p>
             <Badge variant="success" style={{ marginTop: "0.4rem" }}>{trendEmoji} {trend === "up" ? "Trending up" : trend === "down" ? "Needs attention" : "Stable"}</Badge>
           </div>
           <div className="panel" style={{ textAlign: "center" }}>
-            <span style={{ fontSize: "2.5rem" }}>📋</span>
             <h3 style={{ fontSize: "2rem", color: "#6b3cb8", marginTop: "0.3rem" }}>{assessmentHistory.length}</h3>
             <p style={{ fontSize: "0.85rem" }}>Assessments Completed</p>
           </div>
           <div className="panel" style={{ textAlign: "center" }}>
-            <span style={{ fontSize: "2.5rem" }}>🔥</span>
             <h3 style={{ fontSize: "2rem", color: "#6b3cb8", marginTop: "0.3rem" }}>5</h3>
             <p style={{ fontSize: "0.85rem" }}>Day Streak</p>
           </div>
@@ -111,7 +105,6 @@ export default function Progress() {
             <Card key={entry.id} style={{ marginBottom: "1rem", borderTop: `4px solid ${entry.score >= 70 ? "#20c997" : entry.score >= 50 ? "#ffa733" : "#e74c3c"}` }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "1rem" }}>
                 <div>
-                  <span style={{ fontSize: "2rem" }}>{entry.emoji}</span>
                   <h3 style={{ margin: "0.3rem 0" }}>Score: {entry.score}/100</h3>
                   <p style={{ fontSize: "0.85rem", color: "#6b5b95" }}>{entry.date}</p>
                 </div>
