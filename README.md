@@ -1,4 +1,4 @@
-# 🧠 JADA Minds – Mental Wellness Support Platform
+# JADA Minds – Mental Wellness Support Platform
 
 > **Understand. Grow. Thrive.**
 
@@ -6,7 +6,7 @@ JADA Minds is a web-based mental wellness support platform designed to help stud
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 Mental wellness challenges such as stress, anxiety, burnout, and emotional exhaustion are becoming increasingly common among students and young professionals. Unfortunately, many individuals fail to recognize early warning signs or know where to seek appropriate support.
 
@@ -21,7 +21,7 @@ JADA Minds provides a centralized platform where users can:
 
 ---
 
-# 🚨 Problem Statement
+# Problem Statement
 
 Mental wellness challenges such as stress, anxiety, burnout, and emotional exhaustion are increasingly affecting students and young professionals. Many people fail to recognize early warning signs or know where to seek support.
 
@@ -29,7 +29,7 @@ Existing solutions are often expensive, difficult to access, or focus primarily 
 
 ---
 
-# 💡 Proposed Solution
+# Proposed Solution
 
 JADA Minds is a web-based mental wellness support platform that promotes awareness, education, and early intervention by providing users with:
 
@@ -44,7 +44,7 @@ The platform does **not** provide medical diagnosis. Instead, it empowers users 
 
 ---
 
-# 🎯 Project Objectives
+#  Project Objectives
 
 - Promote mental wellness awareness
 - Encourage early self-assessment
@@ -56,9 +56,9 @@ The platform does **not** provide medical diagnosis. Instead, it empowers users 
 
 ---
 
-# 👥 User Roles
+# User Roles
 
-## 👤 Client
+## Client
 
 Clients can:
 
@@ -73,7 +73,7 @@ Clients can:
 
 ---
 
-## 🛡️ Administrator
+## Administrator
 
 Administrators manage the entire platform.
 
@@ -89,7 +89,7 @@ Responsibilities include:
 
 ---
 
-## 👨‍⚕️ Specialist
+##  Specialist
 
 Verified specialists can:
 
@@ -101,7 +101,7 @@ Verified specialists can:
 
 ---
 
-# ✅ Specialist Verification Process
+# Specialist Verification Process
 
 To ensure quality mental wellness support, specialists must be verified before accessing the Specialist Dashboard.
 
@@ -120,7 +120,7 @@ To ensure quality mental wellness support, specialists must be verified before a
 
 ---
 
-# ✨ Minimum Viable Product (MVP)
+# Minimum Viable Product (MVP)
 
 ## Authentication
 
@@ -169,7 +169,7 @@ To ensure quality mental wellness support, specialists must be verified before a
 
 ---
 
-# 🏗️ System Architecture
+# System Architecture
 
 ```
 Frontend (React + Vite)
@@ -186,7 +186,7 @@ PostgreSQL Database
 
 ---
 
-# 🛠️ Technology Stack
+# Technology Stack
 
 ## Frontend
 
@@ -230,7 +230,7 @@ PostgreSQL Database
 
 ---
 
-# 🔒 Security
+# Security
 
 The system implements **Role-Based Access Control (RBAC).**
 
@@ -246,7 +246,7 @@ JWT stores the authenticated user's role, and backend endpoints are protected ac
 
 ---
 
-# 🧠 Recommendation Algorithm
+# Recommendation Algorithm
 
 JADA Minds uses a **Rule-Based Recommendation System.**
 
@@ -271,7 +271,7 @@ Based on the category, the platform recommends:
 
 ---
 
-# 📂 Project Structure
+# Project Structure
 
 ```
 JADA-Minds/
@@ -324,7 +324,7 @@ JADA-Minds/
 
 ---
 
-# 🔌 REST API Endpoints
+# REST API Endpoints
 
 ## Authentication
 
@@ -384,7 +384,7 @@ PUT /profile
 
 ---
 
-# 🚀 Getting Started
+# Getting Started
 
 ## Clone the repository
 
@@ -524,7 +524,7 @@ development → main
 
 ---
 
-# 📈 Future Improvements
+# Future Improvements
 
 - AI-powered wellness recommendations
 - Appointment booking with specialists
@@ -539,7 +539,7 @@ development → main
 
 ---
 
-# 👨‍💻 Contributors
+# Contributors
 
 This project is being developed collaboratively by the JADA Minds development team.
 
@@ -553,12 +553,12 @@ This project is being developed collaboratively by the JADA Minds development te
 Trello board
 https://trello.com/b/jpPFko3z/jada-minds-module-5-group-project
 
-# 📄 License
+# License
 
 This project is licensed under the MIT License.
 
 ---
 
-## ❤️ JADA Minds
+## JADA Minds
 
 **Understand. Grow. Thrive.**
