@@ -10,12 +10,10 @@ function PasswordField({
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="space-y-2">
-      <label htmlFor={name} className="block text-sm font-medium">
-        {label}
-      </label>
+    <div className="input-group">
+      <label htmlFor={name}>{label}</label>
 
-      <div className="relative">
+      <div style={{ position: "relative" }}>
         <input
           id={name}
           name={name}
@@ -23,13 +21,23 @@ function PasswordField({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
-          className="w-full rounded-lg border p-3"
+          style={{ paddingRight: "4.5rem" }}
         />
 
         <button
           type="button"
           onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-3 top-3 text-sm"
+          style={{
+            position: "absolute",
+            top: "50%",
+            right: "1rem",
+            transform: "translateY(-50%)",
+            border: "none",
+            background: "transparent",
+            color: "#6b3cb8",
+            cursor: "pointer",
+            fontWeight: 600,
+          }}
         >
           {showPassword ? "Hide" : "Show"}
         </button>
