@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import PasswordField from "./PasswordField";
 
@@ -27,7 +27,6 @@ function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setError("");
 
     if (!form.email || !form.password) {
@@ -38,7 +37,6 @@ function LoginForm() {
     try {
       setLoading(true);
 
-      // Temporary login until backend authentication is connected
       await login({
         email: form.email,
         role: "client",
@@ -56,54 +54,94 @@ function LoginForm() {
   };
 
   return (
-    <div className="login-form">
-      <form onSubmit={handleSubmit}>
-        {error && <div className="error">{error}</div>}
+    <form onSubmit={handleSubmit}>
+      {error && (
+        <div
+          style={{
+            marginBottom: "1rem",
+            padding: "0.85rem",
+            borderRadius: "0.75rem",
+            background: "#fff3f3",
+            border: "1px solid #f5bcbc",
+            color: "#c0392b",
+          }}
+        >
+          {error}
+        </div>
+      )}
 
-        <div>
-          <label htmlFor="email">Email</label>
+      <div className="input-group">
+        <label htmlFor="email">Email Address</label>
+
+        <input
+          id="email"
+          name="email"
+          type="email"
+          value={form.email}
+          onChange={handleChange}
+          autoComplete="email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+
+      <div className="input-group">
+        <PasswordField
+          label="Password"
+          name="password"
+          value={form.password}
+          onChange={handleChange}
+          placeholder="Enter your password"
+        />
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "1.5rem",
+          flexWrap: "wrap",
+          gap: "0.75rem",
+        }}
+      >
+        <label
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            color: "#6b5b95",
+          }}
+        >
           <input
-            id="email"
-            name="email"
-            type="email"
-            value={form.email}
+            type="checkbox"
+            name="remember"
+            checked={form.remember}
             onChange={handleChange}
-            autoComplete="email"
-            required
           />
-        </div>
+          Remember me
+        </label>
 
-        <div>
-          <PasswordField
-            label="Password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-            placeholder="Enter your password"
-          />
-        </div>
+        <Link
+          to="/forgot-password"
+          style={{
+            color: "#6b3cb8",
+            fontWeight: 600,
+          }}
+        >
+          Forgot password?
+        </Link>
+      </div>
 
-        <div>
-          <label>
-            <input
-              type="checkbox"
-              name="remember"
-              checked={form.remember}
-              onChange={handleChange}
-            />
-            Remember me
-          </label>
-        </div>
-
-        <button type="submit" disabled={loading}>
-          {loading ? "Signing in..." : "Sign In"}
-        </button>
-
-        <div style={{ marginTop: "1rem" }}>
-          <Link to="/forgot-password">Forgot password?</Link>
-        </div>
-      </form>
-    </div>
+      <button
+        type="submit"
+        disabled={loading}
+        className="button button-primary"
+        style={{ width: "100%" }}
+      >
+        {loading ? "Signing in..." : "Sign In"}
+      </button>
+    </form>
   );
 }
 
