@@ -25,6 +25,7 @@ const adminLinks = [
   { to: "/admin/resources", label: "Resources" },
   { to: "/admin/workshops", label: "Workshops" },
   { to: "/admin/reports", label: "Reports" },
+  { to: "/admin/profile", label: "Profile" },
 ];
 
 function Sidebar() {

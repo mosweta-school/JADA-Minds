@@ -26,6 +26,7 @@ import AdminSpecialists from "../pages/admin/Specialists";
 import AdminResources from "../pages/admin/Resources";
 import AdminWorkshops from "../pages/admin/Workshops";
 import Reports from "../pages/admin/Reports";
+import AdminProfile from "../pages/admin/Profile";
 
 // Specialist Pages
 import SpecialistDashboard from "../pages/specialist/Dashboard";
@@ -69,6 +70,7 @@ function AppRoutes() {
         <Route path="resources" element={<AdminResources />} />
         <Route path="workshops" element={<AdminWorkshops />} />
         <Route path="reports" element={<Reports />} />
+        <Route path="profile" element={<AdminProfile />} />
       </Route>
 
       {/* SPECIALIST */}
