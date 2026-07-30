@@ -32,7 +32,7 @@ export default function ForgotPassword() {
       <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', background: 'linear-gradient(135deg, #f5f1ff 0%, #faf5ff 100%)' }}>
         <Card>
           <div style={{ textAlign: 'center' }}>
-            <h1 style={{ fontSize: '1.75rem', color: '#2d1b69', marginBottom: '0.5rem' }}>📧 Check Your Email</h1>
+            <h1 style={{ fontSize: '1.75rem', color: '#2d1b69', marginBottom: '0.5rem' }}>Check Your Email</h1>
             <p style={{ color: '#6b5b95', marginBottom: '1rem' }}>
               If an account exists with this email, you'll receive a password reset link.
             </p>

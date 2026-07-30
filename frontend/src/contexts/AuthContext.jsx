@@ -3,10 +3,10 @@
 import { createContext, useEffect, useState, useContext } from "react";
 import { authApi } from "../api/authApi";
 
-// ✅ Named export for AuthContext
+// Named export for AuthContext
 export const AuthContext = createContext();
 
-// ✅ Named export for AuthProvider
+// Named export for AuthProvider
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -162,7 +162,7 @@ export function AuthProvider({ children }) {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
-// ✅ Named export for useAuth hook (or you can keep it in a separate file)
+// Named export for useAuth hook (or you can keep it in a separate file)
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -171,5 +171,5 @@ export const useAuth = () => {
   return context;
 };
 
-// ✅ Default export for backward compatibility
+// Default export for backward compatibility
 export default AuthContext;

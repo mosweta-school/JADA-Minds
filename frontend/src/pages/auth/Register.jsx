@@ -52,7 +52,7 @@ export default function Register() {
       <div className="auth-container" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
         <Card>
           <div style={{ textAlign: 'center' }}>
-            <h1 style={{ fontSize: '2rem', color: '#2d1b69', marginBottom: '0.5rem' }}>🎉 Registration Successful!</h1>
+            <h1 style={{ fontSize: '2rem', color: '#2d1b69', marginBottom: '0.5rem' }}>Registration Successful!</h1>
             <p style={{ color: '#6b5b95', marginBottom: '0.5rem' }}>Please check your email to verify your account.</p>
             <p style={{ color: '#6b5b95', fontSize: '0.875rem' }}>Redirecting to login...</p>
           </div>

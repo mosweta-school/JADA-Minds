@@ -30,7 +30,7 @@ function LoginForm() {
     }));
   };
 
-  // ✅ Regular Email/Password Login
+  // Regular Email/Password Login
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -46,7 +46,7 @@ function LoginForm() {
       const result = await login(form.email, form.password);
       
       if (result.requires_mfa) {
-        // ✅ Redirect to MFA verification
+        // Redirect to MFA verification
         navigate('/mfa-verify', { state: { user: result.user } });
       } else {
         navigate("/dashboard");
@@ -62,7 +62,7 @@ function LoginForm() {
     }
   };
 
-  // ✅ Google OAuth Login
+  // Google OAuth Login
   const googleLoginHandler = useGoogleLogin({
     onSuccess: async (tokenResponse) => {
       setGoogleLoading(true);
@@ -108,7 +108,7 @@ function LoginForm() {
             gap: "0.5rem",
           }}
         >
-          <span style={{ fontSize: "1.2rem" }}>❌</span>
+          <span style={{ fontSize: "1.2rem" }}>Error</span>
           <span>{error}</span>
         </div>
       )}
@@ -183,7 +183,7 @@ function LoginForm() {
         </Link>
       </div>
 
-      {/* ✅ Sign In Button */}
+      {/* Sign In Button */}
       <button
         type="submit"
         disabled={loading || googleLoading}
@@ -200,7 +200,7 @@ function LoginForm() {
         {loading ? "Signing in..." : "Sign In"}
       </button>
 
-      {/* ✅ Divider */}
+      {/* Divider */}
       <div
         style={{
           display: "flex",
@@ -235,7 +235,7 @@ function LoginForm() {
         />
       </div>
 
-      {/* ✅ Google Sign In Button */}
+      {/* Google Sign In Button */}
       <button
         type="button"
         onClick={() => googleLoginHandler()}
@@ -296,7 +296,7 @@ function LoginForm() {
         )}
       </button>
 
-      {/* ✅ Register Link */}
+      {/* Register Link */}
       <div
         style={{
           textAlign: "center",

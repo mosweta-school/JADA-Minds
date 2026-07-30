@@ -211,7 +211,7 @@ export default function Profile() {
   return (
     <div className="page-shell">
       <section className="hero-card">
-        <span className="eyebrow">⚙️ Your profile</span>
+        <span className="eyebrow">Your profile</span>
         <h2 className="page-title">Manage your account & preferences</h2>
         <p className="page-subtitle">
           Keep your profile current to ensure your experience stays personal and relevant.
@@ -221,7 +221,7 @@ export default function Profile() {
       <section className="dashboard-grid">
         {/* Left Column - Profile Form */}
         <div className="form-card">
-          <h3>📝 Profile details</h3>
+          <h3>Profile details</h3>
           
           {message.text && (
             <Alert variant={message.type} style={{ marginBottom: '1rem' }}>
@@ -268,7 +268,7 @@ export default function Profile() {
                 style={{ fontSize: '0.85rem', padding: '0.5rem 1rem' }}
                 onClick={() => setShowPasswordModal(true)}
               >
-                🔑 Change password
+                Change password
               </button>
             </div>
 
@@ -323,7 +323,7 @@ export default function Profile() {
                 </p>
                 <p style={{ margin: '0.25rem 0 0', color: '#6b5b95', fontSize: '0.9rem' }}>
                   {mfaEnabled 
-                    ? '✅ MFA is enabled on your account' 
+                    ? 'MFA is enabled on your account' 
                     : 'Add an extra layer of security to your account'}
                 </p>
               </div>
