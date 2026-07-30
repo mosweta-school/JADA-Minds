@@ -122,7 +122,7 @@ def reset_password():
     if not data:
         return jsonify({"error": "Missing JSON body"}), 400
     
-    # ✅ Accept both 'new_password' and 'newPassword' for flexibility
+    #  Accept both 'new_password' and 'newPassword' for flexibility
     token = data.get('token')
     new_password = data.get('new_password') or data.get('newPassword')
     

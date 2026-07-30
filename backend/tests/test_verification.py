@@ -13,7 +13,7 @@ class TestEmailVerification:
     """Test email verification endpoint."""
     
     def test_verify_email_success(self, client, db, test_user, verification_token):
-        """✅ Test successful email verification."""
+        """ Test successful email verification."""
         response = client.post('/api/auth/verify-email', json={
             'token': verification_token.token
         })
@@ -33,7 +33,7 @@ class TestEmailVerification:
         assert token.used_at is not None
     
     def test_verify_email_invalid_token(self, client):
-        """❌ Test verification with invalid token."""
+        """ Test verification with invalid token."""
         response = client.post('/api/auth/verify-email', json={
             'token': 'invalid-token-12345'
         })
@@ -43,7 +43,7 @@ class TestEmailVerification:
         assert 'invalid' in data['error'].lower()
     
     def test_verify_email_expired_token(self, client, db, test_user, expired_token):
-        """❌ Test verification with expired token."""
+        """ Test verification with expired token."""
         response = client.post('/api/auth/verify-email', json={
             'token': expired_token.token
         })
@@ -57,7 +57,7 @@ class TestEmailVerification:
         assert user.email_verified == False
     
     def test_verify_email_already_used_token(self, client, db, test_user, verification_token):
-        """❌ Test verification with already used token."""
+        """ Test verification with already used token."""
         # First use
         response = client.post('/api/auth/verify-email', json={
             'token': verification_token.token
@@ -72,8 +72,8 @@ class TestEmailVerification:
         assert 'invalid' in response.get_json()['error'].lower()
     
     def test_verify_email_missing_token(self, client):
-        """❌ Test verification without token."""
+        """ Test verification without token."""
         response = client.post('/api/auth/verify-email', json={})
         assert response.status_code == 400
         error = response.get_json()['error'].lower()
-        assert 'token' in error or 'json' in error  # ✅ Accept either message
+        assert 'token' in error or 'json' in error  #  Accept either message

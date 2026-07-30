@@ -32,10 +32,10 @@ with app.app_context():
         db.session.add(question)
         db.session.commit()
 
-    # ✅ Fix: Use timedelta instead of expires_delta=False
+    #  Fix: Use timedelta instead of expires_delta=False
     token = create_access_token(identity=str(admin.id), expires_delta=timedelta(days=1))
     print("\n" + "=" * 60)
-    print("🔑 ADMIN TOKEN")
+    print(" ADMIN TOKEN")
     print("=" * 60)
     print(token)
     print("=" * 60 + "\n")

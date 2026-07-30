@@ -6,7 +6,7 @@ ALL auth logic in ONE file for simplicity and easy testing.
 """
 # backend/app/auth.py
 
-import requests  # ✅ Add this import at the top
+import requests  #  Add this import at the top
 
 from flask import current_app
 import secrets
@@ -88,14 +88,14 @@ def google_login(credential):
         tuple: (response_data, status_code)
     """
     try:
-        # ✅ Verify Google token with Google's API
+        #  Verify Google token with Google's API
         # Note: The frontend sends an access token, not an ID token
         # We need to use the userinfo endpoint to get user data
         headers = {
             'Authorization': f'Bearer {credential}'
         }
         
-        # ✅ Get user info from Google using the access token
+        #  Get user info from Google using the access token
         response = requests.get(
             'https://www.googleapis.com/oauth2/v2/userinfo',
             headers=headers,
@@ -114,14 +114,14 @@ def google_login(credential):
         if not email:
             return {"error": "Email not provided by Google"}, 400
         
-        # ✅ Normalize email
+        #  Normalize email
         email = normalize_email(email)
         
-        # ✅ Check if user exists
+        #  Check if user exists
         user = User.query.filter_by(email=email).first()
         
         if not user:
-            # ✅ Create new user with Google info
+            #  Create new user with Google info
             random_password = secrets.token_urlsafe(32)
             user = User(
                 full_name=full_name,
@@ -135,16 +135,16 @@ def google_login(credential):
             db.session.commit()
             current_app.logger.info(f"New user created via Google OAuth: {email}")
         else:
-            # ✅ Update existing user's name if changed
+            #  Update existing user's name if changed
             if user.full_name != full_name:
                 user.full_name = full_name
                 db.session.commit()
         
-        # ✅ Update last login
+        #  Update last login
         user.last_login = ensure_naive(utc_now())
         db.session.commit()
         
-        # ✅ Generate tokens
+        #  Generate tokens
         return generate_tokens(user)
         
     except requests.RequestException as e:
@@ -203,7 +203,7 @@ def validate_password_strength(password):
 
 def find_valid_token(token, purpose):
     """Find a valid, unused, non-expired token."""
-    # ✅ Debug logging
+    #  Debug logging
     current_app.logger.info(f"Looking for token: {token[:10]}... (purpose: {purpose})")
     
     token_obj = VerificationToken.query.filter_by(
@@ -216,7 +216,7 @@ def find_valid_token(token, purpose):
         current_app.logger.warning(f"Token not found or already used: {token[:10]}...")
         return None
     
-    # ✅ Ensure both datetimes are timezone-aware before comparison
+    #  Ensure both datetimes are timezone-aware before comparison
     expires_at = ensure_aware(token_obj.expires_at)
     now = utc_now()
     
@@ -238,10 +238,10 @@ def mark_token_used(token_obj):
 def create_verification_token(user_id, purpose, expiry_hours=24):
     """Create a verification token."""
     token = generate_token()
-    # ✅ Store as naive UTC for SQLite
+    #  Store as naive UTC for SQLite
     expires_at = ensure_naive(utc_now() + timedelta(hours=expiry_hours))
     
-    # ✅ Debug logging
+    #  Debug logging
     current_app.logger.info(f"Creating token for user {user_id}, purpose: {purpose}, expires: {expires_at}")
     
     verification = VerificationToken(
@@ -685,16 +685,16 @@ def forgot_password(email):
     
     # Always return success for security (don't reveal if user exists)
     if user:
-        # ✅ Delete old tokens
+        #  Delete old tokens
         VerificationToken.query.filter_by(
             user_id=user.id,
             purpose='password_reset'
         ).delete()
         
-        # ✅ Create new token with 30 minute expiry
+        #  Create new token with 30 minute expiry
         token = create_verification_token(user.id, 'password_reset', 0.5)  # 0.5 hours = 30 minutes
         
-        # ✅ Debug logging
+        #  Debug logging
         current_app.logger.info(f"Password reset token created for {email}: {token[:10]}...")
         
         # Send reset email
@@ -716,7 +716,7 @@ def reset_password(token, new_password):
     Returns:
         tuple: (response_data, status_code)
     """
-    # ✅ Debug logging
+    #  Debug logging
     current_app.logger.info(f"Reset password attempt with token: {token[:10]}...")
     
     # Validate password
@@ -728,7 +728,7 @@ def reset_password(token, new_password):
     token_obj = find_valid_token(token, 'password_reset')
     
     if not token_obj:
-        # ✅ Check if token exists but is used or expired for better error message
+        #  Check if token exists but is used or expired for better error message
         existing_token = VerificationToken.query.filter_by(
             token=token,
             purpose='password_reset'

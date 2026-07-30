@@ -24,14 +24,14 @@ def create_app():
     limiter.init_app(app)
     mail.init_app(app)
 
-    # ✅ JWT token revocation check with proper error handling
+    #  JWT token revocation check with proper error handling
     @jwt.token_in_blocklist_loader
     def check_if_token_revoked(jwt_header, jwt_payload):
         try:
             return is_token_revoked(jwt_payload)
         except Exception as e:
             app.logger.error(f"Error checking token revocation: {e}")
-            return False  # ✅ Default to False (not revoked) on error
+            return False  #  Default to False (not revoked) on error
 
     @jwt.revoked_token_loader
     def handle_revoked_token(jwt_header, jwt_payload):
@@ -39,20 +39,20 @@ def create_app():
 
     @jwt.invalid_token_loader
     def handle_invalid_token(error):
-        """✅ Handle invalid tokens gracefully."""
+        """ Handle invalid tokens gracefully."""
         return jsonify({"error": "Invalid token. Please log in again."}), 401
 
     @jwt.unauthorized_loader
     def handle_missing_token(error):
-        """✅ Handle missing tokens gracefully."""
+        """ Handle missing tokens gracefully."""
         return jsonify({"error": "Authentication token is missing."}), 401
 
     @jwt.expired_token_loader
     def handle_expired_token(jwt_header, jwt_payload):
-        """✅ Handle expired tokens gracefully."""
+        """ Handle expired tokens gracefully."""
         return jsonify({"error": "Token has expired. Please refresh."}), 401
 
-    # ✅ Rate limit error handler
+    #  Rate limit error handler
     @app.errorhandler(429)
     def handle_rate_limit_exceeded(e):
         return jsonify({
@@ -79,7 +79,7 @@ def create_app():
     def home():
         return {
             "status": "success",
-            "message": "Welcome to JADA Minds API 🚀"
+            "message": "Welcome to JADA Minds API "
         }
 
     return app

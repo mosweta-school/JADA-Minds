@@ -62,14 +62,14 @@ def send_welcome_email(email, full_name):
     subject = "Welcome to JADA Minds!"
     html = f"""
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #6b46c1;">Welcome to JADA Minds, {full_name}! 🧠</h2>
+        <h2 style="color: #6b46c1;">Welcome to JADA Minds, {full_name}! </h2>
         <p>We're excited to have you join our community.</p>
         <p>Here's what you can do next:</p>
         <ul>
-            <li>📝 Take a wellness assessment</li>
-            <li>📚 Explore educational resources</li>
-            <li>👨‍⚕️ Connect with specialists</li>
-            <li>📅 Join wellness workshops</li>
+            <li> Take a wellness assessment</li>
+            <li> Explore educational resources</li>
+            <li> Connect with specialists</li>
+            <li> Join wellness workshops</li>
         </ul>
         <p style="text-align: center; margin: 20px 0;">
             <a href="{current_app.config.get('FRONTEND_URL', 'http://localhost:5173')}/dashboard" 

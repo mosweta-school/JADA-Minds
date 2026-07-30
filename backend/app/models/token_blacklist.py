@@ -42,7 +42,7 @@ def is_token_revoked(jwt_payload):
         return False
     
     try:
-        # ✅ Check if table exists first to avoid errors in tests
+        #  Check if table exists first to avoid errors in tests
         inspector = inspect(db.engine)
         if not inspector.has_table('token_blacklist'):
             return False

@@ -13,7 +13,7 @@ class TestRegistration:
     """Test user registration endpoint."""
     
     def test_register_success(self, client, db):
-        """✅ Test successful registration."""
+        """ Test successful registration."""
         response = client.post('/api/auth/register', json={
             'full_name': 'John Doe',
             'email': 'john@example.com',
@@ -44,7 +44,7 @@ class TestRegistration:
         assert token.used == False
     
     def test_register_duplicate_email(self, client, db, test_user):
-        """❌ Test registration with duplicate email."""
+        """ Test registration with duplicate email."""
         response = client.post('/api/auth/register', json={
             'full_name': 'Another User',
             'email': 'test@example.com',  # Already exists
@@ -57,7 +57,7 @@ class TestRegistration:
         assert 'already registered' in data['error'].lower()
     
     def test_register_weak_password(self, client):
-        """❌ Test registration with weak password."""
+        """ Test registration with weak password."""
         # Too short
         response = client.post('/api/auth/register', json={
             'full_name': 'John Doe',
@@ -90,7 +90,7 @@ class TestRegistration:
         assert 'special' in response.get_json()['error'].lower()
     
     def test_register_password_mismatch(self, client):
-        """❌ Test registration with mismatched passwords."""
+        """ Test registration with mismatched passwords."""
         response = client.post('/api/auth/register', json={
             'full_name': 'John Doe',
             'email': 'john@example.com',
@@ -103,7 +103,7 @@ class TestRegistration:
         assert 'match' in data['error'].lower()
     
     def test_register_missing_fields(self, client):
-        """❌ Test registration with missing required fields."""
+        """ Test registration with missing required fields."""
         # Missing full_name
         response = client.post('/api/auth/register', json={
             'email': 'john@example.com',
@@ -123,7 +123,7 @@ class TestRegistration:
         assert 'email' in response.get_json()['error'].lower()
     
     def test_register_invalid_email(self, client):
-        """❌ Test registration with invalid email format."""
+        """ Test registration with invalid email format."""
         response = client.post('/api/auth/register', json={
             'full_name': 'John Doe',
             'email': 'invalid-email',
@@ -134,7 +134,7 @@ class TestRegistration:
         assert 'email' in response.get_json()['error'].lower()
     
     def test_register_specialist_role(self, client, db):
-        """✅ Test registration with specialist role."""
+        """ Test registration with specialist role."""
         response = client.post('/api/auth/register', json={
             'full_name': 'Dr. Jane',
             'email': 'jane@example.com',
@@ -152,7 +152,7 @@ class TestRegistration:
         assert user.role == 'specialist'
     
     def test_register_admin_role_blocked(self, client, db):
-        """❌ Test registration with admin role (should be blocked)."""
+        """ Test registration with admin role (should be blocked)."""
         response = client.post('/api/auth/register', json={
             'full_name': 'Admin Wannabe',
             'email': 'adminwannabe@example.com',
