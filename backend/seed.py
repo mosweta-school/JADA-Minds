@@ -1,10 +1,13 @@
+# backend/seed.py
+
 # Dev-only seed data for local testing.
-# Question content here is a placeholder, not the real questionnaire.g
+# Question content here is a placeholder, not the real questionnaire.
 
 from app import create_app
 from app.extensions import db
 from app.models import User, Question
 from flask_jwt_extended import create_access_token
+from datetime import timedelta
 
 app = create_app()
 
@@ -29,5 +32,10 @@ with app.app_context():
         db.session.add(question)
         db.session.commit()
 
-    token = create_access_token(identity=str(admin.id), expires_delta=False)
-    print("\nTOKEN:", token, "\n")
+    #  Fix: Use timedelta instead of expires_delta=False
+    token = create_access_token(identity=str(admin.id), expires_delta=timedelta(days=1))
+    print("\n" + "=" * 60)
+    print(" ADMIN TOKEN")
+    print("=" * 60)
+    print(token)
+    print("=" * 60 + "\n")

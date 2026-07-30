@@ -173,14 +173,14 @@ To ensure quality mental wellness support, specialists must be verified before a
 
 ```
 Frontend (React + Vite)
-          │
-          ▼
+          
+          
 REST API (Flask)
-          │
-          ▼
+          
+          
 Authentication (JWT)
-          │
-          ▼
+          
+          
 PostgreSQL Database
 ```
 
@@ -275,51 +275,51 @@ Based on the category, the platform recommends:
 
 ```
 JADA-Minds/
-│
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   │   ├── assets/
-│   │   ├── components/
-│   │   ├── contexts/
-│   │   ├── hooks/
-│   │   ├── layouts/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── utils/
-│   │   └── App.jsx
-│   │
-│   ├── package.json
-│   └── vite.config.js
-│
-├── backend/
-│   ├── app/
-│   │   ├── auth/
-│   │   ├── users/
-│   │   ├── assessments/
-│   │   ├── questions/
-│   │   ├── workshops/
-│   │   ├── specialists/
-│   │   ├── resources/
-│   │   ├── models/
-│   │   ├── schemas/
-│   │   ├── middleware/
-│   │   ├── extensions.py
-│   │   ├── config.py
-│   │   └── __init__.py
-│   │
-│   ├── migrations/
-│   ├── tests/
-│   ├── requirements.txt
-│   ├── seed.py
-│   ├── run.py
-│   └── .env.example
-│
-├── docs/
-│
-├── README.md
-├── LICENSE
-└── .gitignore
+
+ frontend/
+    public/
+    src/
+       assets/
+       components/
+       contexts/
+       hooks/
+       layouts/
+       pages/
+       services/
+       utils/
+       App.jsx
+   
+    package.json
+    vite.config.js
+
+ backend/
+    app/
+       auth/
+       users/
+       assessments/
+       questions/
+       workshops/
+       specialists/
+       resources/
+       models/
+       schemas/
+       middleware/
+       extensions.py
+       config.py
+       __init__.py
+   
+    migrations/
+    tests/
+    requirements.txt
+    seed.py
+    run.py
+    .env.example
+
+ docs/
+
+ README.md
+ LICENSE
+ .gitignore
 ```
 
 ---
