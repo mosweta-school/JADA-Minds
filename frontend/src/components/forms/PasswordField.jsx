@@ -1,3 +1,5 @@
+// frontend/src/components/forms/PasswordField.jsx
+
 import { useState } from "react";
 
 function PasswordField({
