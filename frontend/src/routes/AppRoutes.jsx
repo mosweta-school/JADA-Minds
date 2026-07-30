@@ -1,14 +1,18 @@
 import { Routes, Route } from "react-router-dom";
 
-import ProtectedRoute from "./ProtectedRoute";
-
-import ClientLayout from "../layouts/ClientLayout";
 import AdminLayout from "../layouts/AdminLayout";
 import SpecialistLayout from "../layouts/SpecialistLayout";
+import ClientLayout from "../layouts/ClientLayout";
+import {ProtectedRoute} from "./ProtectedRoute";
 
 import Home from "../pages/shared/Home";
 import Login from "../pages/auth/Login";
 import NotFound from "../pages/shared/NotFound";
+import Register from "../pages/auth/Register";
+import ForgotPassword from "../pages/auth/ForgotPassword";
+import ResetPassword from "../pages/auth/ResetPassword";
+import VerifyEmail from "../pages/auth/VerifyEmail";
+import MFAVerification from "../pages/auth/MFAVerification";
 
 // Client Pages
 import Dashboard from "../pages/client/Dashboard";
@@ -92,6 +96,11 @@ function AppRoutes() {
 
       {/* 404 */}
       <Route path="*" element={<NotFound />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/verify-email" element={<VerifyEmail />} />
+      <Route path="/mfa-verify" element={<MFAVerification />} />
     </Routes>
   );
 }

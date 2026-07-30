@@ -1,8 +1,21 @@
-import { Navigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+// frontend/src/routes/ProtectedRoute.jsx
 
-function ProtectedRoute({ children, allowedRoles = [] }) {
-  const { isAuthenticated, user } = useAuth();
+import { Navigate } from 'react-router-dom';
+import  useAuth  from '../hooks/useAuth';
+
+export function ProtectedRoute({ children, allowedRoles = [] }) {
+  const { isAuthenticated, user, loading } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="spinner mx-auto mb-4" />
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
@@ -26,5 +39,3 @@ function ProtectedRoute({ children, allowedRoles = [] }) {
 
   return children;
 }
-
-export default ProtectedRoute;
