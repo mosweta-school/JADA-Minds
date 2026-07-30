@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const notes = [
+const initialNotes = [
   {
     id: 1,
     client: "John Doe",
     assessment: "PHQ-9",
     date: "2026-07-30",
     status: "Pending",
+    note: "Client reports persistent low mood.",
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ const notes = [
     assessment: "GAD-7",
     date: "2026-07-29",
     status: "Completed",
+    note: "Anxiety symptoms have improved.",
   },
   {
     id: 3,
@@ -21,11 +23,44 @@ const notes = [
     assessment: "DASS-21",
     date: "2026-07-28",
     status: "Pending",
+    note: "Follow-up session scheduled.",
   },
 ];
 
 function Notes() {
+  const [notes, setNotes] = useState(initialNotes);
   const [selectedNote, setSelectedNote] = useState(null);
+  const [noteText, setNoteText] = useState("");
+
+  useEffect(() => {
+    if (selectedNote) {
+      setNoteText(selectedNote.note || "");
+    }
+  }, [selectedNote]);
+
+  const handleSave = () => {
+    if (selectedNote.id) {
+      setNotes((prev) =>
+        prev.map((note) =>
+          note.id === selectedNote.id
+            ? { ...note, note: noteText }
+            : note
+        )
+      );
+    } else {
+      setNotes((prev) => [
+        ...prev,
+        {
+          ...selectedNote,
+          id: Date.now(),
+          note: noteText,
+        },
+      ]);
+    }
+
+    setSelectedNote(null);
+    setNoteText("");
+  };
 
   return (
     <div>
@@ -47,6 +82,7 @@ function Notes() {
               assessment: "",
               date: new Date().toISOString().split("T")[0],
               status: "Draft",
+              note: "",
             })
           }
         >
@@ -101,27 +137,48 @@ function Notes() {
       {selectedNote && (
         <div style={styles.overlay}>
           <div style={styles.modal}>
-            <h2 style={{ color: "#6b3cb8" }}>Client Note</h2>
+            <h2 style={{ color: "#6b3cb8" }}>Edit Client Note</h2>
 
             <p>
               <strong>Client:</strong> {selectedNote.client}
             </p>
+
             <p>
               <strong>Assessment:</strong> {selectedNote.assessment}
             </p>
-            <p>
-              <strong>Date:</strong> {selectedNote.date}
-            </p>
-            <p>
-              <strong>Status:</strong> {selectedNote.status}
-            </p>
 
-            <button
-              style={styles.button}
-              onClick={() => setSelectedNote(null)}
+            <textarea
+              value={noteText}
+              onChange={(e) => setNoteText(e.target.value)}
+              placeholder="Write specialist notes..."
+              style={styles.textarea}
+            />
+
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                gap: "1rem",
+                marginTop: "1.5rem",
+              }}
             >
-              Close
-            </button>
+              <button
+                style={{
+                  ...styles.button,
+                  background: "#28a745",
+                }}
+                onClick={handleSave}
+              >
+                Save
+              </button>
+
+              <button
+                style={styles.button}
+                onClick={() => setSelectedNote(null)}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       )}
@@ -186,8 +243,21 @@ const styles = {
     background: "#fff",
     padding: "2rem",
     borderRadius: "12px",
-    width: "400px",
+    width: "500px",
     boxShadow: "0 8px 20px rgba(0,0,0,.2)",
+  },
+
+  textarea: {
+    width: "100%",
+    minHeight: "180px",
+    marginTop: "1rem",
+    padding: "1rem",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
+    resize: "vertical",
+    fontFamily: "inherit",
+    fontSize: "1rem",
+    boxSizing: "border-box",
   },
 };
 
