@@ -1,11 +1,28 @@
 // frontend/src/pages/auth/Login.jsx
 
+import { Navigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import LoginForm from "../../components/forms/LoginForm";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
 
 function Login() {
+  const { isAuthenticated, user } = useAuth();
+
+  if (isAuthenticated) {
+    switch (user.role) {
+      case "admin":
+        return <Navigate to="/admin" replace />;
+
+      case "specialist":
+        return <Navigate to="/specialist" replace />;
+
+      default:
+        return <Navigate to="/" replace />;
+    }
+  }
+
   return (
     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
       <div

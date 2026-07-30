@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useGoogleLogin } from '@react-oauth/google';
 import useAuth from "../../hooks/useAuth";
 import PasswordField from "./PasswordField";
+import mockUsers from "../../data/mockUsers";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -35,8 +36,8 @@ function LoginForm() {
     setError("");
 
     if (!form.email || !form.password) {
-      setError("Please enter your email and password.");
-      return;
+        setError("Please enter your email and password.");
+        return;
     }
 
     try {
@@ -57,7 +58,7 @@ function LoginForm() {
         "Unable to sign in. Please try again."
       );
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
   };
 
