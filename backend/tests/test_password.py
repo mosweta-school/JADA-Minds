@@ -12,7 +12,7 @@ class TestForgotPassword:
     """Test forgot password functionality."""
     
     def test_forgot_password_success(self, client, test_user, db):
-        """✅ Test successful password reset request."""
+        """ Test successful password reset request."""
         response = client.post('/api/auth/forgot-password', json={
             'email': 'test@example.com'
         })
@@ -31,7 +31,7 @@ class TestForgotPassword:
         assert token.expires_at > token.created_at
     
     def test_forgot_password_nonexistent_email(self, client):
-        """✅ Test password reset for non-existent email (should still succeed)."""
+        """ Test password reset for non-existent email (should still succeed)."""
         response = client.post('/api/auth/forgot-password', json={
             'email': 'nonexistent@example.com'
         })
@@ -42,18 +42,18 @@ class TestForgotPassword:
         assert 'reset link' in data['message'].lower()
     
     def test_forgot_password_missing_email(self, client):
-        """❌ Test forgot password without email."""
+        """ Test forgot password without email."""
         response = client.post('/api/auth/forgot-password', json={})
         assert response.status_code == 400
         error = response.get_json()['error'].lower()
-        assert 'email' in error or 'json' in error  # ✅ Accept either message
+        assert 'email' in error or 'json' in error  #  Accept either message
 
 
 class TestResetPassword:
     """Test password reset functionality."""
     
     def test_reset_password_success(self, client, test_user, password_reset_token, db):
-        """✅ Test successful password reset."""
+        """ Test successful password reset."""
         response = client.post('/api/auth/reset-password', json={
             'token': password_reset_token.token,
             'new_password': 'NewTest@5678'
@@ -75,7 +75,7 @@ class TestResetPassword:
         assert token.used == True
     
     def test_reset_password_invalid_token(self, client):
-        """❌ Test password reset with invalid token."""
+        """ Test password reset with invalid token."""
         response = client.post('/api/auth/reset-password', json={
             'token': 'invalid-token-12345',
             'new_password': 'NewTest@5678'
@@ -86,7 +86,7 @@ class TestResetPassword:
         assert 'invalid' in data['error'].lower()
     
     def test_reset_password_expired_token(self, client, db, test_user):
-        """❌ Test password reset with expired token."""
+        """ Test password reset with expired token."""
         # Create expired token
         from datetime import datetime, timezone, timedelta
         token = VerificationToken(
@@ -108,7 +108,7 @@ class TestResetPassword:
         assert 'expired' in data['error'].lower()
     
     def test_reset_password_weak_password(self, client, password_reset_token):
-        """❌ Test password reset with weak password."""
+        """ Test password reset with weak password."""
         response = client.post('/api/auth/reset-password', json={
             'token': password_reset_token.token,
             'new_password': 'weak'
@@ -120,7 +120,7 @@ class TestResetPassword:
     # backend/tests/test_password.py - Fix the missing fields test
 
     def test_reset_password_missing_fields(self, client):
-        """❌ Test password reset with missing fields."""
+        """ Test password reset with missing fields."""
         # Missing token
         response = client.post('/api/auth/reset-password', json={
             'new_password': 'Test@1234'
@@ -133,7 +133,7 @@ class TestResetPassword:
             'token': 'some-token'
         })
         assert response.status_code == 400
-        # ✅ FIX: The error message says "Token and new password are required"
+        #  FIX: The error message says "Token and new password are required"
         # so check for 'new password' or 'new_password'
         error = response.get_json()['error'].lower()
         assert 'new password' in error or 'new_password' in error
@@ -143,7 +143,7 @@ class TestChangePassword:
     """Test change password functionality (authenticated)."""
     
     def test_change_password_success(self, client, verified_user, user_token, db):
-        """✅ Test successful password change."""
+        """ Test successful password change."""
         response = client.post('/api/profile/change-password', json={
             'current_password': 'Test@1234',
             'new_password': 'NewTest@5678',
@@ -164,7 +164,7 @@ class TestChangePassword:
         assert user.password_changed_at > user.created_at
     
     def test_change_password_wrong_current(self, client, verified_user, user_token):
-        """❌ Test change password with wrong current password."""
+        """ Test change password with wrong current password."""
         response = client.post('/api/profile/change-password', json={
             'current_password': 'WrongPassword123!',
             'new_password': 'NewTest@5678',
@@ -178,7 +178,7 @@ class TestChangePassword:
         assert 'incorrect' in data['error'].lower()
     
     def test_change_password_mismatch(self, client, verified_user, user_token):
-        """❌ Test change password with mismatched new passwords."""
+        """ Test change password with mismatched new passwords."""
         response = client.post('/api/profile/change-password', json={
             'current_password': 'Test@1234',
             'new_password': 'NewTest@5678',
@@ -192,7 +192,7 @@ class TestChangePassword:
         assert 'match' in data['error'].lower()
     
     def test_change_password_same_as_current(self, client, verified_user, user_token):
-        """❌ Test change password to same as current."""
+        """ Test change password to same as current."""
         response = client.post('/api/profile/change-password', json={
             'current_password': 'Test@1234',
             'new_password': 'Test@1234',
@@ -206,7 +206,7 @@ class TestChangePassword:
         assert 'different' in data['error'].lower()
     
     def test_change_password_weak(self, client, verified_user, user_token):
-        """❌ Test change password with weak password."""
+        """ Test change password with weak password."""
         response = client.post('/api/profile/change-password', json={
             'current_password': 'Test@1234',
             'new_password': 'weak',

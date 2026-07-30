@@ -14,7 +14,7 @@ class TestMFA:
     """Test MFA functionality."""
 
     def test_login_with_mfa_enabled(self, client, db, verified_user):
-        """✅ Test login with MFA enabled."""
+        """ Test login with MFA enabled."""
         verified_user.mfa_enabled = True
         db.session.commit()
 
@@ -38,7 +38,7 @@ class TestMFA:
         assert mfa_token.token is not None
 
     def test_verify_mfa_success(self, client, db, verified_user):
-        """✅ Test successful MFA verification."""
+        """ Test successful MFA verification."""
         verified_user.mfa_enabled = True
         db.session.commit()
 
@@ -62,7 +62,7 @@ class TestMFA:
             'Authorization': f'Bearer {pre_auth_token}'
         })
 
-        # ✅ The pre_auth_token from login is valid, so this should work
+        #  The pre_auth_token from login is valid, so this should work
         assert response.status_code == 200
         data = response.get_json()
         assert 'access_token' in data
@@ -70,7 +70,7 @@ class TestMFA:
         assert data['user']['email'] == 'verified@example.com'
 
     def test_verify_mfa_invalid_code(self, client, db, verified_user):
-        """❌ Test MFA verification with invalid code."""
+        """ Test MFA verification with invalid code."""
         verified_user.mfa_enabled = True
         db.session.commit()
 
@@ -92,7 +92,7 @@ class TestMFA:
         assert 'invalid' in data['error'].lower()
 
     def test_verify_mfa_expired_code(self, client, db, verified_user):
-        """❌ Test MFA verification with expired code."""
+        """ Test MFA verification with expired code."""
         verified_user.mfa_enabled = True
         db.session.commit()
         
@@ -120,13 +120,13 @@ class TestMFA:
         
         assert response.status_code == 401
         data = response.get_json()
-        # ✅ Accept either "expired" or "invalid"
+        #  Accept either "expired" or "invalid"
         error_lower = data['error'].lower()
         assert 'expired' in error_lower or 'invalid' in error_lower
 
         
     def test_mfa_locks_after_5_attempts(self, client, db, verified_user):
-        """✅ Test MFA locks after 5 failed attempts."""
+        """ Test MFA locks after 5 failed attempts."""
         verified_user.mfa_enabled = True
         db.session.commit()
         
@@ -152,7 +152,7 @@ class TestMFA:
             'Authorization': f'Bearer {pre_auth_token}'
         })
         
-        # ✅ If the token expired, get a fresh one and retry
+        #  If the token expired, get a fresh one and retry
         if response.status_code == 401:
             login_response = client.post('/api/auth/login', json={
                 'email': 'verified@example.com',
@@ -167,13 +167,13 @@ class TestMFA:
                 'Authorization': f'Bearer {new_pre_auth_token}'
             })
         
-        # ✅ Should be 429 (too many requests)
+        #  Should be 429 (too many requests)
         assert response.status_code == 429
         data = response.get_json()
         assert 'too many' in data['error'].lower()
 
     def test_enable_mfa(self, client, user_token, verified_user, db):
-        """✅ Test enabling MFA."""
+        """ Test enabling MFA."""
         response = client.post('/api/profile/mfa/enable', headers={
             'Authorization': f'Bearer {user_token}'
         })
@@ -192,7 +192,7 @@ class TestMFA:
         assert mfa_token.token.isdigit()
 
     def test_verify_mfa_setup_success(self, client, user_token, verified_user, db):
-        """✅ Test successful MFA setup verification."""
+        """ Test successful MFA setup verification."""
         enable_response = client.post('/api/profile/mfa/enable', headers={
             'Authorization': f'Bearer {user_token}'
         })
@@ -216,7 +216,7 @@ class TestMFA:
         assert data['mfa_enabled'] == True
 
     def test_disable_mfa(self, client, user_token, verified_user, db):
-        """✅ Test disabling MFA."""
+        """ Test disabling MFA."""
         verified_user.mfa_enabled = True
         db.session.commit()
 

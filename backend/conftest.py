@@ -26,7 +26,7 @@ def app():
         TESTING=True,
         SQLALCHEMY_DATABASE_URI="sqlite:///:memory:",
         MAIL_SUPPRESS_SEND=True,
-        # ✅ JWT configuration for tests
+        #  JWT configuration for tests
         JWT_SECRET_KEY="test-jwt-secret-keyccvdbcbdcbhbdcdcdbnbdjdbk",
         JWT_ACCESS_TOKEN_EXPIRES=timedelta(hours=1),
         JWT_REFRESH_TOKEN_EXPIRES=timedelta(days=7),

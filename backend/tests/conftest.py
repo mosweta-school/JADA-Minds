@@ -161,7 +161,7 @@ def admin_user_with_password(db):
 
 
 # ============================================================================
-# TOKEN FIXTURES - ✅ FIXED: Use str() for identity
+# TOKEN FIXTURES -  FIXED: Use str() for identity
 # ============================================================================
 
 @pytest.fixture
@@ -169,7 +169,7 @@ def user_token(app, verified_user):
     """Create a fresh access token for the verified user."""
     with app.app_context():
         token = create_access_token(
-            identity=str(verified_user.id),  # ✅ Convert to string for consistency
+            identity=str(verified_user.id),  #  Convert to string for consistency
             additional_claims={"role": verified_user.role}
         )
         return token
@@ -180,7 +180,7 @@ def specialist_token(app, specialist_user):
     """Create an access token for the specialist user."""
     with app.app_context():
         token = create_access_token(
-            identity=str(specialist_user.id),  # ✅ Convert to string
+            identity=str(specialist_user.id),  #  Convert to string
             additional_claims={"role": specialist_user.role}
         )
         return token
@@ -191,7 +191,7 @@ def admin_token_with_password(app, admin_user_with_password):
     """Create an access token for the admin user."""
     with app.app_context():
         token = create_access_token(
-            identity=str(admin_user_with_password.id),  # ✅ Convert to string
+            identity=str(admin_user_with_password.id),  #  Convert to string
             additional_claims={"role": admin_user_with_password.role}
         )
         return token
@@ -202,7 +202,7 @@ def refresh_token(app, verified_user):
     """Create a refresh token for the verified user."""
     with app.app_context():
         token = create_refresh_token(
-            identity=str(verified_user.id),  # ✅ Convert to string
+            identity=str(verified_user.id),  #  Convert to string
             additional_claims={"role": verified_user.role}
         )
         return token
