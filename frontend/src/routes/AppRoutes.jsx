@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
+import LandingPage from "../pages/shared/LandingPage";
 import ClientLayout from "../layouts/ClientLayout";
-import Home from "../pages/shared/Home";
 import Login from "../pages/auth/Login";
 import NotFound from "../pages/shared/NotFound";
 import Dashboard from "../pages/client/Dashboard";
@@ -15,7 +15,10 @@ import Profile from "../pages/client/Profile";
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<ClientLayout />}>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/home" element={<LandingPage />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/dashboard" element={<ClientLayout />}>
         <Route index element={<Dashboard />} />
         <Route path="assessment" element={<Assessment />} />
         <Route path="results" element={<Results />} />
@@ -24,8 +27,6 @@ function AppRoutes() {
         <Route path="workshops" element={<Workshops />} />
         <Route path="profile" element={<Profile />} />
       </Route>
-      <Route path="/home" element={<Home />} />
-      <Route path="/login" element={<Login />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
