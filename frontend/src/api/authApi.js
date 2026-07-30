@@ -9,10 +9,10 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, // ✅ For cookies if needed
+  withCredentials: true, // For cookies if needed
 });
 
-// ✅ Request interceptor - Add token to every request
+// Request interceptor - Add token to every request
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('access_token');
@@ -24,7 +24,7 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// ✅ Response interceptor - Handle token refresh
+// Response interceptor - Handle token refresh
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
@@ -73,22 +73,22 @@ api.interceptors.response.use(
 // ============================================================================
 
 export const authApi = {
-  // ✅ Registration - POST /api/auth/register
+  // Registration - POST /api/auth/register
   register: (data) => api.post('/auth/register', data),
 
-  // ✅ Login - POST /api/auth/login
+  // Login - POST /api/auth/login
   login: (data) => api.post('/auth/login', data),
 
-  // ✅ Google OAuth Login - POST /api/auth/google
+  // Google OAuth Login - POST /api/auth/google
   googleLogin: (credential) => api.post('/auth/google', { credential }),
 
-  // ✅ Email Verification - POST /api/auth/verify-email
+  // Email Verification - POST /api/auth/verify-email
   verifyEmail: (token) => api.post('/auth/verify-email', { token }),
 
-  // ✅ Forgot Password - POST /api/auth/forgot-password
+  // Forgot Password - POST /api/auth/forgot-password
   forgotPassword: (email) => api.post('/auth/forgot-password', { email }),
 
-  // ✅ Reset Password - POST /api/auth/reset-password
+  // Reset Password - POST /api/auth/reset-password
   resetPassword: (token, newPassword) => {
   console.log('Reset password called with token:', token.substring(0, 10) + '...');
   return api.post('/auth/reset-password', { 
@@ -97,7 +97,7 @@ export const authApi = {
   });
 },
 
-  // ✅ MFA Verification - POST /api/auth/mfa/verify
+  // MFA Verification - POST /api/auth/mfa/verify
   verifyMFA: (code, preAuthToken) =>
     api.post(
       '/auth/mfa/verify',
@@ -107,19 +107,19 @@ export const authApi = {
       }
     ),
 
-  // ✅ Logout - POST /api/auth/logout
+  // Logout - POST /api/auth/logout
   logout: () => api.post('/auth/logout'),
 
-  // ✅ Refresh Token - POST /api/auth/refresh
+  // Refresh Token - POST /api/auth/refresh
   refresh: () => api.post('/auth/refresh'),
 
-  // ✅ Profile - GET /api/profile
+  // Profile - GET /api/profile
   getProfile: () => api.get('/profile'),
 
-  // ✅ Update Profile - PUT /api/profile
+  // Update Profile - PUT /api/profile
   updateProfile: (data) => api.put('/profile', data),
 
-  // ✅ Change Password - POST /api/profile/change-password
+  // Change Password - POST /api/profile/change-password
   changePassword: (currentPassword, newPassword, confirmPassword) =>
     api.post('/profile/change-password', {
       current_password: currentPassword,
@@ -127,13 +127,13 @@ export const authApi = {
       confirm_password: confirmPassword,
     }),
 
-  // ✅ Enable MFA - POST /api/profile/mfa/enable
+  // Enable MFA - POST /api/profile/mfa/enable
   enableMFA: () => api.post('/profile/mfa/enable'),
 
-  // ✅ Verify MFA Setup - POST /api/profile/mfa/verify
+  // Verify MFA Setup - POST /api/profile/mfa/verify
   verifyMFASetup: (code) => api.post('/profile/mfa/verify', { code }),
 
-  // ✅ Disable MFA - POST /api/profile/mfa/disable
+  // Disable MFA - POST /api/profile/mfa/disable
   disableMFA: () => api.post('/profile/mfa/disable'),
 };
 

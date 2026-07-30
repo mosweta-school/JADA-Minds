@@ -43,7 +43,7 @@ export default function ResetPassword() {
     setLoading(true);
 
     try {
-      // ✅ Make sure we're sending the token and password correctly
+      // Make sure we're sending the token and password correctly
       console.log('Sending reset request with token:', token.substring(0, 10) + '...');
       
       const response = await authApi.resetPassword(token, form.password);
@@ -64,7 +64,7 @@ export default function ResetPassword() {
       <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem', background: 'linear-gradient(135deg, #f5f1ff 0%, #faf5ff 100%)' }}>
         <Card>
           <div style={{ textAlign: 'center' }}>
-            <h1 style={{ fontSize: '1.75rem', color: '#2d1b69', marginBottom: '0.5rem' }}>🔒 Password Reset!</h1>
+            <h1 style={{ fontSize: '1.75rem', color: '#2d1b69', marginBottom: '0.5rem' }}>Password Reset!</h1>
             <p style={{ color: '#6b5b95', marginBottom: '0.5rem' }}>Your password has been reset successfully.</p>
             <p style={{ color: '#6b5b95', fontSize: '0.875rem' }}>Redirecting to login...</p>
           </div>

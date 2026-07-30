@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 
+import LandingPage from "../pages/shared/LandingPage";
 import AdminLayout from "../layouts/AdminLayout";
 import SpecialistLayout from "../layouts/SpecialistLayout";
 import ClientLayout from "../layouts/ClientLayout";
-import {ProtectedRoute} from "./ProtectedRoute";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 import Home from "../pages/shared/Home";
 import Login from "../pages/auth/Login";
@@ -40,9 +41,12 @@ import SpecialistProfile from "../pages/specialist/Profile";
 function AppRoutes() {
   return (
     <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/home" element={<Home />} />
+
       {/* CLIENT */}
       <Route
-        path="/"
+        path="/dashboard"
         element={
           <ProtectedRoute allowedRoles={["client"]}>
             <ClientLayout />
@@ -91,16 +95,15 @@ function AppRoutes() {
       </Route>
 
       {/* PUBLIC */}
-      <Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login />} />
-
-      {/* 404 */}
-      <Route path="*" element={<NotFound />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/verify-email" element={<VerifyEmail />} />
       <Route path="/mfa-verify" element={<MFAVerification />} />
+
+      {/* 404 */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

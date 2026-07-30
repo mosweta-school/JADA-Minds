@@ -2,10 +2,10 @@
 
 export function Alert({ children, variant = 'info', className = '', ...props }) {
   const variants = {
-    info: { background: '#e6f0ff', border: '#b8d4f0', color: '#2980b9', icon: 'ℹ️' },
-    success: { background: '#e6fff0', border: '#b8e8d4', color: '#1a7d5c', icon: '✅' },
-    warning: { background: '#fff8f0', border: '#f0d8b8', color: '#b8633c', icon: '⚠️' },
-    error: { background: '#fff0f0', border: '#f0b8b8', color: '#c0392b', icon: '❌' },
+    info: { background: '#e6f0ff', border: '#b8d4f0', color: '#2980b9', icon: 'Info' },
+    success: { background: '#e6fff0', border: '#b8e8d4', color: '#1a7d5c', icon: 'Success' },
+    warning: { background: '#fff8f0', border: '#f0d8b8', color: '#b8633c', icon: 'Warning' },
+    error: { background: '#fff0f0', border: '#f0b8b8', color: '#c0392b', icon: 'Error' },
   };
 
   const v = variants[variant];

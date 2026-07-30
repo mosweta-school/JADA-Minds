@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const clientLinks = [
-  { to: "/", label: "Dashboard" },
+  { to: "/dashboard", label: "Dashboard" },
   { to: "/assessment", label: "Assessment" },
   { to: "/results", label: "Results" },
   { to: "/resources", label: "Resources" },

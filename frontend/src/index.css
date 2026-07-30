@@ -2,7 +2,7 @@
 
 @import "tailwindcss";
 
-/* ✅ Tailwind v4 Inward Styling - All styles are defined within @theme */
+/* Tailwind v4 Inward Styling - All styles are defined within @theme */
 @theme {
   /* Colors */
   --color-primary-50: #f5f0ff;
@@ -50,7 +50,7 @@
   --animate-spin: spin 0.6s linear infinite;
 }
 
-/* ✅ Base styles using @layer */
+/* Base styles using @layer */
 @layer base {
   * {
     @apply m-0 p-0 box-border;
@@ -69,7 +69,7 @@
   }
 }
 
-/* ✅ Component styles using @layer */
+/* Component styles using @layer */
 @layer components {
   /* Auth Container */
   .auth-container {
@@ -326,7 +326,7 @@
   }
 }
 
-/* ✅ Responsive utilities */
+/* Responsive utilities */
 @layer utilities {
   @media (max-width: 480px) {
     .auth-card {
