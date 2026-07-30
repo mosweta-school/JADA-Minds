@@ -1,65 +1,63 @@
 import { useState } from "react";
-import workshopsData from "../../data/workshops";
-import WorkshopForm from "../../components/admin/WorkshopForm";
-import DeleteWorkshopDialog from "../../components/admin/DeleteWorkshopDialog";
+import assessmentsData from "../../data/assessments";
+import AssessmentForm from "../../components/admin/AssessmentForm";
+import DeleteAssessmentDialog from "../../components/admin/DeleteAssessmentDialog";
 
-function AdminWorkshops() {
-    const [workshops, setWorkshops] = useState(workshopsData);
 
-    const [selectedWorkshop, setSelectedWorkshop] = useState(null);
+function AdminAssessments() {
+     const [assessments, setAssessments] = useState(assessmentsData);
+
+    const [selectedAssessment, setSelectedAssessment] = useState(null);
     const [mode, setMode] = useState(null);
 
-    const emptyWorkshop = {
+    const emptyAssessment = {
         title: "",
-        facilitator: "",
-        date: "",
-        time: "",
-        capacity: "",
+        category: "",
+        questions: "",
         status: "",
     };
 
-    const [formData, setFormData] = useState(emptyWorkshop);
+    const [formData, setFormData] = useState(emptyAssessment);
 
-    const handleAddWorkshop = () => {
-        setWorkshops([
-            ...workshops,
-            {
-            id: Date.now(),
-            ...formData,
-            },
-        ]);
+    const handleAddAssessment = () => {
+  setAssessments([
+    ...assessments,
+    {
+      id: Date.now(),
+      ...formData,
+    },
+  ]);
 
-        closeModal();
-        };
+  closeModal();
+};
 
-    const handleEditWorkshop = () => {
-    setWorkshops(
-        workshops.map((workshop) =>
-        workshop.id === selectedWorkshop.id
-            ? { ...selectedWorkshop, ...formData }
-            : workshop
-        )
-    );
+const handleEditAssessment = () => {
+  setAssessments(
+    assessments.map((assessment) =>
+      assessment.id === selectedAssessment.id
+        ? { ...selectedAssessment, ...formData }
+        : assessment
+    )
+  );
 
-    closeModal();
-    };
+  closeModal();
+};
 
-    const handleDeleteWorkshop = () => {
-    setWorkshops(
-        workshops.filter(
-        (workshop) => workshop.id !== selectedWorkshop.id
-        )
-    );
+const handleDeleteAssessment = () => {
+  setAssessments(
+    assessments.filter(
+      (assessment) => assessment.id !== selectedAssessment.id
+    )
+  );
 
-    closeModal();
-    };
+  closeModal();
+};
 
-    const closeModal = () => {
-    setMode(null);
-    setSelectedWorkshop(null);
-    setFormData(emptyWorkshop);
-    };
-
+const closeModal = () => {
+  setMode(null);
+  setSelectedAssessment(null);
+  setFormData(emptyAssessment);
+};
   return (
     <div>
       <div
@@ -71,19 +69,19 @@ function AdminWorkshops() {
         }}
       >
         <h1 style={{ color: "#6b3cb8", margin: 0 }}>
-          Workshops
+          Assessments
         </h1>
 
         <button
             style={styles.button}
             onClick={() => {
-                setSelectedWorkshop(null);
-                setFormData(emptyWorkshop);
+                setSelectedAssessment(null);
+                setFormData(emptyAssessment);
                 setMode("add");
             }}
             >
-            + Add Workshop
-         </button>
+            + Add Assessment
+        </button>
       </div>
 
       <div style={styles.card}>
@@ -91,44 +89,40 @@ function AdminWorkshops() {
           <thead>
             <tr style={{ background: "#f5f1ff" }}>
               <th style={styles.header}>Title</th>
-              <th style={styles.header}>Facilitator</th>
-              <th style={styles.header}>Date</th>
-              <th style={styles.header}>Time</th>
-              <th style={styles.header}>Capacity</th>
+              <th style={styles.header}>Category</th>
+              <th style={styles.header}>Questions</th>
               <th style={styles.header}>Status</th>
               <th style={styles.header}>Actions</th>
             </tr>
           </thead>
 
           <tbody>
-            {workshops.map((workshop) => (
-              <tr key={workshop.id}>
-                <td style={styles.cell}>{workshop.title}</td>
-                <td style={styles.cell}>{workshop.facilitator}</td>
-                <td style={styles.cell}>{workshop.date}</td>
-                <td style={styles.cell}>{workshop.time}</td>
-                <td style={styles.cell}>{workshop.capacity}</td>
-                <td style={styles.cell}>{workshop.status}</td>
+            {assessments.map((assessment) => (
+              <tr key={assessment.id}>
+                <td style={styles.cell}>{assessment.title}</td>
+                <td style={styles.cell}>{assessment.category}</td>
+                <td style={styles.cell}>{assessment.questions}</td>
+                <td style={styles.cell}>{assessment.status}</td>
 
                 <td style={styles.cell}>
-                    <button
+                  <button
                         style={styles.actionButton}
                         onClick={() => {
-                            setSelectedWorkshop(workshop);
-                            setFormData(workshop);
+                            setSelectedAssessment(assessment);
+                            setFormData(assessment);
                             setMode("edit");
                         }}
                         >
                         Edit
                     </button>
 
-                    <button
+                  <button
                         style={{
                             ...styles.actionButton,
                             background: "#dc3545",
                         }}
                         onClick={() => {
-                            setSelectedWorkshop(workshop);
+                            setSelectedAssessment(assessment);
                             setMode("delete");
                         }}
                         >
@@ -140,20 +134,20 @@ function AdminWorkshops() {
           </tbody>
         </table>
       </div>
-      <WorkshopForm
+      <AssessmentForm
   mode={mode}
   formData={formData}
   setFormData={setFormData}
-  selectedWorkshop={selectedWorkshop}
-  handleAddWorkshop={handleAddWorkshop}
-  handleEditWorkshop={handleEditWorkshop}
+  selectedAssessment={selectedAssessment}
+  handleAddAssessment={handleAddAssessment}
+  handleEditAssessment={handleEditAssessment}
   onClose={closeModal}
 />
 
-<DeleteWorkshopDialog
+<DeleteAssessmentDialog
   mode={mode}
-  selectedWorkshop={selectedWorkshop}
-  handleDeleteWorkshop={handleDeleteWorkshop}
+  selectedAssessment={selectedAssessment}
+  handleDeleteAssessment={handleDeleteAssessment}
   onClose={closeModal}
 />
     </div>
@@ -206,4 +200,4 @@ const styles = {
   },
 };
 
-export default AdminWorkshops;
+export default AdminAssessments;
