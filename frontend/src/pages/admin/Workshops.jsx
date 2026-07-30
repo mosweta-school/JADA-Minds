@@ -4,61 +4,60 @@ import WorkshopForm from "../../components/admin/WorkshopForm";
 import DeleteWorkshopDialog from "../../components/admin/DeleteWorkshopDialog";
 
 function AdminWorkshops() {
-    const [workshops, setWorkshops] = useState(workshopsData);
+  const [workshops, setWorkshops] = useState(workshopsData);
+  const [selectedWorkshop, setSelectedWorkshop] = useState(null);
+  const [mode, setMode] = useState(null);
 
-    const [selectedWorkshop, setSelectedWorkshop] = useState(null);
-    const [mode, setMode] = useState(null);
+  const emptyWorkshop = {
+    title: "",
+    facilitator: "",
+    date: "",
+    time: "",
+    capacity: "",
+    status: "",
+  };
 
-    const emptyWorkshop = {
-        title: "",
-        facilitator: "",
-        date: "",
-        time: "",
-        capacity: "",
-        status: "",
-    };
+  const [formData, setFormData] = useState(emptyWorkshop);
 
-    const [formData, setFormData] = useState(emptyWorkshop);
-
-    const handleAddWorkshop = () => {
-        setWorkshops([
-            ...workshops,
-            {
-            id: Date.now(),
-            ...formData,
-            },
-        ]);
-
-        closeModal();
-        };
-
-    const handleEditWorkshop = () => {
-    setWorkshops(
-        workshops.map((workshop) =>
-        workshop.id === selectedWorkshop.id
-            ? { ...selectedWorkshop, ...formData }
-            : workshop
-        )
-    );
-
-    closeModal();
-    };
-
-    const handleDeleteWorkshop = () => {
-    setWorkshops(
-        workshops.filter(
-        (workshop) => workshop.id !== selectedWorkshop.id
-        )
-    );
-
-    closeModal();
-    };
-
-    const closeModal = () => {
+  const closeModal = () => {
     setMode(null);
     setSelectedWorkshop(null);
     setFormData(emptyWorkshop);
-    };
+  };
+
+  const handleAddWorkshop = () => {
+    setWorkshops((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        ...formData,
+      },
+    ]);
+
+    closeModal();
+  };
+
+  const handleEditWorkshop = () => {
+    setWorkshops((prev) =>
+      prev.map((workshop) =>
+        workshop.id === selectedWorkshop.id
+          ? { ...selectedWorkshop, ...formData }
+          : workshop
+      )
+    );
+
+    closeModal();
+  };
+
+  const handleDeleteWorkshop = () => {
+    setWorkshops((prev) =>
+      prev.filter(
+        (workshop) => workshop.id !== selectedWorkshop.id
+      )
+    );
+
+    closeModal();
+  };
 
   return (
     <div>
@@ -75,15 +74,15 @@ function AdminWorkshops() {
         </h1>
 
         <button
-            style={styles.button}
-            onClick={() => {
-                setSelectedWorkshop(null);
-                setFormData(emptyWorkshop);
-                setMode("add");
-            }}
-            >
-            + Add Workshop
-         </button>
+          style={styles.button}
+          onClick={() => {
+            setSelectedWorkshop(null);
+            setFormData(emptyWorkshop);
+            setMode("add");
+          }}
+        >
+          + Add Workshop
+        </button>
       </div>
 
       <div style={styles.card}>
@@ -111,51 +110,52 @@ function AdminWorkshops() {
                 <td style={styles.cell}>{workshop.status}</td>
 
                 <td style={styles.cell}>
-                    <button
-                        style={styles.actionButton}
-                        onClick={() => {
-                            setSelectedWorkshop(workshop);
-                            setFormData(workshop);
-                            setMode("edit");
-                        }}
-                        >
-                        Edit
-                    </button>
+                  <button
+                    style={styles.actionButton}
+                    onClick={() => {
+                      setSelectedWorkshop(workshop);
+                      setFormData(workshop);
+                      setMode("edit");
+                    }}
+                  >
+                    Edit
+                  </button>
 
-                    <button
-                        style={{
-                            ...styles.actionButton,
-                            background: "#dc3545",
-                        }}
-                        onClick={() => {
-                            setSelectedWorkshop(workshop);
-                            setMode("delete");
-                        }}
-                        >
-                        Delete
-                    </button>
+                  <button
+                    style={{
+                      ...styles.actionButton,
+                      background: "#dc3545",
+                    }}
+                    onClick={() => {
+                      setSelectedWorkshop(workshop);
+                      setMode("delete");
+                    }}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <WorkshopForm
-  mode={mode}
-  formData={formData}
-  setFormData={setFormData}
-  selectedWorkshop={selectedWorkshop}
-  handleAddWorkshop={handleAddWorkshop}
-  handleEditWorkshop={handleEditWorkshop}
-  onClose={closeModal}
-/>
 
-<DeleteWorkshopDialog
-  mode={mode}
-  selectedWorkshop={selectedWorkshop}
-  handleDeleteWorkshop={handleDeleteWorkshop}
-  onClose={closeModal}
-/>
+      <WorkshopForm
+        mode={mode}
+        formData={formData}
+        setFormData={setFormData}
+        selectedWorkshop={selectedWorkshop}
+        handleAddWorkshop={handleAddWorkshop}
+        handleEditWorkshop={handleEditWorkshop}
+        onClose={closeModal}
+      />
+
+      <DeleteWorkshopDialog
+        mode={mode}
+        selectedWorkshop={selectedWorkshop}
+        handleDeleteWorkshop={handleDeleteWorkshop}
+        onClose={closeModal}
+      />
     </div>
   );
 }

@@ -1,32 +1,4 @@
-const assessments = [
-  {
-    id: 1,
-    client: "John Doe",
-    assessment: "PHQ-9",
-    score: 17,
-    severity: "Moderate",
-    date: "2026-07-30",
-    status: "Pending Review",
-  },
-  {
-    id: 2,
-    client: "Mary Wanjiku",
-    assessment: "GAD-7",
-    score: 8,
-    severity: "Mild",
-    date: "2026-07-29",
-    status: "Reviewed",
-  },
-  {
-    id: 3,
-    client: "Peter Kimani",
-    assessment: "DASS-21",
-    score: 26,
-    severity: "Severe",
-    date: "2026-07-28",
-    status: "Pending Review",
-  },
-];
+import specialistAssessments from "../../data/specialistAssessments";
 
 function Assessment() {
   return (
@@ -62,7 +34,7 @@ function Assessment() {
           </thead>
 
           <tbody>
-            {assessments.map((item) => (
+            {specialistAssessments.map((item) => (
               <tr key={item.id}>
                 <td style={styles.cell}>{item.client}</td>
                 <td style={styles.cell}>{item.assessment}</td>
@@ -74,22 +46,14 @@ function Assessment() {
                 <td style={styles.cell}>
                   <button
                     style={styles.review}
-                    onClick={() =>
-                      alert(
-                        `Reviewing ${item.client}'s ${item.assessment} assessment`
-                      )
-                    }
+                    onClick={() => console.log("Review", item)}
                   >
                     Review
                   </button>
 
                   <button
                     style={styles.view}
-                    onClick={() =>
-                      alert(
-                        `Viewing ${item.client}'s assessment`
-                      )
-                    }
+                    onClick={() => console.log("View", item)}
                   >
                     View
                   </button>

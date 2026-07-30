@@ -103,10 +103,18 @@ function Notes() {
           <div style={styles.modal}>
             <h2 style={{ color: "#6b3cb8" }}>Client Note</h2>
 
-            <p><strong>Client:</strong> {selectedNote.client}</p>
-            <p><strong>Assessment:</strong> {selectedNote.assessment}</p>
-            <p><strong>Date:</strong> {selectedNote.date}</p>
-            <p><strong>Status:</strong> {selectedNote.status}</p>
+            <p>
+              <strong>Client:</strong> {selectedNote.client}
+            </p>
+            <p>
+              <strong>Assessment:</strong> {selectedNote.assessment}
+            </p>
+            <p>
+              <strong>Date:</strong> {selectedNote.date}
+            </p>
+            <p>
+              <strong>Status:</strong> {selectedNote.status}
+            </p>
 
             <button
               style={styles.button}

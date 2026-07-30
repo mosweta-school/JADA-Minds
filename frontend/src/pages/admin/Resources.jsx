@@ -4,63 +4,58 @@ import ResourceForm from "../../components/admin/ResourceForm";
 import DeleteResourceDialog from "../../components/admin/DeleteResourceDialog";
 
 function AdminResources() {
-    const [resources, setResources] = useState(resourcesData);
-    const [selectedResource, setSelectedResource] = useState(null);
-    const [mode, setMode] = useState(null);
+  const [resources, setResources] = useState(resourcesData);
+  const [selectedResource, setSelectedResource] = useState(null);
+  const [mode, setMode] = useState(null);
 
-    const emptyResource = {
-        title: "",
-        category: "",
-        type: "",
-        status: "",
-    };
+  const emptyResource = {
+    title: "",
+    category: "",
+    type: "",
+    status: "",
+  };
 
-    const [formData, setFormData] = useState(emptyResource);
+  const [formData, setFormData] = useState(emptyResource);
 
-    const handleAddResource = () => {
-  setResources([
-    ...resources,
-    {
-      id: Date.now(),
-      ...formData,
-    },
-  ]);
+  const closeModal = () => {
+    setSelectedResource(null);
+    setFormData(emptyResource);
+    setMode(null);
+  };
 
-  setFormData(emptyResource);
-  setMode(null);
-};
+  const handleAddResource = () => {
+    setResources((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        ...formData,
+      },
+    ]);
 
-const handleEditResource = () => {
-  setResources(
-    resources.map((resource) =>
-      resource.id === selectedResource.id
-        ? { ...resource, ...formData }
-        : resource
-    )
-  );
+    closeModal();
+  };
 
-  setSelectedResource(null);
-  setFormData(emptyResource);
-  setMode(null);
-};
+  const handleEditResource = () => {
+    setResources((prev) =>
+      prev.map((resource) =>
+        resource.id === selectedResource.id
+          ? { ...resource, ...formData }
+          : resource
+      )
+    );
 
-const handleDeleteResource = () => {
-  setResources(
-    resources.filter(
-      (resource) => resource.id !== selectedResource.id
-    )
-  );
+    closeModal();
+  };
 
-  setSelectedResource(null);
-  setMode(null);
-};
+  const handleDeleteResource = () => {
+    setResources((prev) =>
+      prev.filter(
+        (resource) => resource.id !== selectedResource.id
+      )
+    );
 
-const closeModal = () => {
-  setSelectedResource(null);
-  setFormData(emptyResource);
-  setMode(null);
-};
-
+    closeModal();
+  };
 
   return (
     <div>
@@ -77,15 +72,15 @@ const closeModal = () => {
         </h1>
 
         <button
-            style={styles.button}
-            onClick={() => {
-                setSelectedResource(null);
-                setFormData(emptyResource);
-                setMode("add");
-            }}
-            >
-            + Add Resource
-            </button>
+          style={styles.button}
+          onClick={() => {
+            setSelectedResource(null);
+            setFormData(emptyResource);
+            setMode("add");
+          }}
+        >
+          + Add Resource
+        </button>
       </div>
 
       <div style={styles.card}>
@@ -121,41 +116,41 @@ const closeModal = () => {
                   </button>
 
                   <button
-                        style={{
-                            ...styles.actionButton,
-                            background: "#dc3545",
-                        }}
-                        onClick={() => {
-                            setSelectedResource(resource);
-                            setMode("delete");
-                        }}
-                        >
-                        Delete
-                    </button>
+                    style={{
+                      ...styles.actionButton,
+                      background: "#dc3545",
+                    }}
+                    onClick={() => {
+                      setSelectedResource(resource);
+                      setMode("delete");
+                    }}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <ResourceForm
-  mode={mode}
-  formData={formData}
-  setFormData={setFormData}
-  selectedResource={selectedResource}
-  handleAddResource={handleAddResource}
-  handleEditResource={handleEditResource}
-  onClose={closeModal}
-/>
 
-<DeleteResourceDialog
-  mode={mode}
-  selectedResource={selectedResource}
-  handleDeleteResource={handleDeleteResource}
-  onClose={closeModal}
-/>
+      <ResourceForm
+        mode={mode}
+        formData={formData}
+        setFormData={setFormData}
+        selectedResource={selectedResource}
+        handleAddResource={handleAddResource}
+        handleEditResource={handleEditResource}
+        onClose={closeModal}
+      />
+
+      <DeleteResourceDialog
+        mode={mode}
+        selectedResource={selectedResource}
+        handleDeleteResource={handleDeleteResource}
+        onClose={closeModal}
+      />
     </div>
- 
   );
 }
 
