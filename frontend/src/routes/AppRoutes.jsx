@@ -1,8 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 
-import ProtectedRoute from "./ProtectedRoute";
-
-import ClientLayout from "../layouts/ClientLayout";
 import AdminLayout from "../layouts/AdminLayout";
 import SpecialistLayout from "../layouts/SpecialistLayout";
 import ClientLayout from "../layouts/ClientLayout";

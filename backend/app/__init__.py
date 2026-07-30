@@ -16,8 +16,8 @@ def create_app():
     migrate.init_app(app, db)
     jwt.init_app(app)
     CORS(app, 
-        origins=["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:3000"],
-        allow_headers=["Content-Type", "Authorization", "Access-Control-Allow-Credentials"],
+        origins=["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:3000, http://localhost:5000/api/auth/register"],
+        allow_headers=["Content-Type", "Authorization", "Access-Control-Allow-Credentials","Access-Control-Allow-Origin"],
         supports_credentials=True,
         methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
     )
