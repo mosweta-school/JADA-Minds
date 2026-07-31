@@ -32,4 +32,5 @@ venv
 
 # SQLite database
 *.db
-instance/
+instance/backend_snapshot.txt
+frontend_snapshot.txt
