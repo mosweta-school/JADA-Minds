@@ -34,3 +34,4 @@ venv
 *.db
 instance/backend_snapshot.txt
 frontend_snapshot.txt
+.venv
