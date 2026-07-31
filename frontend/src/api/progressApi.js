@@ -17,3 +17,12 @@ export const getProgress = async () => {
   const response = await appApi.get('/progress');
   return response.data;
 };
+
+// GET /recommendations - resources targeted at the categories the user
+// scored worst on in their latest assessment. Same 404-on-no-assessments
+// behavior as getLatestResult - callers should handle that as "no
+// recommendations yet" rather than a real error.
+export const getRecommendations = async () => {
+  const response = await appApi.get('/recommendations');
+  return response.data;
+};
