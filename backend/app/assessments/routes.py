@@ -6,7 +6,9 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from marshmallow import ValidationError
 
 from app.extensions import db
-from app.models import Assessment, AssessmentResponse, Question
+from app.models import Assessment, AssessmentResponse, Question, Resource
+from app.resources.schemas import resources_schema
+
 
 from . import assessments_bp, results_bp    
 from .schemas import(
@@ -218,4 +220,63 @@ def get_progress():
         "trend": trend,
         "statistics": statistics,
         "category_trends": category_trends,
+    }), 200
+
+
+@results_bp.route("/recommendations", methods=["GET"])
+@jwt_required()
+def get_recommendations():
+    """
+    Resource suggestions targeted at the categories the user scored
+    worst on in their most recent assessment. "Worst" means highest
+    subtotal score, following the same convention /progress uses -
+    these categories are framed as stress indicators, so a higher
+    score means more concern, not less (see the assumption noted on
+    get_progress above).
+ 
+    Matching is a simple case-insensitive equality between a
+    question's category and a resource's category - there's no
+    shared enum enforcing these line up, so if the categories used
+    when seeding resources don't match the ones used for questions,
+    this will quietly return no resources for that category.
+    """
+    user_id = get_jwt_identity()
+ 
+    latest = (
+        Assessment.query
+        .filter_by(user_id=user_id)
+        .order_by(Assessment.created_at.desc())
+        .first()
+    )
+ 
+    if latest is None:
+        return jsonify({"error": "No assessments found"}), 404
+ 
+    breakdown = _category_breakdown(latest.id)
+    if not breakdown:
+        return jsonify({
+            "based_on_assessment_id": latest.id,
+            "focus_categories": [],
+            "resources": [],
+        }), 200
+ 
+    # Highest subtotal first - the categories needing the most attention.
+    focus_categories = [
+        category
+        for category, _ in sorted(breakdown.items(), key=lambda kv: kv[1], reverse=True)
+    ][:3]
+ 
+    resources = (
+        Resource.query
+        .filter(Resource.is_active.is_(True))
+        .filter(db.func.lower(Resource.category).in_([c.lower() for c in focus_categories]))
+        .order_by(Resource.created_at.desc())
+        .limit(10)
+        .all()
+    )
+ 
+    return jsonify({
+        "based_on_assessment_id": latest.id,
+        "focus_categories": focus_categories,
+        "resources": resources_schema.dump(resources),
     }), 200

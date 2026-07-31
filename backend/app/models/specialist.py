@@ -54,6 +54,11 @@ class Specialist(db.Model):
         nullable=False
     )
 
+    rejection_reason = db.Column(
+        db.Text,
+        nullable=True
+    )
+
     created_at = db.Column(
         db.DateTime,
         default=lambda: datetime.now(timezone.utc)

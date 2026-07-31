@@ -352,6 +352,24 @@ GET /assessment/<id>
 ```
 GET /results
 GET /progress
+GET /recommendations
+
+`GET /recommendations` returns resources targeted at whichever categories
+the user scored worst on in their most recent assessment (top 3, highest
+subtotal first). 404s if the user hasn't taken an assessment yet, same as
+`/results`.
+
+```json
+{
+  "based_on_assessment_id": 12,
+  "focus_categories": ["stress", "sleep", "mood"],
+  "resources": [
+    { "id": 1, "title": "...", "category": "stress", "description": "...", "url": "...", "is_active": true }
+  ]
+}
+```
+
+---
 ```
 
 ---
@@ -361,6 +379,30 @@ GET /progress
 ```
 GET /specialists
 GET /specialists/<id>
+POST /specialists
+GET /specialists/me
+PUT /specialists/me
+GET /specialists/applications (admin)
+GET /specialists/applications/<id> (admin)
+PUT /specialists/applications/<id>/verification (admin)
+
+`GET /specialists/applications` is the admin review queue - defaults to
+`?status=pending`, pass `?status=all` (or any other status) to widen it.
+Includes the applicant's identity and the private verification documents
+that the public `/specialists` listing hides.
+
+`PUT /specialists/applications/<id>/verification` approves or rejects an
+application:
+```json
+{ "verification_status": "rejected", "rejection_reason": "Blurry ID scan" }
+```
+`rejection_reason` is required when rejecting.
+
+Once rejected, the specialist can resubmit via `PUT /specialists/me` -
+sending an updated `registration_number` or any of the document URLs
+automatically resets `verification_status` back to `pending` for
+re-review. Those fields are otherwise locked while an application is
+`pending` or `approved`; only `specialization`/`bio` stay editable then.
 ```
 
 ---

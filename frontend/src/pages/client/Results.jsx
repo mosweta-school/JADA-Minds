@@ -2,17 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Badge, Button, Card, EmptyState } from "../../components/ui";
 import { emptyStateMessages } from "../../data/messages";
-import { getLatestResult, getProgress } from "../../api/progressApi";
-
-// Static for now - Recommendation Generation (tying a wellness result
-// to specific resources) isn't built on the backend yet. Swap this
-// for a real fetch once that endpoint exists; don't fabricate one
-// here in the meantime.
-const recommendations = [
-  ["Practice deep breathing", "Take a slow five-minute pause when stress builds."],
-  ["Improve sleep", "Create a screen-free wind-down ritual tonight."],
-  ["Stay active", "Enjoy a 20-minute walk or gentle movement."],
-];
+import { getLatestResult, getProgress, getRecommendations } from "../../api/progressApi";
 
 const TREND_LABELS = {
   improving: { text: "Trending up", variant: "success" },
@@ -79,6 +69,7 @@ export default function Results() {
   const navigate = useNavigate();
   const [result, setResult] = useState(null);
   const [progress, setProgress] = useState(null);
+  const [recommendations, setRecommendations] = useState(null);
   const [loading, setLoading] = useState(true);
   const [hasNoResult, setHasNoResult] = useState(false);
 
@@ -94,11 +85,16 @@ export default function Results() {
         throw err;
       }),
       getProgress(),
+      getRecommendations().catch((err) => {
+        if (err.response?.status === 404) return null;
+        throw err;
+      }),
     ])
-      .then(([resultData, progressData]) => {
+      .then(([resultData, progressData, recommendationsData]) => {
         if (cancelled) return;
         setResult(resultData);
         setProgress(progressData);
+        setRecommendations(recommendationsData);
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -181,17 +177,39 @@ export default function Results() {
         <Card>
           <span className="design-kicker">Recommendations</span>
           <h3 style={{ margin: "0.35rem 0", color: "#3d3459" }}>Based on your results</h3>
-          <div className="recommendation-list">
-            {recommendations.map(([title, text]) => (
-              <div className="recommendation-item" key={title}>
-                <div>
-                  <strong>{title}</strong>
-                  <br />
-                  {text}
+          {recommendations?.focus_categories?.length > 0 && (
+            <p style={{ color: "#786f90", fontSize: "0.75rem", marginTop: "-0.15rem", marginBottom: "0.6rem" }}>
+              Because you scored higher in:{" "}
+              {recommendations.focus_categories
+                .map((c) => c.charAt(0).toUpperCase() + c.slice(1))
+                .join(", ")}
+            </p>
+          )}
+          {recommendations?.resources?.length > 0 ? (
+            <div className="recommendation-list">
+              {recommendations.resources.map((resource) => (
+                <div className="recommendation-item" key={resource.id}>
+                  <div>
+                    <strong>{resource.title}</strong>
+                    <br />
+                    {resource.description}
+                    {resource.url && (
+                      <>
+                        {" "}
+                        <a href={resource.url} target="_blank" rel="noreferrer">
+                          Learn more
+                        </a>
+                      </>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <p style={{ color: "#786f90", fontSize: "0.85rem" }}>
+              No matching resources yet - check back once more are added for your focus areas.
+            </p>
+          )}
           <div className="btn-row">
             <Button
               variant="outline"
