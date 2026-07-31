@@ -1,47 +1,68 @@
-import { useState } from "react";
-import { Card, Progress as ProgressBar, Badge, EmptyState, Chip } from "../../components/ui";
+import { useEffect, useState } from "react";
+import { Card, Badge, EmptyState } from "../../components/ui";
 import { emptyStateMessages } from "../../data/messages";
+import { getProgress } from "../../api/progressApi";
 
-const assessmentHistory = [
-  {
-    id: "a1",
-    date: "2026-07-20",
-    score: 72,
-    category: "Overall",
-    trends: ["Energy improving", "Support growing", "Great momentum"],
-  },
-  {
-    id: "a2",
-    date: "2026-07-15",
-    score: 65,
-    category: "Overall",
-    trends: ["Stress decreasing", "Sleep improving"],
-  },
-  {
-    id: "a3",
-    date: "2026-07-10",
-    score: 58,
-    category: "Overall",
-    trends: ["Starting journey", "Setting goals"],
-  },
-];
+// Trend labels the backend actually returns - keep this in sync with
+// app/assessments/routes.py's get_progress() on the backend.
+const TREND_LABELS = {
+  improving: { text: "Trending up", variant: "success" },
+  worsening: { text: "Needs attention", variant: "danger" },
+  stable: { text: "Holding steady", variant: "primary" },
+  not_enough_data: { text: "Take another assessment to see a trend", variant: "primary" },
+};
 
-const progressData = [
-  { label: "Energy", value: 75, color: "#ffa733" },
-  { label: "Mood", value: 80, color: "#6b3cb8" },
-  { label: "Sleep", value: 68, color: "#20c997" },
-  { label: "Stress", value: 55, color: "#e74c3c" },
-  { label: "Social", value: 70, color: "#2980b9" },
-  { label: "Nutrition", value: 82, color: "#f0c040" },
-];
+function formatDate(isoString) {
+  return new Date(isoString).toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
 
 export default function Progress() {
-  const [selectedPeriod, setSelectedPeriod] = useState("week");
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const latestScore = assessmentHistory[0]?.score || 0;
-  const previousScore = assessmentHistory[1]?.score || 0;
-  const trend = latestScore >= previousScore ? "up" : "down";
-  const trendEmoji = trend === "up" ? "Trending up" : trend === "down" ? "Needs attention" : "Stable";
+  useEffect(() => {
+    let cancelled = false;
+
+    getProgress()
+      .then((result) => {
+        if (!cancelled) setData(result);
+      })
+      .catch(() => {
+        if (!cancelled) setError("Couldn't load your progress right now. Please try again.");
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="page-shell">
+        <p>Loading your progress...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="page-shell">
+        <p style={{ color: "#e74c3c" }}>{error}</p>
+      </div>
+    );
+  }
+
+  const { history, latest_wellness_level, trend, statistics, category_trends } = data;
+  const trendInfo = TREND_LABELS[trend] || TREND_LABELS.not_enough_data;
+  const latestScore = history.length > 0 ? history[history.length - 1].total_score : null;
 
   return (
     <div className="page-shell">
@@ -53,71 +74,108 @@ export default function Progress() {
         </p>
       </section>
 
-      <section>
-        <div className="stat-grid">
-          <div className="panel" style={{ textAlign: "center" }}>
-            <h3 style={{ fontSize: "2rem", color: "#6b3cb8", marginTop: "0.3rem" }}>{latestScore}</h3>
-            <p style={{ fontSize: "0.85rem" }}>Latest Score</p>
-            <Badge variant="success" style={{ marginTop: "0.4rem" }}>{trendEmoji} {trend === "up" ? "Trending up" : trend === "down" ? "Needs attention" : "Stable"}</Badge>
-          </div>
-          <div className="panel" style={{ textAlign: "center" }}>
-            <h3 style={{ fontSize: "2rem", color: "#6b3cb8", marginTop: "0.3rem" }}>{assessmentHistory.length}</h3>
-            <p style={{ fontSize: "0.85rem" }}>Assessments Completed</p>
-          </div>
-          <div className="panel" style={{ textAlign: "center" }}>
-            <h3 style={{ fontSize: "2rem", color: "#6b3cb8", marginTop: "0.3rem" }}>5</h3>
-            <p style={{ fontSize: "0.85rem" }}>Day Streak</p>
-          </div>
-        </div>
-      </section>
-
-      <section>
-        <h3 style={{ marginBottom: "1rem", color: "#2d1b69" }}>Wellness Dimensions</h3>
-        <div className="dashboard-grid">
-          {progressData.map((dim) => (
-            <div className="card" key={dim.label}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
-                <span style={{ fontWeight: "700", color: "#2d1b69" }}>{dim.label}</span>
-                <span style={{ fontWeight: "700", color: dim.color }}>{dim.value}%</span>
+      {history.length === 0 ? (
+        <EmptyState {...emptyStateMessages.progress} />
+      ) : (
+        <>
+          <section>
+            <div className="stat-grid">
+              <div className="panel" style={{ textAlign: "center" }}>
+                <h3 style={{ fontSize: "2rem", color: "#6b3cb8", marginTop: "0.3rem" }}>{latestScore}</h3>
+                <p style={{ fontSize: "0.85rem" }}>Latest Score</p>
+                <Badge variant={trendInfo.variant} style={{ marginTop: "0.4rem" }}>
+                  {trendInfo.text}
+                </Badge>
               </div>
-              <ProgressBar value={dim.value} max={100} variant={dim.value >= 70 ? "success" : dim.value >= 50 ? "warning" : "danger"} label={`${dim.value}%`} />
+              <div className="panel" style={{ textAlign: "center" }}>
+                <h3 style={{ fontSize: "2rem", color: "#6b3cb8", marginTop: "0.3rem" }}>
+                  {statistics.total_assessments}
+                </h3>
+                <p style={{ fontSize: "0.85rem" }}>Assessments Completed</p>
+              </div>
+              <div className="panel" style={{ textAlign: "center" }}>
+                <h3 style={{ fontSize: "1.3rem", color: "#6b3cb8", marginTop: "0.3rem" }}>
+                  {statistics.most_common_wellness_level}
+                </h3>
+                <p style={{ fontSize: "0.85rem" }}>Most Common Level</p>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
 
-      <section>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
-          <h3 style={{ color: "#2d1b69", margin: 0 }}>Assessment History</h3>
-          <div style={{ display: "flex", gap: "0.5rem" }}>
-            {["week", "month", "all"].map((period) => (
-              <Chip key={period} active={selectedPeriod === period} onClick={() => setSelectedPeriod(period)}>
-                {period.charAt(0).toUpperCase() + period.slice(1)}
-              </Chip>
-            ))}
-          </div>
-        </div>
-
-        {assessmentHistory.length === 0 ? (
-          <EmptyState {...emptyStateMessages.assessments} />
-        ) : (
-          assessmentHistory.map((entry) => (
-            <Card key={entry.id} style={{ marginBottom: "1rem", borderTop: `4px solid ${entry.score >= 70 ? "#20c997" : entry.score >= 50 ? "#ffa733" : "#e74c3c"}` }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: "1rem" }}>
-                <div>
-                  <h3 style={{ margin: "0.3rem 0" }}>Score: {entry.score}/100</h3>
-                  <p style={{ fontSize: "0.85rem", color: "#6b5b95" }}>{entry.date}</p>
-                </div>
-                <div>
-                  {entry.trends.map((trend, idx) => (
-                    <span key={idx} className="badge badge-primary" style={{ marginRight: "0.3rem", marginBottom: "0.3rem" }}>{trend}</span>
-                  ))}
-                </div>
+          {Object.keys(category_trends).length > 0 && (
+            <section>
+              <h3 style={{ marginBottom: "1rem", color: "#2d1b69" }}>Wellness Dimensions</h3>
+              {/*
+                The backend only returns a qualitative trend per category
+                (improving/worsening/stable) - there's no 0-100 numeric
+                score per dimension yet, so this shows trend badges
+                instead of the progress-bar percentages the old mock
+                data used. Wiring in real percentages would need a
+                backend change first.
+              */}
+              <div className="dashboard-grid">
+                {Object.entries(category_trends).map(([category, categoryTrend]) => {
+                  const info = TREND_LABELS[categoryTrend] || TREND_LABELS.not_enough_data;
+                  return (
+                    <div className="card" key={category}>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                        }}
+                      >
+                        <span style={{ fontWeight: "700", color: "#2d1b69", textTransform: "capitalize" }}>
+                          {category}
+                        </span>
+                        <Badge variant={info.variant}>{info.text}</Badge>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            </Card>
-          ))
-        )}
-      </section>
+            </section>
+          )}
+
+          <section>
+            <h3 style={{ marginBottom: "1rem", color: "#2d1b69" }}>Assessment History</h3>
+            {history
+              .slice()
+              .reverse()
+              .map((entry) => (
+                <Card
+                  key={entry.id}
+                  style={{
+                    marginBottom: "1rem",
+                    borderTop: `4px solid ${
+                      entry.wellness_level === "Low Stress"
+                        ? "#20c997"
+                        : entry.wellness_level === "Moderate Stress"
+                        ? "#ffa733"
+                        : "#e74c3c"
+                    }`,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "flex-start",
+                      flexWrap: "wrap",
+                      gap: "1rem",
+                    }}
+                  >
+                    <div>
+                      <h3 style={{ margin: "0.3rem 0" }}>Score: {entry.total_score}</h3>
+                      <p style={{ fontSize: "0.85rem", color: "#6b5b95" }}>{formatDate(entry.created_at)}</p>
+                    </div>
+                    <Badge variant="primary">{entry.wellness_level}</Badge>
+                  </div>
+                </Card>
+              ))}
+          </section>
+        </>
+      )}
     </div>
   );
 }
